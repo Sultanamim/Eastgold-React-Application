@@ -1,0 +1,40 @@
+.section-gap {
+  padding: 100px 0;
+}
+.user-form input.form_control,
+.user-form input:not([type="file"]) {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.user-form .btn {
+  background-color: var(--main-color);
+  padding: 12px 28px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 29px;
+  text-transform: uppercase;
+}
+
+.user-form .form_group {
+  margin-bottom: 20px;
+}
+
+.user-form .form_group label {
+  margin-bottom: 0;
+}
+
+.user-form .new-user a {
+  color: #2e4c88;
+}
+
+.user-form .form_group.form_inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+input:not([type="radio"], [type="checkbox"]),
+input.form_control {
+    height: 52px;
+}

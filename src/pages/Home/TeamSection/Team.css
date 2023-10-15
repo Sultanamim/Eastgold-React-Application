@@ -1,0 +1,251 @@
+/*=========================
+    10. Team css
+==========================*/
+.team-area .col-lg-3 {
+   padding-right: 15px;
+  padding-left: 15px; 
+}
+.team-item-one:hover .team-img .team-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+.team-item-one:hover .team-img .team-overlay .team-social ul.social-link {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+}
+.team-item-one:hover .team-content {
+  margin-top: -70px;
+}
+.team-item-one .team-img {
+  position: relative;
+  overflow: hidden;
+}
+.team-item-one .team-img img {
+  width: 100%;
+}
+.team-item-one .team-img .team-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(22, 37, 66, 0.8);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+.team-item-one .team-img .team-overlay .team-social ul.social-link {
+  -webkit-transform: translateY(-10px);
+  transform: translateY(-10px);
+  -webkit-transition: all 0.37s ease-out 0s;
+  transition: all 0.37s ease-out 0s;
+}
+.team-item-one .team-img .team-overlay .team-social ul.social-link li {
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+}
+.team-item-one .team-img .team-overlay .team-social ul.social-link li a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 14px;
+  background-color: #162542;
+  -webkit-transition: all 0.4s ease-out 0s;
+  transition: all 0.4s ease-out 0s;
+}
+.team-item-one .team-img .team-overlay .team-social ul.social-link li a:hover {
+  color: #fff;
+}
+.team-item-one .team-content {
+  position: relative;
+  padding: 25px 30px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 10px 60px 0px rgba(22, 37, 66, 0.1);
+  box-shadow: 0px 10px 60px 0px rgba(22, 37, 66, 0.1);
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  margin-top: -50px;
+  -webkit-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .team-item-one .team-content {
+    padding: 25px 10px;
+  }
+}
+.team-item-one .team-content h3.title {
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .team-item-one .team-content h3.title {
+    font-size: 18px;
+    line-height: 30px;
+  }
+}
+.team-item-one .team-content span.position {
+  font-size: 17px;
+  font-weight: 500;
+  color: #666666;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .team-item-one .team-content span.position {
+    font-size: 15px;
+    line-height: 26px;
+  }
+}
+.team-item-one .team-content ul.social-link {
+  margin-top: 15px;
+}
+.team-item-one .team-content ul.social-link li {
+  margin-right: 5px;
+}
+.team-item-one .team-content ul.social-link li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #293750;
+  color: #6f7e9c;
+  font-size: 14px;
+}
+.team-item-one .team-content ul.social-link li a:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.team-bg-wrapper {
+  position: relative;
+  z-index: 1;
+}
+.team-bg-wrapper:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(22, 37, 66, 0.9);
+  z-index: -1;
+}
+
+.team-margin-wrapper {
+  margin-left: 18.6%;
+}
+
+.team-content-box-white p {
+  color: #fff;
+  margin-bottom: 30px;
+}
+.team-content-box-white .main-btn.filled-btn {
+  border-color: rgba(182, 141, 90, 0.1);
+  color: #fff;
+}
+.team-content-box-white .main-btn.filled-btn:hover {
+  color: var(--main-color);
+  border-color: transparent;
+}
+.team-content-box-white .main-btn.filled-btn:hover:before {
+  background-color: #fff;
+}
+
+.team-details-section .team-img {
+  padding-right: 55px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .team-details-section .team-img {
+    padding-right: 0px;
+  }
+}
+@media (max-width: 991px) {
+  .team-details-section .team-img {
+    padding-right: 0px;
+  }
+}
+.team-details-section .team-content {
+  padding-right: 170px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .team-details-section .team-content {
+    padding-right: 0px;
+  }
+}
+@media (max-width: 991px) {
+  .team-details-section .team-content {
+    padding-right: 0px;
+  }
+}
+.team-details-section .team-content h3.title {
+  font-size: 35px;
+}
+.team-details-section .team-content span.position {
+  display: block;
+  margin-bottom: 17px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.team-details-section .team-content p {
+  margin-bottom: 30px;
+}
+.team-details-section .team-content .social-link {
+  text-align: right;
+}
+@media (max-width: 767px) {
+  .team-details-section .team-content .social-link {
+    text-align: left;
+    margin-top: 20px;
+  }
+}
+.team-details-section .team-content .social-link li {
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+.team-details-section .team-content .social-link li a {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #6f7e9c;
+  font-size: 14px;
+  background-color: rgba(41, 55, 80, 0.1);
+}
+.team-details-section .team-content .social-link li a:hover {
+  color: #fff;
+}

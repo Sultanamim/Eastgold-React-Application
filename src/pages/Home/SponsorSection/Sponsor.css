@@ -1,0 +1,63 @@
+.slick-slider {
+  margin-left: -14px;
+  margin-right: -14px;
+}
+/*---================
+    Sponsor css
+================---*/
+.sponsor-slider-one .slick-track {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.sponsor-slider-one .single-sponsor {
+  padding: 0 20px;
+}
+.sponsor-slider-one .single-sponsor img {
+  margin: auto;
+}
+
+.lawgne-pagination ul li {
+  display: inline-block;
+  margin-right: 5px;
+}
+.lawgne-pagination ul li a {
+  border: 2px solid rgba(22, 37, 66, 0.07);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+.lawgne-pagination ul li a:hover {
+  border-color: transparent;
+  color: #fff;
+}
+
+.pl-70 {
+  padding-left: 70px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .pl-70 {
+    padding-left: 0px;
+  }
+}
+@media (max-width: 991px) {
+  .pl-70 {
+    padding-left: 0px;
+  }
+}

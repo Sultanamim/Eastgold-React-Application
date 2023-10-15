@@ -1,0 +1,46 @@
+.pb-70 {
+  padding-bottom: 70px;
+}
+.pt-130 {
+  padding-top: 130px;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+.arrow-btn i {
+  display: inline-block;
+  margin-left: 10px;
+  -webkit-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+.mb-50 {
+  margin-bottom: 50px;
+}
+.about-img-box-one {
+  min-height: 600px;
+  position: relative;
+  margin-left: 50px;
+}
+.about-img-box-one .about-img-one {
+  position: absolute;
+  left: 0;
+}
+img {
+  max-width: 100%;
+}
+h2 {
+  font-size: 50px;
+  line-height: 1.2;
+}
+.section-title.section-title-left {
+  text-align: left;
+}
+.mb-40 {
+  margin-bottom: 40px;
+}
+.col-lg-5 {
+ padding-right: 15px;
+  padding-left: 15px; 
+}
