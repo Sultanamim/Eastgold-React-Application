@@ -27,12 +27,13 @@ export default function Profile(props) {
 
 
   const [elements, setElements] = useState({
-    product_name: "ha ha ha",
+    product_name: "test",
     product_price: "150",
     buyer_id: "1",
     agent_id: "1",
+    seller_id: "5",
     sales_mode: "150.50",
-    sales_source: "blah blah blah"    
+    sales_source: "add text"    
   })
   
   const buyer = props.userBuyerData[0];
@@ -41,6 +42,7 @@ export default function Profile(props) {
   let product_price = elements.product_price;
   let buyer_id = elements.buyer_id;
   let agent_id = elements.agent_id;
+  let seller_id = elements.seller_id;
   let sales_mode = elements.sales_mode;
   let sales_source = elements.sales_source;
 
@@ -59,6 +61,7 @@ export default function Profile(props) {
       setElements({...elements, buyer_id: buyer.user});
 
       setElements({...elements, agent_id: agentData.user});
+      setElements({...elements, seller_id: seller_id});
 
   }, [])
 
@@ -74,6 +77,7 @@ const handleSubmit = async (e) => {
      product_price,
      buyer_id,
      agent_id,
+     seller_id,
      sales_mode,
      sales_source,
    });
@@ -289,15 +293,23 @@ const handleSubmit = async (e) => {
                                         </div>
                                         <div className="col-sm-10">
                                           <div>
-                                            <select className="form-control" onChange={(e) => handleChange(e)} name="buyer_id">
+                                          <input
+                                                    type="text"
+                                                    name="buyer_id"
+                                                    className="form-control"
+                                                    onChange={(e) => handleChange(e)}
+                                                    value={elements.buyer_id}
+                                                  />
+                                            {/* <select className="form-control" onChange={(e) => handleChange(e)} name="buyer_id">
                                               {buyerData.map(i => (
                                                 <option value={i.user}>{i.name_surname}</option>
                                               ))}
-                                            </select>
+                                            </select> */}
                                           </div>
                                         </div>
                                       </div>
                                     </div>
+                                    <input type="hidden" name="seller_id" onChange={(e) => handleChange(e)} value={elements.seller_id} />
                                     <div className="form-group undefined">
                                       <div className="row align-items-center">
                                         <div className="col-sm-2">
@@ -307,15 +319,20 @@ const handleSubmit = async (e) => {
                                         </div>
                                         <div className="col-sm-10">
                                           <div>
-                                            <select className="form-control" onChange={(e) => handleChange(e)} name="agent_id">
+                                          <input
+                                                    type="text"
+                                                    name="agent_id"
+                                                    className="form-control"
+                                                    onChange={(e) => handleChange(e)}
+                                                    value={elements.agent_id}
+                                                  />
+                                            {/* <select className="form-control" onChange={(e) => handleChange(e)} name="agent_id">
                                               {
                                                 agentData.map(i => (
                                                   <option value={i.user}>{i.name_surname}</option>
                                                 ))
                                               }
-                                                
-                                            
-                                            </select>
+                                            </select> */}
                                           </div>
                                         </div>
                                       </div>
