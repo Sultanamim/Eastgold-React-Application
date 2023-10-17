@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import LogoImg from "../../assets/logo2.png";
 import CrossImg from "../../assets/cross.png";
 import "../../assets/css/Blogs.css";
