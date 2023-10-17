@@ -18,25 +18,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function App() {
-  const [user, setUser] = useState({
-    seller: {
-      email: "seller123@gmail.com",
-      password: "123456",
-      name: "Ramil Cavadov",
-      phone_number: "712389949",
-      dob: "09.10.2023",
-    },
-    buyer: {
-      email: "buyer123@gmail.com",
-      password: "123456",
-    },
-    client: {
-      email: "client123@gmail.com",
-      password: "123456",
-    },
-  });
+ 
 
-  const [sellerData, setSellerData] = useState([]);
   const [buyerData, setBuyerData] = useState([]);
   const [partnerData, setPartnerData] = useState([]);
   const [userBuyerData, setUserBuyerData] = useState([]);
@@ -103,6 +86,13 @@ function App() {
   //   }
   // }, [userPartnerData]);
 
+  const [isLogedIn, setIsLogedIn] = useState(false);
+
+  const handleLoginClick = () => {
+    setIsLogedIn(true);
+  }
+
+
   return (
     <div className="App">
       {/* ---------- Navigation Bar ---------- */}
@@ -120,16 +110,16 @@ function App() {
           <Portfolios />
         </Route>
         <Route exact path="/login">
-          <Login user={user} />
+          <Login isLogedIn={isLogedIn} setIsLogedIn={setIsLogedIn} handleLoginClick={handleLoginClick}/>
         </Route>
-        <Route exact path="/signup">
+        {/* <Route exact path="/signup">
           <SignUp />
-        </Route>
+        </Route> */}
         {/* ---- Seller ---- */}
         <Route exact path="/seller-dashboard">
           {userBuyerData.length > 0 && userPartnerData.length > 0 ? (
             <SellerDashboard
-              user={user}
+             
               userBuyerData={userBuyerData}
               userPartnerData={userPartnerData}
             />
@@ -138,12 +128,12 @@ function App() {
           )}
         </Route>
         <Route exact path="/seller-transitions">
-          <SellerOrders user={user} />
+          <SellerOrders isLogedIn={isLogedIn} setIsLogedIn={setIsLogedIn}/>
         </Route>
         <Route exact path="/seller-profile">
         {userBuyerData.length > 0 && userPartnerData.length > 0 ? (
             <SellerProfile
-              user={user}
+            
               userBuyerData={userBuyerData}
               userPartnerData={userPartnerData}
             />
@@ -154,17 +144,17 @@ function App() {
         {/* ------- */}
         {/* ---- Buyer ---- */}
         <Route exact path="/buyer-dashboard">
-          <BuyerDashboard user={user} userBuyerData={userBuyerData} />
+          <BuyerDashboard userBuyerData={userBuyerData} />
         </Route>
         <Route exact path="/buyer-transitions">
-          <BuyerOrders user={user} userBuyerData={userBuyerData} />
+          <BuyerOrders isLogedIn={isLogedIn} setIsLogedIn={setIsLogedIn} userBuyerData={userBuyerData} />
         </Route>
         {/* ---- Client ---- */}
         <Route exact path="/client-dashboard">
-          <ClientDashboard user={user} userPartnerData={userPartnerData} />
+          <ClientDashboard userPartnerData={userPartnerData} />
         </Route>
         <Route exact path="/client-transitions">
-          <ClientOrders user={user} userPartnerData={userPartnerData} />
+          <ClientOrders isLogedIn={isLogedIn} setIsLogedIn={setIsLogedIn} userPartnerData={userPartnerData} />
         </Route>
       </Switch>
 

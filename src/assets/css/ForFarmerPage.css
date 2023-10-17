@@ -1,0 +1,72 @@
+:root{
+    --div-background-color: #eeebeb;
+    --text-color: #b0a8a8;
+    --highlighted-text-color: #787575;
+    --normal-text-color: #333;
+    --theme-color: #04b50a;
+  }
+
+.for-farmer{
+    margin-top: 450px;
+    padding: 100px 0;
+    height: 120vh;
+}
+.for-farmer h3{
+    color: #333;
+    text-align: center;
+    margin: 20px 5px;
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+.for-farmer .row{
+    margin: 10px 15px;
+    padding: 10px 15px;
+    text-align: justify;
+}
+.for-farmer .row img{
+    align-items: center;
+    justify-content: center;
+    margin-left: 8rem;
+    width: "60%";
+    height: 200px;
+}
+.for-farmer .row .text{
+     margin: 10px 30px;
+}
+.for-farmer .row .text h4{
+    color: var(--normal-text-colorr);
+    font-size: 20px;
+    font-weight: 600;
+}
+.for-farmer .row .text p{
+    color: var(--highlighted-text-color);
+    font-size: 14px;
+    font-weight: 300;
+}
+/* .for-farmer .row .img7 img{
+  margin: 20px 10px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+} */
+
+
+
+
+@media(max-width: 1200px){
+    .for-farmer .row img{
+        margin-left: 2rem;
+        width: 400px;
+        height: 200px;
+    }
+}
+
+@media(max-width: 1120px){
+    .for-farmer .row img{
+        margin-left: 2rem;
+        width: 350px;
+        height: 200px;
+    }
+}
+
