@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import {useHistory,} from "react-router-dom";
 import "./Login.css";
+import Swal from "sweetalert";
 
 
 async function loginUser(credentials) {
-  return fetch('https://office.webcodecare.com/api/login', {
+  return fetch('https://office.webcodecare.com/api/client_login', {
     method: 'POST',
     dataType: "json",
+    mode: 'no-cors',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
     },
+    
     
     body: JSON.stringify(credentials)
   })
@@ -20,7 +23,7 @@ async function loginUser(credentials) {
 
 
 export default function Login(props) {
-  const [credentials, setCredentials] = useState({
+  const [credentialsInfo, setCredentialsInfo] = useState({
     email:'',
    password:'',
 })
@@ -30,31 +33,45 @@ export default function Login(props) {
   const seller = props.user.seller;
   const buyer = props.user.buyer;
   const client = props.user.client;
-  let email = credentials.email;
-  let password = credentials.password;
+  let email = credentialsInfo.email;
+  let password = credentialsInfo.password;
   let history = useHistory();
 
   //console.log(seller.email)
 
   const handleChange = e => {
-    setCredentials({...credentials, [e.target.name]: e.target.value })
+    setCredentialsInfo({...credentialsInfo, [e.target.name]: e.target.value })
 }
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  // const response = await loginUser({
-  //   email,
-  //   password
-  // });
+  const response = await loginUser({
+    email,
+    password
+  });
 
-  // console.log(response);
+  if ("account_mode" in response) {
+    Swal("Success", response.message, "success", {
+      buttons: false,
+      timer: 2000,
+    });
+    
+    // alert(response.message)
+    localStorage.setItem("account_mode", response["account_mode"]);
+    localStorage.setItem("user", JSON.stringify(response["data"]));
+    // window.location.href = "/portfolio";
+  } else {
+    Swal("Failed", response.message, "error");
+  }
+   console.log('hi');
+  console.log(response);
 
 
-   if(credentials.email == seller.email && credentials.password == seller.password){
+   if(credentialsInfo.email == seller.email && credentialsInfo.password == seller.password){
     history.push("/seller-dashboard")
-   } else if (credentials.email === buyer.email && credentials.password === buyer.password){
+   } else if (credentialsInfo.email === buyer.email && credentialsInfo.password === buyer.password){
      history.push("/buyer-dashboard")
-   } else if (credentials.email === client.email && credentials.password === client.password){
+   } else if (credentialsInfo.email === client.email && credentialsInfo.password === client.password){
      history.push("/client-dashboard")
    }else{
       alert("Invalid email")
@@ -97,7 +114,11 @@ const handleSubmit = async (e) => {
                   <h4>Login</h4>
                 </div>
                 <form
-                  action=""
+                  data-v-32ab5d56=""
+                  novalidate="novalidate"
+                  class="BaseForm register-form"
+                  data-hs-cf-bound="true"
+                  onSubmit={handleSubmit}
                 >
                   {/* <input
                     type="hidden"
@@ -112,7 +133,6 @@ const handleSubmit = async (e) => {
                       placeholder="Enter Email Address"
                       className="form_control"
                       name="email"
-                      value={credentials.email}
                       onChange={e => handleChange(e)}
                     />
                   </div>
@@ -122,7 +142,6 @@ const handleSubmit = async (e) => {
                       type="password"
                       className="form-control"
                       name="password"
-                      value={credentials.password}
                       placeholder="Enter Password"
                       onChange={e => handleChange(e)}
                     />
@@ -137,9 +156,20 @@ const handleSubmit = async (e) => {
                   </div> */}
                   <div className="form_group"></div>
                   <div className="form_group">
-                    <button type="submit" className="btn" onClick={(e) => handleSubmit(e)}>
+                    {/* <button type="submit" className="btn" onClick={(e) => handleSubmit(e)}>
                       Login Now
-                    </button>
+                    </button> */}
+                    <button
+                    className="btn" 
+              data-v-1ea8460d=""
+              data-v-32ab5d56=""
+              tabindex="1"
+              type="submit"
+              block=""
+              color="primary"
+            >
+              <span class="v-btn__content"> Login Now</span>
+            </button>
                   </div>
                   {/* <div className="new-user text-center">
                     <p className="text">
