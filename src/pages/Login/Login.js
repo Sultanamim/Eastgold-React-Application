@@ -127,28 +127,28 @@ const handleSubmit = async (e) => {
                       onChange={e => handleChange(e)}
                     />
                   </div>
-                  <div className="form_group form_inline">
+                  {/* <div className="form_group form_inline">
                     <div>
                       <label htmlFor="checkbox1"></label>
                     </div>
                     <a href="#">
                       Lost your password?
                     </a>
-                  </div>
+                  </div> */}
                   <div className="form_group"></div>
                   <div className="form_group">
                     <button type="submit" className="btn" onClick={(e) => handleSubmit(e)}>
                       Login Now
                     </button>
                   </div>
-                  <div className="new-user text-center">
+                  {/* <div className="new-user text-center">
                     <p className="text">
                       New User?{" "}
                       <a href="https://businesso.xyz/rangs/user/signup">
                         Do not have an account?
                       </a>
                     </p>
-                  </div>
+                  </div> */}
                 </form>
               </div>
             </div>

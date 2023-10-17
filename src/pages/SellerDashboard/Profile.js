@@ -7,19 +7,40 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
+
+
+
+
 async function formData(credentials) {
-  return fetch('https://office.webcodecare.com/api/seller_product', {
-    method: 'POST',
-    dataType: "json",
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
-    },
+  const csrfToken = document.head
+  .querySelector('meta[name="csrf-token"]')
+  ?.getAttribute('content');
+
+const headers = {
+  Accept: 'application/json',
+  'Content-Type': 'application/json',
+  'X-CSRF-TOKEN': csrfToken,
+};
+
+const response = await fetch('https://office.webcodecare.com/api/seller_product', {
+  method: 'POST',
+  headers: headers,
+  body: JSON.stringify(credentials),
+});
+
+return response.json();
+  // return fetch('https://office.webcodecare.com/api/seller_product', {
+  //   method: 'POST',
+  //   dataType: "json",
+  //   headers: {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json',
+  //     'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
+  //   },
     
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
+  //   body: JSON.stringify(credentials)
+  // })
+  //   .then(data => data.json())
  }
 
 
@@ -30,18 +51,18 @@ export default function Profile(props) {
     product_name: "test",
     product_price: "150",
     buyer_id: "1",
-    agent_id: "1",
+    partner_id: "1",
     seller_id: "5",
     sales_mode: "150.50",
     sales_source: "add text"    
   })
   
   const buyer = props.userBuyerData[0];
-  const agent = props.userPartnerData[0];
+  const partner = props.userPartnerData[0];
   let product_name = elements.product_name;
   let product_price = elements.product_price;
   let buyer_id = elements.buyer_id;
-  let agent_id = elements.agent_id;
+  let partner_id = elements.partner_id;
   let seller_id = elements.seller_id;
   let sales_mode = elements.sales_mode;
   let sales_source = elements.sales_source;
@@ -50,17 +71,17 @@ export default function Profile(props) {
      return items;
    
   });
-  const agentData = agent.map((items) => {
+  const partnerData = partner.map((items) => {
     //console.log(items);
     return items;
 
  });
- //console.log(agentData);
+ //console.log(partnerData);
   useEffect(() => {
 
       setElements({...elements, buyer_id: buyer.user});
 
-      setElements({...elements, agent_id: agentData.user});
+      setElements({...elements, partner_id: partnerData.user});
       setElements({...elements, seller_id: seller_id});
 
   }, [])
@@ -72,15 +93,28 @@ export default function Profile(props) {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-   const response = await formData({
-     product_name,
-     product_price,
-     buyer_id,
-     agent_id,
-     seller_id,
-     sales_mode,
-     sales_source,
-   });
+  try {
+    const response = await formData({
+      product_name,
+      product_price,
+      buyer_id,
+      partner_id,
+      seller_id,
+      sales_mode,
+      sales_source,
+    });
+
+    if (response.status === 200) {
+      // Request was successful, handle the response data
+      console.log("Request was successful:", response);
+    } else {
+      // Handle other status codes (e.g., 404, 500, etc.)
+      console.error("Request failed with status:", response.status);
+    }
+  } catch (error) {
+    // Handle network errors or other exceptions
+    console.error("An error occurred:", error);
+  }
 
 }
 
@@ -179,7 +213,7 @@ const handleSubmit = async (e) => {
                           <div>
                             {/* ------ Profile Form ---- */}
                             <div className="seller-profile-form">
-                              <form>
+                              <form onSubmit={(e) => handleSubmit(e)}>
                                 <div className="seller-profile-panel">
                                   <div className="seller-profile-panel-header">
                                     Basic Info
@@ -313,22 +347,22 @@ const handleSubmit = async (e) => {
                                     <div className="form-group undefined">
                                       <div className="row align-items-center">
                                         <div className="col-sm-2">
-                                          <label htmlFor="agent_id">
-                                            Agent Id
+                                          <label htmlFor="partner_id">
+                                            Partner Id
                                           </label>
                                         </div>
                                         <div className="col-sm-10">
                                           <div>
                                           <input
                                                     type="text"
-                                                    name="agent_id"
+                                                    name="partner_id"
                                                     className="form-control"
                                                     onChange={(e) => handleChange(e)}
-                                                    value={elements.agent_id}
+                                                    value={elements.partner_id}
                                                   />
-                                            {/* <select className="form-control" onChange={(e) => handleChange(e)} name="agent_id">
+                                            {/* <select className="form-control" onChange={(e) => handleChange(e)} name="partner_id">
                                               {
-                                                agentData.map(i => (
+                                                partnerData.map(i => (
                                                   <option value={i.user}>{i.name_surname}</option>
                                                 ))
                                               }
