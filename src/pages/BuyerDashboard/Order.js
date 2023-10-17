@@ -211,9 +211,9 @@ export default function Orders() {
                             <td>
                               <p>Created at</p>
                             </td>
-                            <td>
+                            {/* <td>
                               <p>Updated at</p>
-                            </td>
+                            </td> */}
                           </tr>
                           {
                             data.map(items => (
@@ -239,9 +239,9 @@ export default function Orders() {
                               <td>
                                 <p>{items.created_at}</p>
                               </td>
-                              <td>
+                              {/* <td>
                                 <p>{items.updated_at}</p>
-                              </td>
+                              </td> */}
                             </tr>
                             ))
                           }
@@ -298,7 +298,7 @@ export default function Orders() {
                                 className="seller-profile-sidebar-menu collapse show"
                               >
                                 <ul>
-                                  <li>
+                                  {/* <li>
                                     <Link to="/buyer-dashboard">
                                       <span className="icon">
                                         {" "}
@@ -306,7 +306,7 @@ export default function Orders() {
                                       </span>
                                       <span className="text">Dashboard</span>
                                     </Link>
-                                  </li>
+                                  </li> */}
 
                                   <li>
                                     <Link to="/buyer-transitions">

@@ -1,24 +1,38 @@
 import React, { useState } from "react";
 import {useHistory,} from "react-router-dom";
 import "./Login.css";
-import Swal from "sweetalert";
+import Swal from "sweetalert2";
 
 
 async function loginUser(credentials) {
+
   return fetch('https://office.webcodecare.com/api/client_login', {
-    method: 'POST',
-    dataType: "json",
-    mode: 'no-cors',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
-    },
+         method: 'POST',
+         body: JSON.stringify(credentials),
+         headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+         },
+         body: JSON.stringify(credentials)
+      }) .then(data => data.json())
+
+
+
+  // return fetch('https://office.webcodecare.com/api/client_login', {
+  //   method: 'POST',
+  //   dataType: "json",
+  //   // mode: 'no-cors',
+  //   // mode: 'cors',
+  //   headers: {
+  //     // 'Accept': 'application/json',
+  //     // 'Content-Type': 'application/json',
+  //     'Content-type': 'application/json; charset=UTF-8',
+  //     'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
+  //   },
     
     
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
+  //   body: JSON.stringify(credentials)
+  // })
+  //   .then(data => data.json())
  }
 
 
@@ -31,7 +45,7 @@ export default function Login(props) {
     "https://businesso.xyz/assets/front/img/user/breadcrumb.jpg";
   
   const seller = props.user.seller;
-  const buyer = props.user.buyer;
+  const buyer = props.user.Buyer;
   const client = props.user.client;
   let email = credentialsInfo.email;
   let password = credentialsInfo.password;
@@ -50,28 +64,26 @@ const handleSubmit = async (e) => {
     password
   });
 
-  if ("account_mode" in response) {
-    Swal("Success", response.message, "success", {
+  if ("api_token" in response) {
+    Swal.fire("Successfully!",  response.message, "success", {
       buttons: false,
       timer: 2000,
     });
-    
-    // alert(response.message)
-    localStorage.setItem("account_mode", response["account_mode"]);
+
+    localStorage.setItem("account_mode", response["data"]["account_mode"]);
     localStorage.setItem("user", JSON.stringify(response["data"]));
     // window.location.href = "/portfolio";
   } else {
-    Swal("Failed", response.message, "error");
+    Swal.fire("Error", response.message, "error");
   }
-   console.log('hi');
-  console.log(response);
 
+console.log(response.data);
 
-   if(credentialsInfo.email == seller.email && credentialsInfo.password == seller.password){
+   if(response.data.account_mode == 'Seller'){
     history.push("/seller-dashboard")
-   } else if (credentialsInfo.email === buyer.email && credentialsInfo.password === buyer.password){
-     history.push("/buyer-dashboard")
-   } else if (credentialsInfo.email === client.email && credentialsInfo.password === client.password){
+   } else if (response.data.account_mode === 'Buyer'){
+     history.push("/buyer-transitions")
+   } else if (response.data.account_mode === 'Client'){
      history.push("/client-dashboard")
    }else{
       alert("Invalid email")
