@@ -11,12 +11,14 @@ import {useHistory,} from "react-router-dom";
 export default function Orders() {
   const [data, setData] = useState([]);
   let history = useHistory();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   
   const apiGetSellerTransitions = async () => {
     try {
+    
       const response = await fetch(
-        "https://office.webcodecare.com/api/buyer_product_details?buyer_id=1"
+        `https://office.webcodecare.com/api/buyer_product_details?buyer_id=${user.user}`
       );
       const jsondata = await response.json();
       //console.log(jsondata.data);
@@ -44,15 +46,15 @@ export default function Orders() {
       const jsondata = await response.json();
       const msg = jsondata[0].address;
         Swal.fire(
-          'Successfully!',
-          `You have withdrawn ${msg}`,
+          'Withdrawn Request Successfully!',
+          `Your withdrawn Location Address is ${msg}`,
           'success'
         )
     }
     catch(error){
       Swal.fire(
         'Error!',
-        `You have withdrawn ${error}`,
+        `Your withdrawn Location Address is ${error}`,
         'error'
       )
     }

@@ -2,19 +2,32 @@ import React from "react";
 import LogoImg from "../../assets/logo2.png";
 import CrossImg from "../../assets/cross.png";
 import "../../assets/css/Blogs.css";
-import  "../../assets/css/template.css";
-
+import "../../assets/css/template.css";
 import { Translation } from "react-i18next";
 import { useTranslation } from "react-i18next";
-
 import ChangeLang from "../ChangeLang.js";
-
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import Swal from "sweetalert2";
+
 
 export default function Navbar() {
-
   const { t, i18n } = useTranslation();
+  const token = localStorage.getItem("token");
+
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    Swal.fire("Successfully!",  "Logout Successfully", "success", {
+      buttons: false,
+      timer: 2000,
+    });
+
+    window.location.href = "/home";
+  };
+
 
   return (
     <header className="header-area-one">
@@ -91,7 +104,10 @@ export default function Navbar() {
                 aria-labelledby="offcanvasNavbarLabel"
               >
                 <div className="offcanvas-header">
-                <h5 className="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                  <h5
+                    className="offcanvas-title"
+                    id="offcanvasNavbarLabel"
+                  ></h5>
                   <button
                     type="button"
                     className="close-button"
@@ -113,7 +129,11 @@ export default function Navbar() {
                 <div className="offcanvas-body">
                   <ul className="navbar-nav justify-content-start">
                     <li className="nav-item">
-                      <Link className="nav-link active" aria-current="page" to="/">
+                      <Link
+                        className="nav-link active"
+                        aria-current="page"
+                        to="/"
+                      >
                         {t("Home")}
                       </Link>
                     </li>
@@ -140,6 +160,7 @@ export default function Navbar() {
                   <a href="#" className="main-btn float-right m-0">
                     {t("Request A Quote")}
                   </a>
+                  
                 </li>
                 {/* <li>
                   <form action="" id="userLangForms">
@@ -155,22 +176,26 @@ export default function Navbar() {
                     </select>
                   </form>
                 </li> */}
-                  
-                <li>
-               
-                  <div className="nav-item info nav-push-item">
-                    <Link to="/login">{t("Login")}</Link>
-                    {/* <Link to="/signup">Sign up</Link> */}
-                  </div>
-                </li>
+
+           
               </ul>
               <div className="lang-icon">
-                 <Translation>{(t) => <ChangeLang t={t} />}</Translation>
-            </div>
+                <Translation>{(t) => <ChangeLang t={t} />}</Translation>
+              </div>
+              <div className="nav-item info nav-push-item">
+                    {(() => {
+                      if (!token) {
+                        return <Link to="/login">{t("Login")}</Link>;
+                      } else {
+                     
+                        return <Link onClick={handleLogout}>{t("Logout")}</Link>;
+                      }
+                    })()}
+
+                    {/* <Link to="/signup">Sign up</Link> */}
+                  </div>
               {/*-------- */}
             </div>
-
-        
           </div>
         </nav>
       </div>

@@ -11,12 +11,14 @@ import {useHistory,} from "react-router-dom";
 export default function Orders() {
   const [data, setData] = useState([]);
   let history = useHistory();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   
   const apiGetSellerTransitions = async () => {
     try {
+      
       const response = await fetch(
-        "https://office.webcodecare.com/api/sellers_details?seller_id=4"
+        `https://office.webcodecare.com/api/sellers_details?seller_id=${user.user}`
       );
       const jsondata = await response.json();
       //console.log(jsondata);
