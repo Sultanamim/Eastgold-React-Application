@@ -4,17 +4,26 @@ import ProfileImg from "../../assets/profile.png";
 import OrdersImg from "../../assets/my-orders.png";
 import { Link } from "react-router-dom";
 import "../SellerDashboard/Seller.css";
+import Swal from "sweetalert2";
+import {useHistory,} from "react-router-dom";
+
 
 export default function Orders() {
   const [data, setData] = useState([]);
+  let history = useHistory();
 
+  
   const apiGetSellerTransitions = async () => {
     try {
       const response = await fetch(
         "https://office.webcodecare.com/api/buyer_product_details?buyer_id=1"
       );
       const jsondata = await response.json();
-      jsondata.map((items) => setData(items));
+      //console.log(jsondata.data);
+      jsondata.data.map((items) => {
+        console.log(items)
+      });
+      setData(jsondata.data);
     } catch (error) {
       console.error("API request error:", error);
     }
@@ -22,15 +31,36 @@ export default function Orders() {
 
   useEffect(() => {
     apiGetSellerTransitions();
+    const token = localStorage.getItem('token');
+    if(!token) {
+      history.push('/login');
+    }
   }, []);
 
-  console.log(data);
+  //console.log(data);
+  const handleWithdraw = async () => {
+    try {
+      const response = await fetch("https://office.webcodecare.com/api/fetchAddress");
+      const jsondata = await response.json();
+      const msg = jsondata[0].address;
+        Swal.fire(
+          'Successfully!',
+          `You have withdrawn ${msg}`,
+          'success'
+        )
+    }
+    catch(error){
+      Swal.fire(
+        'Error!',
+        `You have withdrawn ${error}`,
+        'error'
+      )
+    }
+  }
 
   const buyerData =
-    data.length > 0 ? (
-      data.map((items) =>{ 
-        console.log(items);
-      return  (
+    data.length > 0 ? 
+    (
 
         <div>
           <div>
@@ -145,6 +175,7 @@ export default function Orders() {
                             padding: "10px 20px",
                             marginLeft: "1rem",
                           }}
+                          onClick={handleWithdraw}
                         >
                           WITHDRAWL
                         </h2>
@@ -188,36 +219,41 @@ export default function Orders() {
                             <td>
                               <p>Created at</p>
                             </td>
-                            <td>
+                            {/* <td>
                               <p>Updated at</p>
-                            </td>
+                            </td> */}
                           </tr>
-                          <tr>
-                            <td>
-                              <p>{items.buyer_id}</p>
-                            </td>
-                            <td>
-                              <p>{items.partner_id}</p>
-                            </td>
-                            <td>
-                              <p>{items.product_name}</p>
-                            </td>
-                            <td>
-                              <p>{items.product_price}</p>
-                            </td>
-                            <td>
-                              <p>{items.sales_mode}</p>
-                            </td>
-                            <td>
-                              <p>{items.sales_source}</p>
-                            </td>
-                            <td>
-                              <p>{items.created_at}</p>
-                            </td>
-                            <td>
-                              <p>{items.updated_at}</p>
-                            </td>
-                          </tr>
+                          {
+                            data.map(items => (
+                              <tr>
+                              <td>
+                                <p>{items.buyer_id}</p>
+                              </td>
+                              <td>
+                                <p>{items.partner_id}</p>
+                              </td>
+                              <td>
+                                <p>{items.product_name}</p>
+                              </td>
+                              <td>
+                                <p>{items.product_price}</p>
+                              </td>
+                              <td>
+                                <p>{items.sales_mode}</p>
+                              </td>
+                              <td>
+                                <p>{items.sales_source}</p>
+                              </td>
+                              <td>
+                                <p>{items.created_at}</p>
+                              </td>
+                              {/* <td>
+                                <p>{items.updated_at}</p>
+                              </td> */}
+                            </tr>
+                            ))
+                          }
+                       
                         </tbody>
                       </table>
                     </div>
@@ -229,8 +265,8 @@ export default function Orders() {
           </div>
         </div>
       )
-    })
-    ) : (
+    
+     : (
       // console.log(items);
 
       <p>Loading....</p>
@@ -270,7 +306,7 @@ export default function Orders() {
                                 className="seller-profile-sidebar-menu collapse show"
                               >
                                 <ul>
-                                  <li>
+                                  {/* <li>
                                     <Link to="/buyer-dashboard">
                                       <span className="icon">
                                         {" "}
@@ -278,7 +314,7 @@ export default function Orders() {
                                       </span>
                                       <span className="text">Dashboard</span>
                                     </Link>
-                                  </li>
+                                  </li> */}
 
                                   <li>
                                     <Link to="/buyer-transitions">
