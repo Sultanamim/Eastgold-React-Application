@@ -1,0 +1,25 @@
+.chart{
+    height: 100vh;
+    margin-top: 100px;
+}
+.chart h1{
+    text-align: left;
+    margin: 25px;
+    margin-top: 6rem;
+    padding: 10px;
+    font-size: 36px;
+    font-weight: 500;
+    color: #333;
+}
+/* .chart p{
+    color:#655b5b;
+    font-weight: 300;
+    text-align: -webkit-match-parent;
+    margin: 25px;
+    padding: 10px;
+    line-height: 2rem;
+    font-size: 18px;
+} */
+.chart .chart-content{
+    height: 300px;
+}

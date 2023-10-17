@@ -1,10 +1,21 @@
 import React from "react";
 import LogoImg from "../../assets/logo2.png";
 import CrossImg from "../../assets/cross.png";
+import "../../assets/css/Blogs.css";
+import  "../../assets/css/template.css";
+
+import { Translation } from "react-i18next";
+import { useTranslation } from "react-i18next";
+
+import ChangeLang from "../ChangeLang.js";
+
 import { Link } from "react-router-dom";
 import "./navbar.css";
 
 export default function Navbar() {
+
+  const { t, i18n } = useTranslation();
+
   return (
     <header className="header-area-one">
       {/* ---------  Header-logo-area  -------------- */}
@@ -103,17 +114,17 @@ export default function Navbar() {
                   <ul className="navbar-nav justify-content-start">
                     <li className="nav-item">
                       <Link className="nav-link active" aria-current="page" to="/">
-                        Home
+                        {t("Home")}
                       </Link>
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link" to="/products">
-                        Products
+                        {t("Products")}
                       </Link>
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link" to="/portfolios">
-                        Portfolios
+                        {t("Portfolios")}
                       </Link>
                     </li>
                   </ul>
@@ -127,10 +138,10 @@ export default function Navbar() {
               <ul className="d-flex align-items-center justify-content-end">
                 <li className="d-xl-block d-none nav-item mt-2">
                   <a href="#" className="main-btn float-right m-0">
-                    Request A Quote
+                    {t("Request A Quote")}
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <form action="" id="userLangForms">
                     <select
                       name="code"
@@ -143,16 +154,23 @@ export default function Navbar() {
                       <option value="ar">عربي</option>
                     </select>
                   </form>
-                </li>
+                </li> */}
+                  
                 <li>
+               
                   <div className="nav-item info nav-push-item">
-                    <Link to="/login">Login</Link>
+                    <Link to="/login">{t("Login")}</Link>
                     {/* <Link to="/signup">Sign up</Link> */}
                   </div>
                 </li>
               </ul>
+              <div className="lang-icon">
+                 <Translation>{(t) => <ChangeLang t={t} />}</Translation>
+            </div>
               {/*-------- */}
             </div>
+
+        
           </div>
         </nav>
       </div>

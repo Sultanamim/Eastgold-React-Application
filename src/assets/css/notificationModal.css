@@ -1,0 +1,132 @@
+
+:root{
+    --div-background-color: #eeebeb;
+    --text-color: #b0a8a8;
+    --highlighted-text-color: #787575;
+    --normal-text-color: #333;
+    --theme-color: #04b50a;
+  }
+
+.notifi-box{
+    width: 420px;
+    height: 80vh;
+    position: fixed;
+    background: #ffffff;
+    top: 80px;
+    right: -100%;
+    transition: 850ms ;
+    z-index: 3;
+    box-shadow: 10px 10px 66px -3px rgba(0,0,0,0.56);
+   -webkit-box-shadow: 10px 10px 66px -3px rgba(0,0,0,0.56);
+   -moz-box-shadow: 10px 10px 66px -3px rgba(0,0,0,0.56);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.notifi-box.active{
+    right: 25px;
+    transition: 350ms;
+}
+.notifi-box button{
+    display: block;
+    margin:  25px;
+    padding: 10px 50px;
+    width: 88%;
+    background: yellowgreen;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 6px;
+}
+.notifi-box h2 .span2{
+    /* font-size: 70px; */
+    font-weight: 200;
+    opacity: 0.5;
+    margin-left: 100px;
+    cursor: pointer;
+}
+.notifi-box h2 .span2:hover{
+    opacity: 1;
+}
+.notifi-box h2{
+    /* font-size: 36px;
+    font-weight: 600;
+    padding: 5px 20px; */
+    background: #030303;
+    color: #fff;
+    text-align: center;
+}
+.notifi-box h2 .span1{
+    color:yellowgreen;
+}
+.notify-item{
+    display: flex;
+    background: #fff;
+    padding: 15px 10px;
+    margin: 15px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 22px 12px 66px -21px rgba(0,0,0,0.46);
+    -webkit-box-shadow: 22px 12px 66px -21px rgba(0,0,0,0.46);
+    -moz-box-shadow: 22px 12px 66px -21px rgba(0,0,0,0.46);
+}
+.notify-item:hover{
+    background-color: #ebebeb;
+}
+.notify-item .text h4{
+    color: #777;
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.notify-item .text p {
+    color: #aaa;
+    font-size: 12px;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media(max-width: 1200px){
+    .notifi-box{
+        width: 390px;
+        height: 75vh;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .notifi-box h2{
+        font-size: 32px;
+        font-weight: 600;
+        padding: 5px 20px;
+    }
+    .notify-item{
+        padding: 5px 10px;
+        margin: 10px 15px;
+       
+    }
+}
+@media(max-width: 500px){
+    *{
+        margin-right: 0;
+        padding-right: 0;
+    }
+    .notifi-box{
+        width: 320px;
+        height: 75vh;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .notifi-box h2{
+        font-size: 32px;
+        font-weight: 600;
+        padding: 5px 20px;
+    }
+    .notify-item{
+        padding: 5px 10px;
+        margin: 10px 15px;
+       
+    }
+}
