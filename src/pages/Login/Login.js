@@ -44,9 +44,6 @@ export default function Login(props) {
   const externalImg =
     "https://businesso.xyz/assets/front/img/user/breadcrumb.jpg";
   
-  const seller = props.user.seller;
-  const buyer = props.user.Buyer;
-  const client = props.user.client;
   let email = credentialsInfo.email;
   let password = credentialsInfo.password;
   let history = useHistory();
@@ -83,8 +80,8 @@ console.log(response.data);
     history.push("/seller-dashboard")
    } else if (response.data.account_mode === 'Buyer'){
      history.push("/buyer-transitions")
-   } else if (response.data.account_mode === 'Client'){
-     history.push("/client-dashboard")
+   } else if (response.data.account_mode === 'Partner'){
+     history.push("/client-transitions")
    }else{
       alert("Invalid email")
    }

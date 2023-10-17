@@ -5,10 +5,14 @@ import OrdersImg from "../../assets/my-orders.png";
 import { Link } from "react-router-dom";
 import "../SellerDashboard/Seller.css";
 import Swal from "sweetalert2";
+import {useHistory,} from "react-router-dom";
+
 
 export default function Orders() {
   const [data, setData] = useState([]);
+  let history = useHistory();
 
+  
   const apiGetSellerTransitions = async () => {
     try {
       const response = await fetch(
@@ -27,6 +31,10 @@ export default function Orders() {
 
   useEffect(() => {
     apiGetSellerTransitions();
+    const token = localStorage.getItem('token');
+    if(!token) {
+      history.push('/login');
+    }
   }, []);
 
   //console.log(data);
