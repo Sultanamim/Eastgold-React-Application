@@ -55,13 +55,16 @@ const handleSubmit = async (e) => {
 
 
 
-    if(response.data.account_mode == 'Seller'){
-      history.push("/seller-dashboard")
+    if(response.data.account_mode === 'Seller'){
+      // history.push("/seller-dashboard")
+      window.location.href = "/seller-dashboard";
      } else if (response.data.account_mode === 'Buyer'){
+
       window.location.href = "/buyer-transitions";
       //  history.push("/buyer-transitions")
      } else if (response.data.account_mode === 'Partner'){
-       history.push("/client-transitions")
+      //  history.push("/client-transitions")
+       window.location.href = "/client-transitions";
      }else{
         alert("Invalid email")
      }
