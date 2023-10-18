@@ -27,7 +27,7 @@ async function formData(credentials) {
   ).then(data => data.json());
 
   if (response) {
-    Swal.fire("Successfully!",  response, "success", {
+    Swal.fire("Successfully!",  response.message, "success", {
       buttons: false,
       timer: 2000,
     });
@@ -35,7 +35,7 @@ async function formData(credentials) {
     window.location.reload();
 
   } else {
-    Swal.fire("Error", response, "error");
+    Swal.fire("Error", response.message, "error");
   }
 
 }
