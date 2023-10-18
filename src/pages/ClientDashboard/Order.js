@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "../SellerDashboard/Seller.css";
 import Swal from "sweetalert2";
 import {useHistory,} from "react-router-dom";
+import DataTable from "react-data-table-component";
 
 
 export default function Orders() {
@@ -50,6 +51,65 @@ export default function Orders() {
       Swal.fire("Error!", `Your withdrawn Location Address is ${error}`, "error");
     }
   };
+
+
+  const columns = [
+    {
+      name: "Buyer Id",
+      selector: (row) => row.buyer_id,
+    },
+    {
+      name: "Partner Id",
+      selector: (row) => row.partner_id,
+    },
+    {
+      name: "Partner Id",
+      selector: (row) => row.partner_id,
+    },
+    {
+      name: "Seller Id",
+      selector: (row) => row.seller_id,
+    },
+    {
+      name: "Product Name",
+      selector: (row) => row.product_name,
+    },
+    {
+      name: "Product Price",
+      selector: (row) => row.product_price,
+    },
+    {
+      name: "Sales Mode",
+      selector: (row) => row.sales_mode,
+    },
+    {
+      name: "Sales Source",
+      selector: (row) => row.sales_source,
+    },
+    {
+      name: "Created At",
+      selector: (row) => row.created_at,
+    },
+  ];
+
+  const newData = data.length > 0
+    ? data.map((items) => {
+        const dataTable =
+          {
+            buyer_id: items.buyer_id,
+            partner_id: items.partner_id,
+            seller_id: items.seller_id,
+            product_name: items.product_name,
+            product_price: items.product_price,
+            sales_mode: items.sales_mode,
+            sales_source: items.sales_source,
+            created_at: items.created_at,
+          }
+     
+        return dataTable;
+      })
+    : null;
+    console.log(newData);
 
   const partnerData =
     data.length > 0 ? (
@@ -189,70 +249,7 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
-                    <table className="table">
-                      <tbody className="transaction">
-                        <tr className="table-head">
-                          <td>
-                            <p>Buyer Id</p>
-                          </td>
-                          <td>
-                            <p>Partner Id</p>
-                          </td>
-                          <td>
-                            <p>Seller Id</p>
-                          </td>
-                          <td>
-                            <p>Product Name</p>
-                          </td>
-                          <td>
-                            <p>Product price</p>
-                          </td>
-                          <td>
-                            <p>Sales Mode</p>
-                          </td>
-                          <td>
-                            <p>Sales Source</p>
-                          </td>
-                          <td>
-                            <p>Created at</p>
-                          </td>
-                          {/* <td>
-                            <p>Updated at</p>
-                          </td> */}
-                        </tr>
-                        {data.map((items) => (
-                          <tr>
-                            <td>
-                              <p>{items.buyer_id}</p>
-                            </td>
-                            <td>
-                              <p>{items.partner_id}</p>
-                            </td>
-                            <td>
-                              <p>{items.seller_id}</p>
-                            </td>
-                            <td>
-                              <p>{items.product_name}</p>
-                            </td>
-                            <td>
-                              <p>{items.product_price}</p>
-                            </td>
-                            <td>
-                              <p>{items.sales_mode}</p>
-                            </td>
-                            <td>
-                              <p>{items.sales_source}</p>
-                            </td>
-                            <td>
-                              <p>{items.created_at}</p>
-                            </td>
-                            {/* <td>
-                              <p>{items.updated_at}</p>
-                            </td> */}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                  <DataTable columns={columns} data={newData} />
                   </div>
                 </div>
               </div>

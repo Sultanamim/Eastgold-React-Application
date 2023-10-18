@@ -5,35 +5,32 @@ import OrdersImg from "../../assets/my-orders.png";
 import { Link } from "react-router-dom";
 import "./Seller.css";
 import Swal from "sweetalert2";
-import {useHistory,} from "react-router-dom";
-import DataTable from 'react-data-table-component';
-
+import { useHistory } from "react-router-dom";
+import DataTable from "react-data-table-component";
 
 export default function Orders() {
   const [data, setData] = useState([]);
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
-  
   const apiGetSellerTransitions = async () => {
     try {
-      
       const response = await fetch(
         `https://office.webcodecare.com/api/sellers_details?seller_id=${user.id}`
       );
       const jsondata = await response.json();
-      console.log(jsondata);
+      //console.log(jsondata);
       setData(jsondata.data);
     } catch (error) {
       console.error("API request error:", error);
     }
   };
-
+  //console.log(data);
   useEffect(() => {
     apiGetSellerTransitions();
-    const token = localStorage.getItem('token');
-    if(!token) {
-      history.push('/login');
+    const token = localStorage.getItem("token");
+    if (!token) {
+      history.push("/login");
     }
   }, []);
   //console.log(data.data);
@@ -51,31 +48,63 @@ export default function Orders() {
     }
   };
 
+  const columns = [
+    {
+      name: "Buyer Id",
+      selector: (row) => row.buyer_id,
+    },
+    {
+      name: "Partner Id",
+      selector: (row) => row.partner_id,
+    },
+    {
+      name: "Partner Id",
+      selector: (row) => row.partner_id,
+    },
+    {
+      name: "Seller Id",
+      selector: (row) => row.seller_id,
+    },
+    {
+      name: "Product Name",
+      selector: (row) => row.product_name,
+    },
+    {
+      name: "Product Price",
+      selector: (row) => row.product_price,
+    },
+    {
+      name: "Sales Mode",
+      selector: (row) => row.sales_mode,
+    },
+    {
+      name: "Sales Source",
+      selector: (row) => row.sales_source,
+    },
+    {
+      name: "Created At",
+      selector: (row) => row.created_at,
+    },
+  ];
 
-  
-const columns = [
-  {
-      name: 'Title',
-      selector: row => row.title,
-  },
-  {
-      name: 'Year',
-      selector: row => row.year,
-  },
-];
-
-const dataTable = [
-  {
-      id: 1,
-      title: 'Beetlejuice',
-      year: '1988',
-  },
-  {
-      id: 2,
-      title: 'Ghostbusters',
-      year: '1984',
-  },
-]
+  const newData = data.length > 0
+    ? data.map((items) => {
+        const dataTable =
+          {
+            buyer_id: items.buyer_id,
+            partner_id: items.partner_id,
+            seller_id: items.seller_id,
+            product_name: items.product_name,
+            product_price: items.product_price,
+            sales_mode: items.sales_mode,
+            sales_source: items.sales_source,
+            created_at: items.created_at,
+          }
+     
+        return dataTable;
+      })
+    : null;
+    console.log(newData);
 
   const sellerData =
     data.length > 0 ? (
@@ -215,7 +244,8 @@ const dataTable = [
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
-                    <table className="table">
+                    <DataTable columns={columns} data={newData} />
+                    {/* <table className="table">
                       <tbody className="transaction">
                         <tr className="table-head">
                           <td>
@@ -244,9 +274,9 @@ const dataTable = [
                           </td>
                           {/* <td>
                             <p>Updated at</p>
-                          </td> */}
-                        </tr>
-                        {data.map((items) => (
+                          </td> 
+                       {/* </tr>
+                        data.map((items) => (
                           <tr>
                             <td>
                               <p>{items.buyer_id}</p>
@@ -274,11 +304,11 @@ const dataTable = [
                             </td>
                             {/* <td>
                               <p>{items.updated_at}</p>
-                            </td> */}
+                            </td> 
                           </tr>
                         ))}
                       </tbody>
-                    </table>
+                    </table> */}
                   </div>
                 </div>
               </div>

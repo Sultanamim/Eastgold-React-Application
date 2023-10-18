@@ -1258,3 +1258,6 @@ text-align: center;
   font-weight: 500;
   padding-left: 1rem;
 }
+#layout .table-responsive .rdt_TableBody .rdt_TableRow{
+  font-size: 10px;
+}
