@@ -22,7 +22,7 @@ export default function Orders() {
         `https://office.webcodecare.com/api/sellers_details?seller_id=${user.id}`
       );
       const jsondata = await response.json();
-      //console.log(jsondata);
+      console.log(jsondata);
       setData(jsondata.data);
     } catch (error) {
       console.error("API request error:", error);
