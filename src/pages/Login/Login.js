@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {useHistory,} from "react-router-dom";
+import BreadCrumbImg from "../../assets/breadcrumb.jpg";
 import "./Login.css";
 import Swal from "sweetalert2";
 
@@ -55,21 +56,36 @@ const handleSubmit = async (e) => {
 
 
 
-    if(response.data.account_mode == 'Seller'){
-      history.push("/seller-dashboard")
-     } else if (response.data.account_mode === 'Buyer'){
-      window.location.href = "/buyer-transitions";
-      //  history.push("/buyer-transitions")
-     } else if (response.data.account_mode === 'Partner'){
-       history.push("/client-transitions")
-     }else{
-        alert("Invalid email")
-     }
+  //   if(response.data.account_mode == 'Seller'){
+  //     history.push("/seller-dashboard")
+  //    } else if (response.data.account_mode === 'Buyer'){
+  //     window.location.href = "/buyer-transitions";
+  //     //  history.push("/buyer-transitions")
+  //    } else if (response.data.account_mode === 'Partner'){
+  //      history.push("/client-transitions")
+  //    }else{
+  //       alert("Invalid email")
+  //    }
 
-  } else {
-    Swal.fire("Error", response.message, "error");
-  }
+  // } else {
+  //   Swal.fire("Error", response.message, "error");
+  // }
 
+
+  if(response.data.account_mode == 'Buyer'){
+    history.push("/seller-dashboard")
+   } else if (response.data.account_mode === 'Buyer'){
+    window.location.href = "/buyer-transitions";
+    //  history.push("/buyer-transitions")
+   } else if (response.data.account_mode === 'Partner'){
+     history.push("/client-transitions")
+   }else{
+      alert("Invalid email")
+   }
+
+} else {
+  Swal.fire("Error", response.message, "error");
+}
 
 
 }
@@ -81,7 +97,7 @@ const handleSubmit = async (e) => {
         className="breadcrumb-section bg-img-c lazy entered loaded"
         data-bg={externalImg}
         data-ll-status="loaded"
-        style={{ backgroundImage: `url(${externalImg})` }}
+        style={{ backgroundImage: `url(${externalImg}})` }}
       >
         <div className="container">
           <div className="breadcrumb-text">
