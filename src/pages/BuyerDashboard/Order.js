@@ -18,7 +18,7 @@ export default function Orders() {
     try {
     
       const response = await fetch(
-        `https://office.webcodecare.com/api/buyer_product_details?buyer_id=${user.user}`
+        `https://office.webcodecare.com/api/buyer_product_details?buyer_id=${user.id}`
       );
       const jsondata = await response.json();
       //console.log(jsondata.data);
