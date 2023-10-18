@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Portfolio.css";
 import BreadCrumbImg from "../../assets/breadcrumb.jpg";
 
 export default function Portfolios() {
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  // Define the items that correspond to each filter
+  const items = {
+    all: ["item-87", "item-88", "item-89"],
+    Consulting: ["item-87"],
+    "Web Development": ["item-88"],
+    "Graphic Design": ["item-89"],
+  };
+  
   const externalImg =
     "https://eastgold.az/assets/front/img/user/breadcrumb.jpg";
     
-    const img1 = "https://eastgold.az/assets/front/img/user/portfolios/1647180612.jpg";
-    const img2 = "https://eastgold.az/assets/front/img/user/portfolios/1647180540.jpg";
-    const img3 = "https://eastgold.az/assets/front/img/user/portfolios/1647180548.jpg";
-    const img4 = "https://eastgold.az/assets/front/img/user/portfolios/1647180556.jpg";
-    const img5 = "https://eastgold.az/assets/front/img/user/portfolios/1647180605.jpg";
+    const img1 = "https://businesso.xyz/assets/front/img/user/portfolios/1647180612.jpg";
+    const img2 = "https://businesso.xyz/assets/front/img/user/portfolios/1647180540.jpg";
+    const img3 = "https://businesso.xyz/assets/front/img/user/portfolios/1647180548.jpg";
+    const img4 = "https://businesso.xyz/assets/front/img/user/portfolios/1647180556.jpg";
+    const img5 = "https://businesso.xyz/assets/front/img/user/portfolios/1647180605.jpg";
 
   return (
     <>

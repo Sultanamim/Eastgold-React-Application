@@ -32,9 +32,9 @@ export default function Orders() {
   useEffect(() => {
     apiGetSellerTransitions();
     const token = localStorage.getItem('token');
-    if(!token) {
-      history.push('/login');
-    }
+    // if(!token) {
+    //   history.push('/login');
+    // }
   }, []);
 
   //console.log(data);
