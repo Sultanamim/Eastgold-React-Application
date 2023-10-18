@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "./Seller.css";
 import Swal from "sweetalert2";
 import {useHistory,} from "react-router-dom";
+import DataTable from 'react-data-table-component';
 
 
 export default function Orders() {
@@ -21,7 +22,7 @@ export default function Orders() {
         `https://office.webcodecare.com/api/sellers_details?seller_id=${user.id}`
       );
       const jsondata = await response.json();
-      //console.log(jsondata);
+      console.log(jsondata);
       setData(jsondata.data);
     } catch (error) {
       console.error("API request error:", error);
@@ -49,6 +50,32 @@ export default function Orders() {
       Swal.fire("Error!", `You have withdrawn ${error}`, "error");
     }
   };
+
+
+  
+const columns = [
+  {
+      name: 'Title',
+      selector: row => row.title,
+  },
+  {
+      name: 'Year',
+      selector: row => row.year,
+  },
+];
+
+const dataTable = [
+  {
+      id: 1,
+      title: 'Beetlejuice',
+      year: '1988',
+  },
+  {
+      id: 2,
+      title: 'Ghostbusters',
+      year: '1984',
+  },
+]
 
   const sellerData =
     data.length > 0 ? (

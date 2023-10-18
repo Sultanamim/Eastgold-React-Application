@@ -1,4 +1,7 @@
 import React from "react";
+import CarouselImg1 from "../../assets/carousel-img-1.jpg";
+import CarouselImg2 from "../../assets/carousel-img-2.jpg";
+import CarouselImg3 from "../../assets/carousel-img-3.jpg";
 import "./Home.css";
 
 export default function HeroSection() {
@@ -21,7 +24,7 @@ export default function HeroSection() {
             <div className="single-slider">
               <div className="carousel-inner bg_cover lazy">
                 <div className="carousel-item active" data-bs-interval="5000">
-                  <img src={Img1} className="d-block w-100" alt="Image-1" />
+                  <img src={CarouselImg1} className="d-block w-100" alt="Image-1" />
                   <div className="carousel-caption d-md-block">
                     <div className="container">
                       <div className="row justify-content-center">
@@ -43,7 +46,7 @@ export default function HeroSection() {
                   </div>
                 </div>
                 <div className="carousel-item" data-bs-interval="5000">
-                  <img src={Img2} className="d-block w-100" alt="Image-2" />
+                  <img src={CarouselImg2} className="d-block w-100" alt="Image-2" />
                   <div className="carousel-caption d-md-block">
                     <div className="container">
                       <div className="row justify-content-center">
@@ -65,7 +68,7 @@ export default function HeroSection() {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <img src={Img3} className="d-block w-100" alt="Image-3" />
+                  <img src={CarouselImg3} className="d-block w-100" alt="Image-3" />
                   <div className="carousel-caption d-md-block">
                     <div className="container">
                       <div className="row justify-content-center">

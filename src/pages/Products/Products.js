@@ -1,10 +1,15 @@
 import React from "react";
 import "../Portfolios/Portfolio.css";
+import ProductImg1 from "../../assets/product-img-1.jpg";
+import ProductImg2 from "../../assets/product-img-2.jpg";
+import ProductImg3 from "../../assets/product-img-3.jpg";
+import ProductImg4 from "../../assets/product-img-4.jpg";
+import ProductImg5 from "../../assets/product-img-5.jpg";
 import BreadCrumbImg from "../../assets/breadcrumb.jpg";
 
 export default function Products() {
   const externalImg =
-    "https://eastgold.az/assets/front/img/user/breadcrumb.jpg";
+    "https://businesso.xyz/assets/front/img/user/breadcrumb.jpg";
     
     const img1 = "https://eastgold.az/assets/front/img/user/portfolios/1647180612.jpg";
     const img2 = "https://eastgold.az/assets/front/img/user/portfolios/1647180540.jpg";
@@ -73,9 +78,9 @@ export default function Products() {
                 >
                   <div
                     className="thumb bg-img-c lazy entered error"
-                    data-bg={img5}
+                    data-bg={ProductImg5}
                     data-ll-status="error"
-                    style={{backgroundImage: `url(${img5})`}}
+                    style={{backgroundImage: `url(${ProductImg5})`}}
                   ></div>
                 </a>
                 <div className="project-desc text-center">
@@ -105,9 +110,9 @@ export default function Products() {
                 >
                   <div
                     className="thumb bg-img-c lazy entered loaded"
-                    data-bg={img2}
+                    data-bg={ProductImg2}
                     data-ll-status="loaded"
-                    style={{backgroundImage: `url(${img2})`}}
+                    style={{backgroundImage: `url(${ProductImg2})`}}
                   ></div>
                 </a>
                 <div className="project-desc text-center">
@@ -137,9 +142,9 @@ export default function Products() {
                 >
                   <div
                     className="thumb bg-img-c lazy entered error"
-                    data-bg={img4}
+                    data-bg={ProductImg4}
                     data-ll-status="error"
-                    style={{backgroundImage: `url(${img4})`}}
+                    style={{backgroundImage: `url(${ProductImg4})`}}
                   ></div>
                 </a>
                 <div className="project-desc text-center">
@@ -169,9 +174,9 @@ export default function Products() {
                 >
                   <div
                     className="thumb bg-img-c lazy entered error"
-                    data-bg={img3}
+                    data-bg={ProductImg3}
                     data-ll-status="error"
-                    style={{backgroundImage: `url(${img3})`}}
+                    style={{backgroundImage: `url(${ProductImg3})`}}
                   ></div>
                 </a>
                 <div className="project-desc text-center">
@@ -201,9 +206,9 @@ export default function Products() {
                 >
                   <div
                     className="thumb bg-img-c lazy entered loaded"
-                    data-bg={img2}
+                    data-bg={ProductImg2}
                     data-ll-status="loaded"
-                    style={{backgroundImage: `url(${img2})`}}
+                    style={{backgroundImage: `url(${ProductImg2})`}}
                   ></div>
                 </a>
                 <div className="project-desc text-center">
@@ -233,9 +238,9 @@ export default function Products() {
                 >
                   <div
                     className="thumb bg-img-c lazy entered error"
-                    data-bg={img1}
+                    data-bg={ProductImg1}
                     data-ll-status="error"
-                    style={{backgroundImage: `url(${img1})`}}
+                    style={{backgroundImage: `url(${ProductImg1})`}}
                   ></div>
                 </a>
                 <div className="project-desc text-center">
