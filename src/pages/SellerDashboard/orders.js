@@ -11,12 +11,14 @@ import {useHistory,} from "react-router-dom";
 export default function Orders() {
   const [data, setData] = useState([]);
   let history = useHistory();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   
   const apiGetSellerTransitions = async () => {
     try {
+      
       const response = await fetch(
-        "https://office.webcodecare.com/api/sellers_details?seller_id=4"
+        `https://office.webcodecare.com/api/sellers_details?seller_id=${user.user}`
       );
       const jsondata = await response.json();
       //console.log(jsondata);
@@ -213,9 +215,9 @@ export default function Orders() {
                           <td>
                             <p>Created at</p>
                           </td>
-                          <td>
+                          {/* <td>
                             <p>Updated at</p>
-                          </td>
+                          </td> */}
                         </tr>
                         {data.map((items) => (
                           <tr>
@@ -243,9 +245,9 @@ export default function Orders() {
                             <td>
                               <p>{items.created_at}</p>
                             </td>
-                            <td>
+                            {/* <td>
                               <p>{items.updated_at}</p>
-                            </td>
+                            </td> */}
                           </tr>
                         ))}
                       </tbody>
@@ -298,7 +300,7 @@ export default function Orders() {
                                 className="seller-profile-sidebar-menu collapse show"
                               >
                                 <ul>
-                                  <li>
+                                  {/* <li>
                                     <Link to="/seller-dashboard">
                                       <span className="icon">
                                         {" "}
@@ -306,7 +308,7 @@ export default function Orders() {
                                       </span>
                                       <span className="text">Dashboard</span>
                                     </Link>
-                                  </li>
+                                  </li> */}
                                   <li>
                                     <Link to="/seller-profile">
                                       <span className="icon">

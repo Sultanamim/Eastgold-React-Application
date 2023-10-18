@@ -5,48 +5,42 @@ import ProfileImg from "../../assets/profile.png";
 import OrdersImg from "../../assets/my-orders.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
-
-
-
+import Swal from "sweetalert2";
 
 
 async function formData(credentials) {
   const csrfToken = document.head
-  .querySelector('meta[name="csrf-token"]')
-  ?.getAttribute('content');
+    .querySelector('meta[name="csrf-token"]')
+    ?.getAttribute("content");
 
-const headers = {
-  Accept: 'application/json',
-  'Content-Type': 'application/json',
-  'X-CSRF-TOKEN': csrfToken,
-};
 
-const response = await fetch('https://office.webcodecare.com/api/seller_product', {
-  method: 'POST',
-  headers: headers,
-  body: JSON.stringify(credentials),
-});
 
-return response.json();
-  // return fetch('https://office.webcodecare.com/api/seller_product', {
-  //   method: 'POST',
-  //   dataType: "json",
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'Content-Type': 'application/json',
-  //     'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
-  //   },
-    
-  //   body: JSON.stringify(credentials)
-  // })
-  //   .then(data => data.json())
- }
+  const response = await fetch(
+    "https://office.webcodecare.com/api/seller_product",
+    {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+     },
+      body: JSON.stringify(credentials),
+    }
+  ).then(data => data.json());
 
+  if (response) {
+    Swal.fire("Successfully!",  response, "success", {
+      buttons: false,
+      timer: 2000,
+    });
+
+    window.location.reload();
+
+  } else {
+    Swal.fire("Error", response, "error");
+  }
+
+}
 
 export default function Profile(props) {
-
-
   const [elements, setElements] = useState({
     product_name: "test",
     product_price: "150",
@@ -54,9 +48,9 @@ export default function Profile(props) {
     partner_id: "1",
     seller_id: "5",
     sales_mode: "150.50",
-    sales_source: "add text"    
-  })
-  
+    sales_source: "add text",
+  });
+
   const buyer = props.userBuyerData[0];
   const partner = props.userPartnerData[0];
   let product_name = elements.product_name;
@@ -68,55 +62,49 @@ export default function Profile(props) {
   let sales_source = elements.sales_source;
 
   const buyerData = buyer.map((items) => {
-     return items;
-   
+    return items;
   });
   const partnerData = partner.map((items) => {
     //console.log(items);
     return items;
-
- });
- //console.log(partnerData);
+  });
+  //console.log(partnerData);
   useEffect(() => {
+    setElements({ ...elements, buyer_id: buyer.user });
 
-      setElements({...elements, buyer_id: buyer.user});
+    setElements({ ...elements, partner_id: partnerData.user });
+    setElements({ ...elements, seller_id: seller_id });
+  }, []);
 
-      setElements({...elements, partner_id: partnerData.user});
-      setElements({...elements, seller_id: seller_id});
+  const handleChange = (e) => {
+    setElements({ ...elements, [e.target.name]: e.target.value });
+  };
 
-  }, [])
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await formData({
+        product_name,
+        product_price,
+        buyer_id,
+        partner_id,
+        seller_id,
+        sales_mode,
+        sales_source,
+      });
 
-
-  const handleChange = e => {
-    setElements({...elements, [e.target.name]: e.target.value })
-}
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await formData({
-      product_name,
-      product_price,
-      buyer_id,
-      partner_id,
-      seller_id,
-      sales_mode,
-      sales_source,
-    });
-
-    if (response.status === 200) {
-      // Request was successful, handle the response data
-      console.log("Request was successful:", response);
-    } else {
-      // Handle other status codes (e.g., 404, 500, etc.)
-      console.error("Request failed with status:", response.status);
+      if (response.status === 200) {
+        // Request was successful, handle the response data
+        console.log("Request was successful:", response);
+      } else {
+        // Handle other status codes (e.g., 404, 500, etc.)
+        console.error("Request failed with status:", response.status);
+      }
+    } catch (error) {
+      // Handle network errors or other exceptions
+      console.error("An error occurred:", error);
     }
-  } catch (error) {
-    // Handle network errors or other exceptions
-    console.error("An error occurred:", error);
-  }
-
-}
+  };
 
   return (
     <>
@@ -152,7 +140,7 @@ const handleSubmit = async (e) => {
                                 className="seller-profile-sidebar-menu collapse show"
                               >
                                 <ul>
-                                  <li>
+                                  {/* <li>
                                     <Link to="/seller-dashboard">
                                       <span className="icon">
                                         {" "}
@@ -160,7 +148,7 @@ const handleSubmit = async (e) => {
                                       </span>
                                       <span className="text">Dashboard</span>
                                     </Link>
-                                  </li>
+                                  </li> */}
                                   <li>
                                     <Link to="/seller-profile">
                                       <span className="icon">
@@ -223,7 +211,7 @@ const handleSubmit = async (e) => {
                                       <div className="row align-items-center">
                                         <div className="col-sm-2">
                                           <label htmlFor="product_name">
-                                           Product Name
+                                            Product Name
                                           </label>
                                         </div>
                                         <div className="col-sm-10">
@@ -235,7 +223,6 @@ const handleSubmit = async (e) => {
                                               name="product_name"
                                               id="product_name"
                                               onChange={(e) => handleChange(e)}
-                                              value={elements.product_name}
                                             />
                                           </div>
                                         </div>
@@ -245,7 +232,9 @@ const handleSubmit = async (e) => {
                                     <div className="form-group undefined">
                                       <div className="row align-items-center">
                                         <div className="col-sm-2">
-                                          <label htmlFor="product_price">Product Price</label>
+                                          <label htmlFor="product_price">
+                                            Product Price
+                                          </label>
                                         </div>
                                         <div className="col-sm-10">
                                           <div>
@@ -256,7 +245,6 @@ const handleSubmit = async (e) => {
                                               name="product_price"
                                               id="product_price"
                                               onChange={(e) => handleChange(e)}
-                                              value={elements.product_price}
                                             />
                                           </div>
                                         </div>
@@ -279,7 +267,6 @@ const handleSubmit = async (e) => {
                                               name="sales_mode"
                                               id="sales_mode"
                                               onChange={(e) => handleChange(e)}
-                                              value={elements.sales_mode}
                                             />
                                           </div>
                                         </div>
@@ -291,7 +278,7 @@ const handleSubmit = async (e) => {
                                         <div className="col-sm-2">
                                           <label htmlFor="sales_source">
                                             {" "}
-                                           Sales source
+                                            Sales source
                                           </label>
                                         </div>
                                         <div className="col-sm-10">
@@ -303,8 +290,10 @@ const handleSubmit = async (e) => {
                                                     type="text"
                                                     name="sales_source"
                                                     className="form-control"
-                                                    onChange={(e) => handleChange(e)}
-                                                    value={elements.sales_source}
+                                                    onChange={(e) =>
+                                                      handleChange(e)
+                                                    }
+                                                
                                                   />
                                                 </div>
                                               </div>
@@ -327,13 +316,12 @@ const handleSubmit = async (e) => {
                                         </div>
                                         <div className="col-sm-10">
                                           <div>
-                                          <input
-                                                    type="text"
-                                                    name="buyer_id"
-                                                    className="form-control"
-                                                    onChange={(e) => handleChange(e)}
-                                                    value={elements.buyer_id}
-                                                  />
+                                            <input
+                                              type="text"
+                                              name="buyer_id"
+                                              className="form-control"
+                                              onChange={(e) => handleChange(e)}
+                                            />
                                             {/* <select className="form-control" onChange={(e) => handleChange(e)} name="buyer_id">
                                               {buyerData.map(i => (
                                                 <option value={i.user}>{i.name_surname}</option>
@@ -343,7 +331,11 @@ const handleSubmit = async (e) => {
                                         </div>
                                       </div>
                                     </div>
-                                    <input type="hidden" name="seller_id" onChange={(e) => handleChange(e)} value={elements.seller_id} />
+                                    <input
+                                      type="hidden"
+                                      name="seller_id"
+                                      onChange={(e) => handleChange(e)}
+                                    />
                                     <div className="form-group undefined">
                                       <div className="row align-items-center">
                                         <div className="col-sm-2">
@@ -353,13 +345,12 @@ const handleSubmit = async (e) => {
                                         </div>
                                         <div className="col-sm-10">
                                           <div>
-                                          <input
-                                                    type="text"
-                                                    name="partner_id"
-                                                    className="form-control"
-                                                    onChange={(e) => handleChange(e)}
-                                                    value={elements.partner_id}
-                                                  />
+                                            <input
+                                              type="text"
+                                              name="partner_id"
+                                              className="form-control"
+                                              onChange={(e) => handleChange(e)}
+                                            />
                                             {/* <select className="form-control" onChange={(e) => handleChange(e)} name="partner_id">
                                               {
                                                 partnerData.map(i => (
@@ -371,10 +362,8 @@ const handleSubmit = async (e) => {
                                         </div>
                                       </div>
                                     </div>
-                                  
                                   </div>
                                 </div>
-
 
                                 <div className="form-group">
                                   <div className="row align-items-center justify-content-end">
@@ -390,7 +379,7 @@ const handleSubmit = async (e) => {
                                 </div>
                               </form>
                             </div>
-{/* 
+                            {/* 
                             <div className="seller-profile-form">
                               <form>
                                 <div className="seller-profile-panel">
@@ -473,8 +462,6 @@ const handleSubmit = async (e) => {
                             </div> */}
 
                             {/* --------- */}
-
-                            
                           </div>
                         </div>
                         {/* ----- */}

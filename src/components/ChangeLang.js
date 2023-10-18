@@ -26,8 +26,10 @@ export default class ChangeLang extends React.Component {
       const lang = localStorage.getItem("lang");
     
       i18n.changeLanguage(lang);
+      // i18next.changeLanguage(lang());
     });
   };
+  
 
 
   render() {
@@ -71,6 +73,8 @@ export default class ChangeLang extends React.Component {
                       <Link onClick={() => this.langChangeInfo('az')} to={this.props.location} style={{display: "flex",textDecoration: "none",padding: "5px"}}>
                         <img className="flag" src={az} alt="" style={{width:"20px",height:"15px"}} /> &nbsp; Azerbaijan
                       </Link >
+                     
+                  
                   </div>
                 </div>
             </div>

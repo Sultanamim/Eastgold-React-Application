@@ -15,24 +15,6 @@ async function loginUser(credentials) {
          body: JSON.stringify(credentials)
       }) .then(data => data.json())
 
-
-
-  // return fetch('https://office.webcodecare.com/api/client_login', {
-  //   method: 'POST',
-  //   dataType: "json",
-  //   // mode: 'no-cors',
-  //   // mode: 'cors',
-  //   headers: {
-  //     // 'Accept': 'application/json',
-  //     // 'Content-Type': 'application/json',
-  //     'Content-type': 'application/json; charset=UTF-8',
-  //     'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
-  //   },
-    
-    
-  //   body: JSON.stringify(credentials)
-  // })
-  //   .then(data => data.json())
  }
 
 
@@ -67,24 +49,29 @@ const handleSubmit = async (e) => {
       timer: 2000,
     });
 
-    localStorage.setItem("account_mode", response["data"]["account_mode"]);
+    localStorage.setItem("token", response["data"]["account_mode"]);
     localStorage.setItem("user", JSON.stringify(response["data"]));
     // window.location.href = "/portfolio";
+
+
+
+    if(response.data.account_mode == 'Seller'){
+      history.push("/seller-dashboard")
+     } else if (response.data.account_mode === 'Buyer'){
+      window.location.href = "/buyer-transitions";
+      //  history.push("/buyer-transitions")
+     } else if (response.data.account_mode === 'Partner'){
+       history.push("/client-transitions")
+     }else{
+        alert("Invalid email")
+     }
+
   } else {
     Swal.fire("Error", response.message, "error");
   }
 
-console.log(response.data);
 
-   if(response.data.account_mode == 'Seller'){
-    history.push("/seller-dashboard")
-   } else if (response.data.account_mode === 'Buyer'){
-     history.push("/buyer-transitions")
-   } else if (response.data.account_mode === 'Partner'){
-     history.push("/client-transitions")
-   }else{
-      alert("Invalid email")
-   }
+
 }
 
   return (

@@ -6,8 +6,8 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "i18next": "^22.4.13",
-    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next": "^22.5.1",
+    "i18next-browser-languagedetector": "^7.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.3.1",
@@ -16,7 +16,11 @@
     "react-slick": "^0.29.0",
     "react-translator-component": "^2.2.0",
     "slick-carousel": "^1.8.1",
+<<<<<<< HEAD
     "sweetalert2": "^11.7.32"
+=======
+    "sweetalert2": "^11.6.13"
+>>>>>>> 4d4081535f4c0a81e912bbd7fe449f2e6583359f
   },
   "scripts": {
     "start": "react-scripts start",
