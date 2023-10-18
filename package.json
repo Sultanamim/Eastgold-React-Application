@@ -16,11 +16,7 @@
     "react-slick": "^0.29.0",
     "react-translator-component": "^2.2.0",
     "slick-carousel": "^1.8.1",
-<<<<<<< HEAD
     "sweetalert2": "^11.7.32"
-=======
-    "sweetalert2": "^11.6.13"
->>>>>>> 4d4081535f4c0a81e912bbd7fe449f2e6583359f
   },
   "scripts": {
     "start": "react-scripts start",
