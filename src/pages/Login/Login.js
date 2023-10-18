@@ -57,6 +57,8 @@ const handleSubmit = async (e) => {
 
     if(response.data.account_mode === 'Seller'){
       // history.push("/seller-dashboard")
+
+      
       window.location.href = "/seller-dashboard";
      } else if (response.data.account_mode === 'Buyer'){
 
