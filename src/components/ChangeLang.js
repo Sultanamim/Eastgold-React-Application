@@ -24,6 +24,7 @@ export default class ChangeLang extends React.Component {
       const lang = localStorage.getItem("lang");
 
       i18n.changeLanguage(lang);
+      
       // i18next.changeLanguage(lang());
     });
   };
@@ -75,9 +76,8 @@ export default class ChangeLang extends React.Component {
               <Link
                 className="dropdown-item"
                 onClick={() => this.langChangeInfo("en")}
-                to={this.props.location}
+                to={this.props}
                 style={{
-                  display: "flex",
                   textDecoration: "none",
                   padding: "5px",
                 }}
@@ -86,7 +86,7 @@ export default class ChangeLang extends React.Component {
                   className="flag"
                   src={en}
                   alt=""
-                  style={{ width: "20px", height: "15px" }}
+                  style={{ width: "20px", height: "15px"  }}
                 />{" "}
                 &nbsp; English
               </Link>
@@ -94,9 +94,8 @@ export default class ChangeLang extends React.Component {
               <Link
                 className="dropdown-item"
                 onClick={() => this.langChangeInfo("az")}
-                to={this.props.location}
+                to={this.props}
                 style={{
-                  display: "flex",
                   textDecoration: "none",
                   padding: "5px",
                 }}

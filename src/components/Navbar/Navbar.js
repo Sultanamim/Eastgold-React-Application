@@ -6,7 +6,7 @@ import "../../assets/css/Blogs.css";
 import "../../assets/css/template.css";
 import { Translation } from "react-i18next";
 import { useTranslation } from "react-i18next";
-import ChangeLang from "../ChangeLang.js";
+import ChangeLang from "../ChangeLang";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import Swal from "sweetalert2";
@@ -53,7 +53,7 @@ export default function Navbar() {
                       </a>
                     </div>
                     <div className="info">
-                      <span className="title">Phone Number</span>
+                      <span className="title">{t('Phone Number')}</span>
                       <h5>
                         <a href="#">{"+012 (345) 6789"}</a>
                       </h5>
@@ -66,7 +66,7 @@ export default function Navbar() {
                       </a>
                     </div>
                     <div className="info">
-                      <span className="title">Email Address</span>
+                      <span className="title">{t('Email Address')}</span>
                       <h5>
                         <a href="#">support@gmail.com</a>
                       </h5>
