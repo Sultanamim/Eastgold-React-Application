@@ -11,6 +11,8 @@ import DataTable from "react-data-table-component";
 
 export default function Orders() {
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState([]);
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -249,7 +251,34 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
-                  <DataTable columns={columns} data={newData} />
+                  <DataTable
+                      columns={columns}
+                      data={newData}
+                      pagination
+                      selectableRows
+                      fixedHeader
+                      selectableRowsHighlight
+                      highlightOnHover
+                      actions={
+                        (<>
+                          <input
+                          type="text"
+                          className="w-25 h-10 form-control"
+                          placeholder="Search.."
+                          value={search}
+                          onChange={(e) => setSearch(e.target.value)}
+                          style={{justifyContent: "flex-end"}}
+                        />
+                        <button
+                          className="btn btn-primary"
+                          style={{ marginTop: "-10px", padding: "10px 10px" }}
+                        >
+                          Export
+                        </button>
+                        </>)
+                      }
+                    
+                    />
                   </div>
                 </div>
               </div>

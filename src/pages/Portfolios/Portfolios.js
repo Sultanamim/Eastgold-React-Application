@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Portfolio.css";
 import ProductImg1 from "../../assets/product-img-1.jpg";
 import ProductImg2 from "../../assets/product-img-2.jpg";
@@ -9,23 +9,65 @@ import BreadCrumbImg from "../../assets/breadcrumb.jpg";
 
 export default function Portfolios() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [filteredProjects, setFilteredProjects] = useState([]);
 
   // Define the items that correspond to each filter
-  const items = {
-    all: ["item-87", "item-88", "item-89"],
-    Consulting: ["item-87"],
-    "Web Development": ["item-88"],
-    "Graphic Design": ["item-89"],
-  };
-  
+
   const externalImg =
     "https://businesso.xyz/assets/front/img/user/breadcrumb.jpg";
-    
-    const img1 = "https://businesso.xyz/assets/front/img/user/portfolios/1647180612.jpg";
-    const img2 = "https://businesso.xyz/assets/front/img/user/portfolios/1647180540.jpg";
-    const img3 = "https://businesso.xyz/assets/front/img/user/portfolios/1647180548.jpg";
-    const img4 = "https://businesso.xyz/assets/front/img/user/portfolios/1647180556.jpg";
-    const img5 = "https://businesso.xyz/assets/front/img/user/portfolios/1647180605.jpg";
+
+  // Define your projects with corresponding filters
+  const projects = [
+    {
+      title: "Free Consulting",
+      category: "Consulting",
+      img: ProductImg5,
+      itemClass: "item-87",
+    },
+    {
+      title: "Investment Plan",
+      category: "Consulting",
+      img: ProductImg3,
+      itemClass: "item-87",
+    },
+    {
+      title: "Business Growth",
+      category: "Web Development",
+      img: ProductImg2,
+      itemClass: "item-88",
+    },
+    {
+      title: "Financial Planning",
+      category: "Web Development",
+      img: ProductImg2,
+      itemClass: "item-88",
+    },
+    {
+      title: "IT Consulting",
+      category: "Graphic Design",
+      img: ProductImg4,
+      itemClass: "item-89",
+    },
+    {
+      title: "Relationship",
+      category: "Graphic Design",
+      img: ProductImg1,
+      itemClass: "item-89",
+    },
+    // Add more projects here
+  ];
+
+  // Filter the projects based on the active filter
+  useEffect(() => {
+    if (activeFilter === "all") {
+      setFilteredProjects(projects);
+    } else {
+      const filtered = projects.filter(
+        (project) => project.category === activeFilter
+      );
+      setFilteredProjects(filtered);
+    }
+  }, [activeFilter]);
 
   return (
     <>
@@ -58,16 +100,32 @@ export default function Portfolios() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-12 col-md-12">
+              {/* Filter buttons */}
               <ul className="project-nav project-isotope-filter">
-                <li data-filter="*" className="active">
-                  {" "}
-                  All{" "}
+                <li
+                  onClick={() => setActiveFilter("all")}
+                  className={activeFilter === "all" ? "active" : ""}
+                >
+                  All
                 </li>
-                <li data-filter=".item-87" className="">
+                <li
+                  onClick={() => setActiveFilter("Consulting")}
+                  className={activeFilter === "Consulting" ? "active" : ""}
+                >
                   Consulting
                 </li>
-                <li data-filter=".item-88">Web Development</li>
-                <li data-filter=".item-89">Graphic Design</li>
+                <li
+                  onClick={() => setActiveFilter("Web Development")}
+                  className={activeFilter === "Web Development" ? "active" : ""}
+                >
+                  Web Development
+                </li>
+                <li
+                  onClick={() => setActiveFilter("Graphic Design")}
+                  className={activeFilter === "Graphic Design" ? "active" : ""}
+                >
+                  Graphic Design
+                </li>
               </ul>
             </div>
           </div>
@@ -75,200 +133,43 @@ export default function Portfolios() {
           {/* <!-- Project Boxes --> */}
           <div
             className="row project-boxes project-isotope mt-60 justify-content-center"
-            style={{position: "relative", height: "800px", marginTop: "3rem"}}
+            style={{ position: "relative", height: "800px", marginTop: "3rem" }}
           >
-            <div
-              className="isotope-item col-lg-4 col-sm-6 item-87"
-              style={{position: "absolute", left: "0%", top: "0px",}}
-            >
-              <div className="project-box hover-style">
-                <a
-                  className="project-thumb"
-                  href="#"
+            {filteredProjects.map((project, index) => {
+              const leftPosition = (index % 3) * 33.3333;
+              const topPosition = Math.floor(index / 3) * 400;
+              return (
+                <div
+                  key={index}
+                  className={`isotope-item col-lg-4 col-sm-6 ${project.itemClass}`}
+                  style={{
+                    position: "absolute",
+                    left: `${leftPosition}%`,
+                    top: `${topPosition}px`,
+                  }}
                 >
-                  <div
-                    className="thumb bg-img-c lazy entered error"
-                    data-bg={ProductImg5}
-                    data-ll-status="error"
-                    style={{backgroundImage: `url(${ProductImg5})`}}
-                  ></div>
-                </a>
-                <div className="project-desc text-center">
-                  <h4>
-                    <a href="#">
-                      Free Consulting
+                  <div className="project-box hover-style">
+                    <a className="project-thumb" href="#">
+                      <div
+                        className="thumb bg-img-c lazy entered error"
+                        data-bg={project.img}
+                        data-ll-status="error"
+                        style={{ backgroundImage: `url(${project.img})` }}
+                      ></div>
                     </a>
-                  </h4>
-                  <p>Consulting</p>
-                  <a
-                    href="#"
-                    className="project-link"
-                  >
-                    <i className="fas fa-arrow-right"></i>
-                  </a>
+                    <div className="project-desc text-center">
+                      <h4>
+                        <a href="#">{project.title}</a>
+                      </h4>
+                      <p>{project.category}</p>
+                      <a href="#" className="project-link">
+                        <i className="fas fa-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div
-              className="isotope-item col-lg-4 col-sm-6 item-88"
-              style={{position: "absolute", left: "33.3333%", top: "0px",}}
-            >
-              <div className="project-box hover-style">
-                <a
-                  className="project-thumb"
-                  href="#"
-                >
-                  <div
-                    className="thumb bg-img-c lazy entered loaded"
-                    data-bg={ProductImg2}
-                    data-ll-status="loaded"
-                    style={{backgroundImage: `url(${ProductImg2})`}}
-                  ></div>
-                </a>
-                <div className="project-desc text-center">
-                  <h4>
-                    <a href="#">
-                      Business Growth
-                    </a>
-                  </h4>
-                  <p>Web Development</p>
-                  <a
-                    href="#"
-                    className="project-link"
-                  >
-                    <i className="fas fa-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              className="isotope-item col-lg-4 col-sm-6 item-89"
-              style={{position: "absolute", left: "66.6667%", top: "0px",}}
-            >
-              <div className="project-box hover-style">
-                <a
-                  className="project-thumb"
-                  href="#"
-                >
-                  <div
-                    className="thumb bg-img-c lazy entered error"
-                    data-bg={ProductImg4}
-                    data-ll-status="error"
-                    style={{backgroundImage: `url(${ProductImg4})`}}
-                  ></div>
-                </a>
-                <div className="project-desc text-center">
-                  <h4>
-                    <a href="#">
-                      IT Consulting
-                    </a>
-                  </h4>
-                  <p>Graphic Design</p>
-                  <a
-                    href="#"
-                    className="project-link"
-                  >
-                    <i className="fas fa-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              className="isotope-item col-lg-4 col-sm-6 item-87"
-              style={{position: "absolute", left: "0%", top: "400px"}}
-            >
-              <div className="project-box hover-style">
-                <a
-                  class="project-thumb"
-                  href="#"
-                >
-                  <div
-                    className="thumb bg-img-c lazy entered error"
-                    data-bg={ProductImg3}
-                    data-ll-status="error"
-                    style={{backgroundImage: `url(${ProductImg3})`}}
-                  ></div>
-                </a>
-                <div className="project-desc text-center">
-                  <h4>
-                    <a href="#">
-                      Investment Plan
-                    </a>
-                  </h4>
-                  <p>Consulting</p>
-                  <a
-                    href="#"
-                    className="project-link"
-                  >
-                    <i className="fas fa-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              className="isotope-item col-lg-4 col-sm-6 item-88"
-              style={{position: "absolute", left: "33.3333%", top: "400px",}}
-            >
-              <div className="project-box hover-style">
-                <a
-                  className="project-thumb"
-                  href="#"
-                >
-                  <div
-                    className="thumb bg-img-c lazy entered loaded"
-                    data-bg={ProductImg2}
-                    data-ll-status="loaded"
-                    style={{backgroundImage: `url(${ProductImg2})`}}
-                  ></div>
-                </a>
-                <div className="project-desc text-center">
-                  <h4>
-                    <a href="#">
-                      Financial Planning
-                    </a>
-                  </h4>
-                  <p>Web Development</p>
-                  <a
-                    href="#"
-                    className="project-link"
-                  >
-                    <i className="fal fa-long-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              className="isotope-item col-lg-4 col-sm-6 item-89"
-              style={{position: "absolute", left: "66.6667%", top: "400px",}}
-            >
-              <div className="project-box hover-style">
-                <a
-                  className="project-thumb"
-                  href="#"
-                >
-                  <div
-                    className="thumb bg-img-c lazy entered error"
-                    data-bg={ProductImg1}
-                    data-ll-status="error"
-                    style={{backgroundImage: `url(${ProductImg1})`}}
-                  ></div>
-                </a>
-                <div className="project-desc text-center">
-                  <h4>
-                    <a href="#">
-                      Relationship
-                    </a>
-                  </h4>
-                  <p>Graphic Design</p>
-                  <a
-                    href="#"
-                    className="project-link"
-                  >
-                    <i className="fas fa-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
