@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import DashboardImg from "../../assets/dashboard.png";
 import ProfileImg from "../../assets/profile.png";
@@ -11,7 +10,6 @@ import DataTable from "react-data-table-component";
 
 export default function Orders() {
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -106,7 +104,10 @@ export default function Orders() {
         return dataTable;
       })
     : null;
-    console.log(newData);
+    // console.log(newData);
+
+    const rows = data.length;
+    // console.log(rows)
 
   const sellerData =
     data.length > 0 ? (
@@ -123,8 +124,8 @@ export default function Orders() {
                       <div className="align-items-flex-start">
                         <p>Hi </p>
                         <p>You Have</p>
-                        <h3>3,0001,142</h3>
-                        <p>DEM COINS</p>
+                        <h3>{rows}</h3>
+                        <p>Transactions</p>
                       </div>
                     </div>
 
@@ -246,37 +247,71 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
-
-                  <DataTable
-                      columns={columns}
-                      data={newData}
-                      pagination
-                      selectableRows
-                      fixedHeader
-                      selectableRowsHighlight
-                      highlightOnHover
-                      actions={
-                        (<>
-                          <input
-                          type="text"
-                          className="w-25 h-10 form-control"
-                          placeholder="Search.."
-                          value={search}
-                          onChange={(e) => setSearch(e.target.value)}
-                          style={{justifyContent: "flex-end"}}
-                        />
-                        <button
-                          className="btn btn-primary"
-                          style={{ marginTop: "-10px", padding: "10px 10px" }}
-                        >
-                          Export
-                        </button>
-                        </>)
-                      }
-                    
-                    />
-
-                   
+                    <DataTable columns={columns} data={newData} />
+                    {/* <table className="table">
+                      <tbody className="transaction">
+                        <tr className="table-head">
+                          <td>
+                            <p>Buyer Id</p>
+                          </td>
+                          <td>
+                            <p>Partner Id</p>
+                          </td>
+                          <td>
+                            <p>Seller Id</p>
+                          </td>
+                          <td>
+                            <p>Product Name</p>
+                          </td>
+                          <td>
+                            <p>Product price</p>
+                          </td>
+                          <td>
+                            <p>Sales Mode</p>
+                          </td>
+                          <td>
+                            <p>Sales Source</p>
+                          </td>
+                          <td>
+                            <p>Created at</p>
+                          </td>
+                          {/* <td>
+                            <p>Updated at</p>
+                          </td> 
+                       {/* </tr>
+                        data.map((items) => (
+                          <tr>
+                            <td>
+                              <p>{items.buyer_id}</p>
+                            </td>
+                            <td>
+                              <p>{items.partner_id}</p>
+                            </td>
+                            <td>
+                              <p>{items.seller_id}</p>
+                            </td>
+                            <td>
+                              <p>{items.product_name}</p>
+                            </td>
+                            <td>
+                              <p>{items.product_price}</p>
+                            </td>
+                            <td>
+                              <p>{items.sales_mode}</p>
+                            </td>
+                            <td>
+                              <p>{items.sales_source}</p>
+                            </td>
+                            <td>
+                              <p>{items.created_at}</p>
+                            </td>
+                            {/* <td>
+                              <p>{items.updated_at}</p>
+                            </td> 
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table> */}
                   </div>
                 </div>
               </div>
