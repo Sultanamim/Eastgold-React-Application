@@ -104,7 +104,10 @@ export default function Orders() {
         return dataTable;
       })
     : null;
-    console.log(newData);
+    // console.log(newData);
+
+    const rows = data.length;
+    // console.log(rows)
 
   const sellerData =
     data.length > 0 ? (
@@ -121,8 +124,8 @@ export default function Orders() {
                       <div className="align-items-flex-start">
                         <p>Hi </p>
                         <p>You Have</p>
-                        <h3>3,0001,142</h3>
-                        <p>DEM COINS</p>
+                        <h3>{rows}</h3>
+                        <p>Transactions</p>
                       </div>
                     </div>
 
