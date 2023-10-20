@@ -7,11 +7,16 @@ import "./Seller.css";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import DataTable from "react-data-table-component";
+import GolgImg from "../../assets/gold.png";
+
+
 
 export default function Orders() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
+  const [sellerComission, setSellerComission] = useState([]);
+  const [sellerCount, setSellerCount] = useState([]);
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -24,6 +29,8 @@ export default function Orders() {
       //console.log(jsondata);
       setData(jsondata.data);
       setFilter(jsondata.data);
+      setSellerComission(jsondata.seller_comission);
+      setSellerCount(jsondata.count);
     } catch (error) {
       console.error("API request error:", error);
     }
@@ -58,7 +65,6 @@ export default function Orders() {
       Swal.fire("Error!", `You have withdrawn ${error}`, "error");
     }
   };
-
   const columns = [
     {
       name: "Buyer Id",
@@ -68,10 +74,7 @@ export default function Orders() {
       name: "Partner Id",
       selector: (row) => row.partner_id,
     },
-    {
-      name: "Partner Id",
-      selector: (row) => row.partner_id,
-    },
+
     {
       name: "Seller Id",
       selector: (row) => row.seller_id,
@@ -91,16 +94,19 @@ export default function Orders() {
     {
       name: "Sales Source",
       selector: (row) => row.sales_source,
-    },
-    {
-      name: "Created At",
-      selector: (row) => row.created_at,
-    },
+    }
+
   ];
 
   const newData =
     data.length > 0
       ? data.map((items) => {
+
+       
+
+          
+    
+
         //console.log(items);
           const dataTable = {
             buyer_id: items.buyer_id,
@@ -131,14 +137,14 @@ export default function Orders() {
                   <div className="row">
                     <div className="col-lg-4 col-4 left-item text-align-left">
                       <div className="align-items-flex-start">
-                        <p>Hi </p>
+                        <p>Hi {user.name}</p>
                         <p>You Have</p>
-                        <h3>3,0001,142</h3>
-                        <p>DEM COINS</p>
+                        <h3>{ data.length}</h3>
+                        <p>Transaction </p>
                       </div>
                     </div>
 
-                    <div className="col-lg-6 col-6 right-item text-align-left">
+                    <div className="col-lg-5 col-5 right-item text-align-left">
                       <div className="align-items-flex-start">
                         <p>Purchased Coins</p>
                         <div
@@ -152,7 +158,7 @@ export default function Orders() {
                             style={{
                               display: "inline-block",
                               content: "",
-                              width: "70%",
+                              width:`${sellerComission}%`,
                               height: "2px",
                               backgroundColor: "blue",
                               alignSelf: "center",
@@ -167,11 +173,12 @@ export default function Orders() {
                               textAlign: "left",
                             }}
                           >
-                            70%
+                             {sellerComission}%
+                        
                           </p>
                         </div>
-
-                        <p>2,145,564</p>
+                        <p>Total Amount</p>
+                        <p>{sellerCount}</p>
                         <p>Bonus Earnings</p>
                         <div
                           style={{
@@ -184,14 +191,13 @@ export default function Orders() {
                             style={{
                               display: "inline-block",
                               content: "",
-                              width: "17%",
-                              // width: `${items.seller_comission_form_cash}`,
+                              width: `${sellerComission * sellerCount / 100}%`,
                               height: "2px",
                               backgroundColor: "green",
                               alignSelf: "center",
                             }}
-                          ></div>
-                          <p
+                          ></div> 
+                           {/* <p
                             style={{
                               float: "left",
                               paddingLeft: "0",
@@ -201,11 +207,13 @@ export default function Orders() {
                             }}
                           >
                             17%
-                            {/* {items.seller_comission_form_cash}% */}
-                          </p>
+                          </p> */}
                         </div>
-                        <p>2,145,564</p>
+                         <p>  {sellerComission * sellerCount / 100} </p>
                       </div>
+                    </div>
+                    <div className="col-lg-3 col-3 left-item text-align-left">
+                    <img src={GolgImg} alt="logo" />
                     </div>
                   </div>
                 </div>
