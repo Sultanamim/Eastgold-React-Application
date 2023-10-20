@@ -29,7 +29,7 @@ export default function Orders() {
       //console.log(jsondata);
       setData(jsondata.data);
       setFilter(jsondata.data);
-      setSellerComission(jsondata.seller_comission);
+      setSellerComission(jsondata.comission);
       setSellerCount(jsondata.count);
     } catch (error) {
       console.error("API request error:", error);
