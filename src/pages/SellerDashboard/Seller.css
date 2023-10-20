@@ -1261,3 +1261,17 @@ text-align: center;
 #layout .table-responsive .rdt_TableBody .rdt_TableRow{
   font-size: 10px;
 }
+#layout .table-responsive nav.rdt_Pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+#layout .seller-transitions-summary-list .seller-profile-panel-header{
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+#layout .seller-transitions-summary-list .seller-profile-panel-body{
+  margin-top: -30px;
+  padding-top: 0 !important;
+}

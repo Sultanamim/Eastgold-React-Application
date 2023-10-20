@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import {useHistory,} from "react-router-dom";
 import "./Login.css";
 import Swal from "sweetalert2";
-import { Translation } from "react-i18next";
-import { useTranslation } from "react-i18next";
-import ChangeLang from "../../components/ChangeLang";
+
 
 async function loginUser(credentials) {
 
@@ -21,8 +19,6 @@ async function loginUser(credentials) {
 
 
 export default function Login(props) {
-
-  const { t, i18n } = useTranslation();
   const [credentialsInfo, setCredentialsInfo] = useState({
     email:'',
    password:'',
@@ -94,12 +90,12 @@ const handleSubmit = async (e) => {
       >
         <div className="container">
           <div className="breadcrumb-text">
-            <h1 className="page-title">{t("Login")}</h1>
+            <h1 className="page-title">Login</h1>
             <ul>
               <li>
-                <a href="/">{t('Home')}</a>
+                <a href="/">Home</a>
               </li>
-              <li>{t("Login")}</li>
+              <li>Login</li>
             </ul>
           </div>
         </div>
@@ -116,7 +112,7 @@ const handleSubmit = async (e) => {
             <div className="col-lg-8">
               <div className="user-form">
                 <div className="title mb-3">
-                  <h4>{t("Login")}</h4>
+                  <h4>Login</h4>
                 </div>
                 <form
                   data-v-32ab5d56=""
@@ -132,7 +128,7 @@ const handleSubmit = async (e) => {
                   />{" "} */}
                   {/* <input type="hidden" name="user_id" value="174" /> */}
                   <div className="form_group">
-                    <label>{t("Email")} *</label>
+                    <label>Email *</label>
                     <input
                       type="email"
                       placeholder="Enter Email Address"
@@ -173,7 +169,7 @@ const handleSubmit = async (e) => {
               block=""
               color="primary"
             >
-              <span class="v-btn__content">{t("Login Now")}</span>
+              <span class="v-btn__content"> Login Now</span>
             </button>
                   </div>
                   {/* <div className="new-user text-center">
