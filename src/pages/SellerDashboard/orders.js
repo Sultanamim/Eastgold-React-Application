@@ -8,8 +8,10 @@ import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import GolgImg from "../../assets/gold.png";
-
-
+import DataTableExtensions from "react-data-table-component-extensions";
+import "react-data-table-component-extensions/dist/index.css";
+import SortIcon from "@material-ui/icons/ArrowDownward";
+import "../styles.css";
 
 export default function Orders() {
   const [data, setData] = useState([]);
@@ -97,6 +99,11 @@ export default function Orders() {
     }
 
   ];
+
+  const tableData = {
+    columns,
+    data
+  };
 
   const newData =
     data.length > 0
@@ -264,7 +271,22 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
+                
+                  <DataTableExtensions {...tableData}>
                     <DataTable
+                      columns={columns}
+                      data={newData}
+                      noHeader
+                      defaultSortField="id"
+                      sortIcon={<SortIcon />}
+                      defaultSortAsc={true}
+                      pagination
+                      highlightOnHover
+                      dense
+                    />
+                  </DataTableExtensions>
+
+                    {/* <DataTable
                       columns={columns}
                       data={newData}
                       pagination
@@ -291,7 +313,7 @@ export default function Orders() {
                         </>)
                       }
                     
-                    />
+                    /> */}
                   </div>
                 </div>
               </div>
