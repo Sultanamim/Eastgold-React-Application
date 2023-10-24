@@ -1,14 +1,21 @@
 import React from "react";
 import "./Footer.css";
+import { Translation } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import ChangeLang from "../ChangeLang";
+import LogoImg from "../../assets/logo2.png";
+
+
 
 export default function Footer() {
-  const externalImage =
-    "https://eastgold.az/assets/front/img/static/lawyer/footer-bg-1.jpg";
+  const { t, i18n } = useTranslation();
+
+  const externalImage = LogoImg;
   return (
     <>
       <footer className="footer-area">
         <div
-          data-bg="https://eastgold.az/assets/front/img/static/lawyer/footer-bg-1.jpg"
+          data-bg={LogoImg}
           className="footer-wrapper-one lazy position-relative bg_cover pb-30 entered loaded"
           data-ll-status="loaded"
           style={{ backgroundImage: `url(${externalImage})` }}
@@ -23,13 +30,7 @@ export default function Footer() {
                     style={{ visibility: "visible", animationDelay: "0.2s" }}
                   >
                     <a className="footer-logo" href="#">
-                      <img
-                        className="lazy entered loaded"
-                        data-src="https://businesso.xyz/assets/front/img/user/footer/7556b078b136ecf0fccc9c390bfb3c1b086e4700.png"
-                        alt="Footer Logo"
-                        data-ll-status="loaded"
-                        src="https://businesso.xyz/assets/front/img/user/footer/7556b078b136ecf0fccc9c390bfb3c1b086e4700.png"
-                      />
+                    <img src={LogoImg} alt="logo" />
                     </a>
                     <p>
                       Power of choice is untrammelled &amp; when nothing
@@ -45,22 +46,22 @@ export default function Footer() {
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/">
+                          <a href="#">
                             <i class="fab fa-twitter"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/">
+                          <a href="#">
                             <i class="fab fa-linkedin-in"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/">
+                          <a href="#">
                             <i class="fab fa-dribbble"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/">
+                          <a href="#">
                             <i class="fab fa-behance"></i>
                           </a>
                         </li>
@@ -75,19 +76,19 @@ export default function Footer() {
                     data-wow-delay=".3s"
                     style={{ visibility: "visible", animationDelay: "0.3s" }}
                   >
-                    <h4 className="widget-title">Quick Links</h4>
+                    <h4 className="widget-title">{t('Quick Links')}</h4>
                     <ul className="widget-link">
                       <li>
-                        <a href="#">About Us</a>
+                        <a href="#">{t("About Us")}</a>
                       </li>
                       <li>
-                        <a href="#">Terms &amp; Conditions</a>
+                        <a href="#">{t("Terms &amp; Conditions")}</a>
                       </li>
                       <li>
-                        <a href="#">Privacy Policy</a>
+                        <a href="#">{t("Privacy Policy")}</a>
                       </li>
                       <li>
-                        <a href="#">Contact Us</a>
+                        <a href="#">{t("Contact Us")}</a>
                       </li>
                     </ul>
                   </div>
@@ -99,7 +100,7 @@ export default function Footer() {
                     data-wow-delay=".5s"
                     style={{ visibility: "visible", animationDelay: "0.5s" }}
                   >
-                    <h4 className="widget-title">Contact Us</h4>
+                    <h4 className="widget-title">{t("Contact Us")}</h4>
                     <div className="info-widget-content mb-10">
                       <p>
                         <i className="fa-solid fa-phone"></i>
@@ -133,7 +134,7 @@ export default function Footer() {
                 <div className="col-lg-12">
                   <div className="copyright-text text-center">
                     <p></p>
-                    <p>Copyright © 2022. All rights reserved by Rangs</p>
+                    <p>Copyright © 2023. All rights reserved by <a target="_blank" href="www.webcodecare.com">www.webcodecare.com</a></p>
                     <p></p>
                   </div>
                 </div>

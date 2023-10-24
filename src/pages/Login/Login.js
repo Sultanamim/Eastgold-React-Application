@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {useHistory,} from "react-router-dom";
 import "./Login.css";
 import Swal from "sweetalert2";
@@ -20,13 +20,13 @@ async function loginUser(credentials) {
 
 export default function Login(props) {
   const [credentialsInfo, setCredentialsInfo] = useState({
-    email:'',
+    user:'',
    password:'',
 })
   const externalImg =
     "https://businesso.xyz/assets/front/img/user/breadcrumb.jpg";
   
-  let email = credentialsInfo.email;
+  let user = credentialsInfo.user;
   let password = credentialsInfo.password;
   let history = useHistory();
 
@@ -36,10 +36,23 @@ export default function Login(props) {
     setCredentialsInfo({...credentialsInfo, [e.target.name]: e.target.value })
 }
 
+
+
+useEffect(() => {
+  const token = localStorage.getItem('token');
+  if(!token) {
+    history.push('/login');
+  }
+  if(token) {
+    history.push('/home');
+  }
+
+}, []);
+
 const handleSubmit = async (e) => {
   e.preventDefault();
   const response = await loginUser({
-    email,
+    user,
     password
   });
 
@@ -59,7 +72,7 @@ const handleSubmit = async (e) => {
       // history.push("/seller-dashboard")
 
       
-      window.location.href = "/seller-transitions";
+      window.location.href = "/seller-profile";
      } else if (response.data.account_mode === 'Buyer'){
 
       window.location.href = "/buyer-transitions";
@@ -128,12 +141,12 @@ const handleSubmit = async (e) => {
                   />{" "} */}
                   {/* <input type="hidden" name="user_id" value="174" /> */}
                   <div className="form_group">
-                    <label>Email *</label>
+                    <label>User Id *</label>
                     <input
-                      type="email"
-                      placeholder="Enter Email Address"
+                      type="text"
+                      placeholder="Enter User Id"
                       className="form_control"
-                      name="email"
+                      name="user"
                       onChange={e => handleChange(e)}
                     />
                   </div>

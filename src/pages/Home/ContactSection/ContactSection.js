@@ -13,8 +13,8 @@ export default function ContactSection() {
           >
             <div className="contact-form">
               <form
-                action="https://businesso.xyz/rangs/contact/message"
-                method="POST"
+                action="#"
+                method="#"
                 encType="multipart/form-data"
               >
                 <input

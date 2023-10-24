@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../Portfolios/Portfolio.css";
-import ProductImg1 from "../../assets/product-img-1.jpg";
-import ProductImg2 from "../../assets/product-img-2.jpg";
-import ProductImg3 from "../../assets/product-img-3.jpg";
-import ProductImg4 from "../../assets/product-img-4.jpg";
-import ProductImg5 from "../../assets/product-img-5.jpg";
-import BreadCrumbImg from "../../assets/breadcrumb.jpg";
+import ProductImg1 from "../../assets/gold.jpg";
+import ProductImg2 from "../../assets/gold2.jpg";
+import ProductImg3 from "../../assets/gold3.jpg";
+import ProductImg4 from "../../assets/gold.jpg";
+import ProductImg5 from "../../assets/gold3.jpg";
+import BreadCrumbImg from "../../assets/gold2.jpg";
 
 export default function Portfolios() {
   const [activeFilter, setActiveFilter] = useState("all");

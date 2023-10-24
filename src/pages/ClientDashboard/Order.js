@@ -7,12 +7,15 @@ import "../SellerDashboard/Seller.css";
 import Swal from "sweetalert2";
 import {useHistory,} from "react-router-dom";
 import DataTable from "react-data-table-component";
+import DataTableExtensions from "react-data-table-component-extensions";
+import "react-data-table-component-extensions/dist/index.css";
+import SortIcon from "@material-ui/icons/ArrowDownward";
+import "../styles.css";
+import GolgImg from "../../assets/gold.png";
 
 
 export default function Orders() {
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState([]);
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -21,11 +24,13 @@ export default function Orders() {
     try {
    
       const response = await fetch(
-        `https://office.webcodecare.com/api/partner_product_details?partner_id=${user.id}`
+        `https://office.webcodecare.com/api/partner_product_details?partner_id=${user.user_id_info}`
       );
       const jsondata = await response.json();
       //console.log(jsondata.data);
       setData(jsondata.data);
+      setComission(jsondata.comission);
+      setCount(jsondata.count);
     } catch (error) {
       console.error("API request error:", error);
     }
@@ -113,6 +118,11 @@ export default function Orders() {
     : null;
     console.log(newData);
 
+    const tableData = {
+      columns,
+      data
+    };
+
   const partnerData =
     data.length > 0 ? (
       <div>
@@ -124,16 +134,16 @@ export default function Orders() {
                 <div className="info-box">
                   <h2>Wallet Details</h2>
                   <div className="row">
-                    <div className="col-lg-4 left-item text-align-left">
+                    <div className="col-lg-4 col-4 left-item text-align-left">
                       <div className="align-items-flex-start">
-                        <p>Hi </p>
+                        <p>Hi {user.name}</p>
                         <p>You Have</p>
-                        <h3>3,0001,142</h3>
-                        <p>DEM COINS</p>
+                        <h3>{ data.length}</h3>
+                        <p>Transaction </p>
                       </div>
                     </div>
 
-                    <div className="col-lg-6 right-item text-align-left">
+                    <div className="col-lg-5 col-5 right-item text-align-left">
                       <div className="align-items-flex-start">
                         <p>Purchased Coins</p>
                         <div
@@ -147,7 +157,7 @@ export default function Orders() {
                             style={{
                               display: "inline-block",
                               content: "",
-                              width: "70%",
+                              width:`${Comission}%`,
                               height: "2px",
                               backgroundColor: "blue",
                               alignSelf: "center",
@@ -162,11 +172,12 @@ export default function Orders() {
                               textAlign: "left",
                             }}
                           >
-                            70%
+                             {Comission}%
+                        
                           </p>
                         </div>
-
-                        <p>2,145,564</p>
+                        <p>Total Amount</p>
+                        <p>{Count}</p>
                         <p>Bonus Earnings</p>
                         <div
                           style={{
@@ -179,14 +190,13 @@ export default function Orders() {
                             style={{
                               display: "inline-block",
                               content: "",
-                              width: "29%",
-                              // width: `${items.seller_comission_form_cash}`,
+                              width: `${Comission * Count / 100}%`,
                               height: "2px",
                               backgroundColor: "green",
                               alignSelf: "center",
                             }}
-                          ></div>
-                          <p
+                          ></div> 
+                           {/* <p
                             style={{
                               float: "left",
                               paddingLeft: "0",
@@ -195,12 +205,14 @@ export default function Orders() {
                               textAlign: "left",
                             }}
                           >
-                            29%
-                            {/* {items.seller_comission_form_cash}% */}
-                          </p>
+                            17%
+                          </p> */}
                         </div>
-                        <p>2,145,564</p>
+                         <p>  {Comission * Count / 100} </p>
                       </div>
+                    </div>
+                    <div className="col-lg-3 col-3 left-item text-align-left">
+                    <img src={GolgImg} alt="logo" />
                     </div>
                   </div>
                 </div>
@@ -251,34 +263,7 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
-                  <DataTable
-                      columns={columns}
-                      data={newData}
-                      pagination
-                      selectableRows
-                      fixedHeader
-                      selectableRowsHighlight
-                      highlightOnHover
-                      actions={
-                        (<>
-                          <input
-                          type="text"
-                          className="w-25 h-10 form-control"
-                          placeholder="Search.."
-                          value={search}
-                          onChange={(e) => setSearch(e.target.value)}
-                          style={{justifyContent: "flex-end"}}
-                        />
-                        <button
-                          className="btn btn-primary"
-                          style={{ marginTop: "-10px", padding: "10px 10px" }}
-                        >
-                          Export
-                        </button>
-                        </>)
-                      }
-                    
-                    />
+                  <DataTable columns={columns} data={newData} />
                   </div>
                 </div>
               </div>

@@ -6,7 +6,7 @@ import "../../assets/css/Blogs.css";
 import "../../assets/css/template.css";
 import { Translation } from "react-i18next";
 import { useTranslation } from "react-i18next";
-import ChangeLang from "../ChangeLang.js";
+import ChangeLang from "../ChangeLang";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import Swal from "sweetalert2";
@@ -15,8 +15,29 @@ import Swal from "sweetalert2";
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user"));
 
 
+  const handleDeshBoard = () => {
+
+    if(user.account_mode === 'Seller'){
+      // history.push("/seller-dashboard")
+  
+      window.location.href = "/seller-profile";
+     } else if (user.account_mode === 'Buyer'){
+
+      window.location.href = "/buyer-transitions";
+      //  history.push("/buyer-transitions")
+     } else if (user.account_mode === 'Partner'){
+      //  history.push("/client-transitions")
+       window.location.href = "/client-transitions";
+     }
+
+     alert('Are you sure?');
+  };
+  
+  
+  
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -27,6 +48,8 @@ export default function Navbar() {
     });
 
     window.location.href = "/home";
+
+    alert('Are you sure?');
   };
 
 
@@ -53,7 +76,7 @@ export default function Navbar() {
                       </a>
                     </div>
                     <div className="info">
-                      <span className="title">Phone Number</span>
+                      <span className="title">{t('Phone Number')}</span>
                       <h5>
                         <a href="#">{"+012 (345) 6789"}</a>
                       </h5>
@@ -66,7 +89,7 @@ export default function Navbar() {
                       </a>
                     </div>
                     <div className="info">
-                      <span className="title">Email Address</span>
+                      <span className="title">{t('Email Address')}</span>
                       <h5>
                         <a href="#">support@gmail.com</a>
                       </h5>
@@ -133,7 +156,7 @@ export default function Navbar() {
                       <Link
                         className="nav-link active"
                         aria-current="page"
-                        to="/"
+                        to="/home"
                       >
                         {t("Home")}
                       </Link>
@@ -183,6 +206,13 @@ export default function Navbar() {
               <div className="lang-icon">
                 <Translation>{(t) => <ChangeLang t={t} />}</Translation>
               </div>
+
+              {(() => {
+                      if (token)  {
+                     
+                        return <Link onClick={handleDeshBoard}>{t("Deshbord")}</Link>;
+                      }
+                    })()}
               <div className="nav-item info nav-push-item">
                     {(() => {
                       if (!token) {

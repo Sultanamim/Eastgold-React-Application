@@ -7,23 +7,38 @@ import "./Seller.css";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import DataTable from "react-data-table-component";
+import GolgImg from "../../assets/gold.png";
+import DataTableExtensions from "react-data-table-component-extensions";
+import "react-data-table-component-extensions/dist/index.css";
+import SortIcon from "@material-ui/icons/ArrowDownward";
+import "../styles.css";
 
 export default function Orders() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
+<<<<<<< HEAD
+=======
+  const [sellerComission, setSellerComission] = useState([]);
+  const [sellerCount, setSellerCount] = useState([]);
+>>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
   const apiGetSellerTransitions = async () => {
     try {
       const response = await fetch(
-        `https://office.webcodecare.com/api/sellers_details?seller_id=${user.id}`
+        `https://office.webcodecare.com/api/sellers_details?seller_id=${user.user_id_info}`
       );
       const jsondata = await response.json();
       //console.log(jsondata);
       setData(jsondata.data);
       setFilter(jsondata.data);
+<<<<<<< HEAD
+=======
+      setSellerComission(jsondata.comission);
+      setSellerCount(jsondata.count);
+>>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
     } catch (error) {
       console.error("API request error:", error);
     }
@@ -37,12 +52,21 @@ export default function Orders() {
     }
   }, []);
 
+<<<<<<< HEAD
     useEffect(() => {
       const result = data.filter((item) => {
         return item && item.product_name && item.product_name.toLowerCase().includes(search.toLowerCase());
     })
       setFilter(result);
     }, [search]);
+=======
+  //  useEffect(() => {
+  //    const result = data.filter((item) => {
+  //     return item.title.toLowerCase().match(search.toLowerCase());
+  //    })
+  //    //setFilter(result);
+  //  }, [search]);
+>>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
 
   //console.log(data.data);
 
@@ -58,7 +82,6 @@ export default function Orders() {
       Swal.fire("Error!", `You have withdrawn ${error}`, "error");
     }
   };
-
   const columns = [
     {
       name: "Buyer Id",
@@ -68,10 +91,7 @@ export default function Orders() {
       name: "Partner Id",
       selector: (row) => row.partner_id,
     },
-    {
-      name: "Partner Id",
-      selector: (row) => row.partner_id,
-    },
+
     {
       name: "Seller Id",
       selector: (row) => row.seller_id,
@@ -91,13 +111,11 @@ export default function Orders() {
     {
       name: "Sales Source",
       selector: (row) => row.sales_source,
-    },
-    {
-      name: "Created At",
-      selector: (row) => row.created_at,
-    },
+    }
+
   ];
 
+<<<<<<< HEAD
   const newData =
   filter.length > 0
     ? filter
@@ -119,6 +137,37 @@ export default function Orders() {
         })
     : <p>There are no infromation as you search</p>;
 
+=======
+  const tableData = {
+    columns,
+    data
+  };
+
+  const newData =
+    data.length > 0
+      ? data.map((items) => {
+
+       
+
+          
+    
+
+        //console.log(items);
+          const dataTable = {
+            buyer_id: items.buyer_id,
+            partner_id: items.partner_id,
+            seller_id: items.seller_id,
+            product_name: items.product_name,
+            product_price: items.product_price,
+            sales_mode: items.sales_mode,
+            sales_source: items.sales_source,
+            created_at: items.created_at,
+          };
+
+          return dataTable;
+        })
+      : null;
+>>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
 //console.log(filter);
 
   const sellerData =
@@ -134,14 +183,18 @@ export default function Orders() {
                   <div className="row">
                     <div className="col-lg-4 col-4 left-item text-align-left">
                       <div className="align-items-flex-start">
-                        <p>Hi </p>
+                        <p>Hi {user.name}</p>
                         <p>You Have</p>
-                        <h3>3,0001,142</h3>
-                        <p>DEM COINS</p>
+                        <h3>{ data.length}</h3>
+                        <p>Transaction </p>
                       </div>
                     </div>
 
+<<<<<<< HEAD
                     <div className="col-lg-6 col-6 right-item text-align-left">
+=======
+                    <div className="col-lg-5 col-5 right-item text-align-left">
+>>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
                       <div className="align-items-flex-start">
                         <p>Purchased Coins</p>
                         <div
@@ -155,7 +208,7 @@ export default function Orders() {
                             style={{
                               display: "inline-block",
                               content: "",
-                              width: "70%",
+                              width:`${sellerComission}%`,
                               height: "2px",
                               backgroundColor: "blue",
                               alignSelf: "center",
@@ -170,11 +223,12 @@ export default function Orders() {
                               textAlign: "left",
                             }}
                           >
-                            70%
+                             {sellerComission}%
+                        
                           </p>
                         </div>
-
-                        <p>2,145,564</p>
+                        <p>Total Amount</p>
+                        <p>{sellerCount}</p>
                         <p>Bonus Earnings</p>
                         <div
                           style={{
@@ -187,14 +241,13 @@ export default function Orders() {
                             style={{
                               display: "inline-block",
                               content: "",
-                              width: "17%",
-                              // width: `${items.seller_comission_form_cash}`,
+                              width: `${sellerComission * sellerCount / 100}%`,
                               height: "2px",
                               backgroundColor: "green",
                               alignSelf: "center",
                             }}
-                          ></div>
-                          <p
+                          ></div> 
+                           {/* <p
                             style={{
                               float: "left",
                               paddingLeft: "0",
@@ -204,11 +257,13 @@ export default function Orders() {
                             }}
                           >
                             17%
-                            {/* {items.seller_comission_form_cash}% */}
-                          </p>
+                          </p> */}
                         </div>
-                        <p>2,145,564</p>
+                         <p>  {sellerComission * sellerCount / 100} </p>
                       </div>
+                    </div>
+                    <div className="col-lg-3 col-3 left-item text-align-left">
+                    <img src={GolgImg} alt="logo" />
                     </div>
                   </div>
                 </div>
@@ -259,9 +314,30 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
+<<<<<<< HEAD
                     <DataTable
                       columns={columns}
                       data={newData}
+=======
+                
+                  <DataTableExtensions {...tableData}>
+                    <DataTable
+                      columns={columns}
+                      data={newData}
+                      noHeader
+                      defaultSortField="id"
+                      sortIcon={<SortIcon />}
+                      defaultSortAsc={true}
+                      pagination
+                      highlightOnHover
+                      dense
+                    />
+                  </DataTableExtensions>
+
+                    {/* <DataTable
+                      columns={columns}
+                      data={newData}
+>>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
                       pagination
                       selectableRows
                       fixedHeader
@@ -286,7 +362,11 @@ export default function Orders() {
                         </>)
                       }
                     
+<<<<<<< HEAD
                     />
+=======
+                    /> */}
+>>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
                   </div>
                 </div>
               </div>
@@ -325,7 +405,7 @@ export default function Orders() {
                                 aria-expanded="true"
                                 aria-controls="m-profile-options"
                               >
-                                <span> Profile Options</span>
+                                <span> Selling Information Options</span>
                                 <span className="icon">
                                   <i className="fas fa-chevron-right"></i>
                                 </span>
@@ -350,7 +430,7 @@ export default function Orders() {
                                         {" "}
                                         <img src={ProfileImg} alt="" />{" "}
                                       </span>
-                                      <span className="text"> Profile</span>
+                                      <span className="text">Selling Information</span>
                                     </Link>
                                   </li>
                                   <li>
@@ -377,7 +457,7 @@ export default function Orders() {
                       <div className="seller-profile-content-area">
                         {/*---- Header element ---- */}
                         <div className="seller-profile-content-header">
-                          <h3>Seller Transitions</h3>
+                          <h3>Selling Transitions</h3>
                           <div className="seller-profile-content-breadcumb">
                             <ul>
                               <li>

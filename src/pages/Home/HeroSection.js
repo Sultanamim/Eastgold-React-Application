@@ -3,8 +3,13 @@ import CarouselImg1 from "../../assets/carousel-img-1.jpg";
 import CarouselImg2 from "../../assets/carousel-img-2.jpg";
 import CarouselImg3 from "../../assets/carousel-img-3.jpg";
 import "./Home.css";
+import { Translation } from "react-i18next";
+import { useTranslation } from "react-i18next";
+
 
 export default function HeroSection() {
+
+  const { t, i18n } = useTranslation();
   const Img1 =
     "https://businesso.xyz/assets/front/img/hero_slider/37db1e96370fe3a98b1814d4fb6922822419bf3a.jpg";
   const Img2 =
@@ -30,12 +35,12 @@ export default function HeroSection() {
                       <div className="row justify-content-center">
                         <div className="col-lg-12">
                           <div className="hero-content hero-content-center">
-                            <h1>Corporate Law Firms</h1>
-                            <h4>25 Years Of Experience In Law Solutiuons</h4>
+                            <h1>{t('orporate Law Firms')}</h1>
+                            <h4>{t('25 Years Of Experience In Law Solutiuons')}</h4>
                             <ul className="button">
                               <li>
                                 <a href="#" className="main-btn arro-btn">
-                                  Our Services
+                                  {t('Our Services')}
                                 </a>
                               </li>
                             </ul>
@@ -52,12 +57,12 @@ export default function HeroSection() {
                       <div className="row justify-content-center">
                         <div className="col-lg-12">
                           <div className="hero-content hero-content-center">
-                            <h1>Corporate Law Firms</h1>
-                            <h4>25 Years Of Experience In Law Solutiuons</h4>
+                            <h1>{t('orporate Law Firms')}</h1>
+                            <h4>{t('25 Years Of Experience In Law Solutiuons')}</h4>
                             <ul className="button">
                               <li>
                                 <a href="#" className="main-btn arro-btn">
-                                  Our Services
+                                {t('Our Services')}
                                 </a>
                               </li>
                             </ul>
@@ -74,12 +79,12 @@ export default function HeroSection() {
                       <div className="row justify-content-center">
                         <div className="col-lg-12">
                           <div className="hero-content hero-content-center">
-                            <h1>Corporate Law Firms</h1>
-                            <h4>25 Years Of Experience In Law Solutiuons</h4>
+                          <h1>{t('orporate Law Firms')}</h1>
+                            <h4>{t('25 Years Of Experience In Law Solutiuons')}</h4>
                             <ul className="button">
                               <li>
                                 <a href="#" className="main-btn arro-btn">
-                                  Our Services
+                                {t('Our Services')}
                                 </a>
                               </li>
                             </ul>
@@ -98,7 +103,7 @@ export default function HeroSection() {
                 data-bs-slide="prev"
               >
                <i className="fa-solid fa-arrow-left"></i>
-                <span className="visually-hidden">Previous</span>
+                <span className="visually-hidden">{t('Previous')}</span>
               </button>
               <button
                 className="carousel-control-next"
@@ -107,7 +112,7 @@ export default function HeroSection() {
                 data-bs-slide="next"
               >
                <i className="fa-solid fa-arrow-right"></i>
-                <span className="visually-hidden">Next</span>
+                <span className="visually-hidden">{t('Next')}</span>
               </button>
             </div>
           </div>
