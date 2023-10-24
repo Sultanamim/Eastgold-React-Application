@@ -1,5 +1,11 @@
 .project-section {
-    padding-top: 70px;
+    padding-top: 160px;
+    margin-bottom: 95px;
+  }
+  @media(max-width: 767px){
+    .project-section{
+        height: 400vh;
+    }
   }
   .breadcrumb-section {
     padding: 156px 0 100px;
@@ -430,7 +436,4 @@
     width: 100%;
 }
 
-.project-section {
-    padding-top: 130px;
-    padding-bottom: 95px;
-}
+

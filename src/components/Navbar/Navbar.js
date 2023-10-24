@@ -118,7 +118,9 @@ export default function Navbar() {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span className="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon">
+                <i className="fa-solid fa-bars"></i>
+                </span>
               </button>
 
               <div
@@ -155,7 +157,6 @@ export default function Navbar() {
                     <li className="nav-item">
                       <Link
                         className="nav-link active"
-                        aria-current="page"
                         to="/home"
                       >
                         {t("Home")}

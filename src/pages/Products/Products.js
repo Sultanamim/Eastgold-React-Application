@@ -142,11 +142,7 @@ export default function Portfolios() {
                 <div
                   key={index}
                   className={`isotope-item col-lg-4 col-sm-6 ${project.itemClass}`}
-                  style={{
-                    position: "absolute",
-                    left: `${leftPosition}%`,
-                    top: `${topPosition}px`,
-                  }}
+                 
                 >
                   <div className="project-box hover-style">
                     <a className="project-thumb" href="#">

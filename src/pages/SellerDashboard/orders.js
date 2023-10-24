@@ -17,11 +17,9 @@ export default function Orders() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
-<<<<<<< HEAD
-=======
   const [sellerComission, setSellerComission] = useState([]);
   const [sellerCount, setSellerCount] = useState([]);
->>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
+
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -34,11 +32,9 @@ export default function Orders() {
       //console.log(jsondata);
       setData(jsondata.data);
       setFilter(jsondata.data);
-<<<<<<< HEAD
-=======
       setSellerComission(jsondata.comission);
       setSellerCount(jsondata.count);
->>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
+
     } catch (error) {
       console.error("API request error:", error);
     }
@@ -52,21 +48,21 @@ export default function Orders() {
     }
   }, []);
 
-<<<<<<< HEAD
+
     useEffect(() => {
       const result = data.filter((item) => {
         return item && item.product_name && item.product_name.toLowerCase().includes(search.toLowerCase());
     })
       setFilter(result);
     }, [search]);
-=======
+
   //  useEffect(() => {
   //    const result = data.filter((item) => {
   //     return item.title.toLowerCase().match(search.toLowerCase());
   //    })
   //    //setFilter(result);
   //  }, [search]);
->>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
+
 
   //console.log(data.data);
 
@@ -115,7 +111,6 @@ export default function Orders() {
 
   ];
 
-<<<<<<< HEAD
   const newData =
   filter.length > 0
     ? filter
@@ -137,13 +132,13 @@ export default function Orders() {
         })
     : <p>There are no infromation as you search</p>;
 
-=======
+
   const tableData = {
     columns,
     data
   };
 
-  const newData =
+  const newData1 =
     data.length > 0
       ? data.map((items) => {
 
@@ -167,7 +162,6 @@ export default function Orders() {
           return dataTable;
         })
       : null;
->>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
 //console.log(filter);
 
   const sellerData =
@@ -190,11 +184,10 @@ export default function Orders() {
                       </div>
                     </div>
 
-<<<<<<< HEAD
+
                     <div className="col-lg-6 col-6 right-item text-align-left">
-=======
                     <div className="col-lg-5 col-5 right-item text-align-left">
->>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
+
                       <div className="align-items-flex-start">
                         <p>Purchased Coins</p>
                         <div
@@ -314,13 +307,13 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
-<<<<<<< HEAD
+
                     <DataTable
                       columns={columns}
                       data={newData}
-=======
+                      />
                 
-                  <DataTableExtensions {...tableData}>
+                  <DataTableExtensions  {...tableData}>
                     <DataTable
                       columns={columns}
                       data={newData}
@@ -362,11 +355,11 @@ export default function Orders() {
                         </>)
                       }
                     
-<<<<<<< HEAD
+
                     />
 =======
                     /> */}
->>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
+
                   </div>
                 </div>
               </div>
@@ -374,6 +367,7 @@ export default function Orders() {
           </div>
           {/*  -------------- */}
         </div>
+      </div>
       </div>
     ) : (
       // console.log(items);

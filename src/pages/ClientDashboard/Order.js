@@ -16,6 +16,8 @@ import GolgImg from "../../assets/gold.png";
 
 export default function Orders() {
   const [data, setData] = useState([]);
+  const [Comission, setComission] = useState([]);
+  const [Count, setCount] = useState([]);
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
