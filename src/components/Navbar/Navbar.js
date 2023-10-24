@@ -20,12 +20,9 @@ export default function Navbar() {
 
   const handleDeshBoard = () => {
 
-
     if(user.account_mode === 'Seller'){
       // history.push("/seller-dashboard")
-    
-      
-      
+  
       window.location.href = "/seller-profile";
      } else if (user.account_mode === 'Buyer'){
 
@@ -35,6 +32,8 @@ export default function Navbar() {
       //  history.push("/client-transitions")
        window.location.href = "/client-transitions";
      }
+
+     alert('Are you sure?');
   };
   
   
@@ -49,6 +48,8 @@ export default function Navbar() {
     });
 
     window.location.href = "/home";
+
+    alert('Are you sure?');
   };
 
 
@@ -155,7 +156,7 @@ export default function Navbar() {
                       <Link
                         className="nav-link active"
                         aria-current="page"
-                        to="/"
+                        to="/home"
                       >
                         {t("Home")}
                       </Link>
