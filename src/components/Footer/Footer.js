@@ -76,7 +76,7 @@ export default function Footer() {
                     data-wow-delay=".3s"
                     style={{ visibility: "visible", animationDelay: "0.3s" }}
                   >
-                    <h4 className="widget-title">Quick Links</h4>
+                    <h4 className="widget-title">{t('Quick Links')}</h4>
                     <ul className="widget-link">
                       <li>
                         <a href="#">{t("About Us")}</a>

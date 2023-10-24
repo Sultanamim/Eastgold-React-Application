@@ -7,6 +7,13 @@ i18n.use(initReactI18next).init({
     en: {
       translation: {
       
+        "Quick Links": "Quick Links",
+        "Corporate Law Firms": "Corporate Law Firms",
+        "25 Years Of Experience In Law Solutiuons": "25 Years Of Experience In Law Solutiuons",
+        "Our Services": "Our Services",
+        "Next": "Next",
+        "Previous": "Previous",
+
         "Phone Number": "Phone Number",
         "Email Address": "Email Address",
         "Email": "Email",
@@ -28,6 +35,8 @@ i18n.use(initReactI18next).init({
     az: {
       translation: {
         "Phone Number": "Phone Number",
+        "Quick Links": "Quick Links",
+        "heroTitle": "Corporate Law Firms",
         "Email Address": "Email Address",
         "Email": "Email",
         "Login Now": "Login Now",
