@@ -6,6 +6,7 @@ import OrdersImg from "../../assets/my-orders.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import {useHistory,} from "react-router-dom";
 
 
 async function formData(credentials) {
@@ -60,7 +61,8 @@ export default function Profile(props) {
   let seller_id = elements.seller_id;
   let sales_mode = elements.sales_mode;
   let sales_source = elements.sales_source;
-
+  let history = useHistory();
+  
   const buyerData = buyer.map((items) => {
     return items;
   });
@@ -70,6 +72,12 @@ export default function Profile(props) {
   });
   //console.log(partnerData);
   useEffect(() => {
+
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      history.push("/login");
+    }
     setElements({ ...elements, buyer_id: buyer.user });
 
     setElements({ ...elements, partner_id: partnerData.user });
@@ -130,7 +138,7 @@ export default function Profile(props) {
                                 aria-expanded="true"
                                 aria-controls="m-profile-options"
                               >
-                                <span> Profile Options</span>
+                                <span> Selling Information Options</span>
                                 <span className="icon">
                                   <i className="fas fa-chevron-right"></i>
                                 </span>
@@ -155,7 +163,7 @@ export default function Profile(props) {
                                         {" "}
                                         <img src={ProfileImg} alt="" />{" "}
                                       </span>
-                                      <span className="text"> Profile</span>
+                                      <span className="text">Selling Information</span>
                                     </Link>
                                   </li>
                                   <li>
@@ -182,14 +190,14 @@ export default function Profile(props) {
                       <div className="seller-profile-content-area">
                         {/*---- Header element ---- */}
                         <div className="seller-profile-content-header">
-                          <h3>Seller Profile</h3>
+                          <h3>Selling Information</h3>
                           <div className="seller-profile-content-breadcumb">
                             <ul>
                               <li>
                                 <a to="/">Home</a>
                               </li>
                               <li>
-                                <a to="/customer/dashboard">Profile</a>
+                                <a to="/customer/dashboard">Selling Information</a>
                               </li>
                             </ul>
                           </div>

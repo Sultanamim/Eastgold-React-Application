@@ -3,19 +3,19 @@ import "./Footer.css";
 import { Translation } from "react-i18next";
 import { useTranslation } from "react-i18next";
 import ChangeLang from "../ChangeLang";
+import LogoImg from "../../assets/logo2.png";
 
 
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
 
-  const externalImage =
-    "https://eastgold.az/assets/front/img/static/lawyer/footer-bg-1.jpg";
+  const externalImage = LogoImg;
   return (
     <>
       <footer className="footer-area">
         <div
-          data-bg="https://eastgold.az/assets/front/img/static/lawyer/footer-bg-1.jpg"
+          data-bg={LogoImg}
           className="footer-wrapper-one lazy position-relative bg_cover pb-30 entered loaded"
           data-ll-status="loaded"
           style={{ backgroundImage: `url(${externalImage})` }}
@@ -30,13 +30,7 @@ export default function Footer() {
                     style={{ visibility: "visible", animationDelay: "0.2s" }}
                   >
                     <a className="footer-logo" href="#">
-                      <img
-                        className="lazy entered loaded"
-                        data-src="https://businesso.xyz/assets/front/img/user/footer/7556b078b136ecf0fccc9c390bfb3c1b086e4700.png"
-                        alt="Footer Logo"
-                        data-ll-status="loaded"
-                        src="https://businesso.xyz/assets/front/img/user/footer/7556b078b136ecf0fccc9c390bfb3c1b086e4700.png"
-                      />
+                    <img src={LogoImg} alt="logo" />
                     </a>
                     <p>
                       Power of choice is untrammelled &amp; when nothing
@@ -52,22 +46,22 @@ export default function Footer() {
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/">
+                          <a href="#">
                             <i class="fab fa-twitter"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/">
+                          <a href="#">
                             <i class="fab fa-linkedin-in"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/">
+                          <a href="#">
                             <i class="fab fa-dribbble"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/">
+                          <a href="#">
                             <i class="fab fa-behance"></i>
                           </a>
                         </li>

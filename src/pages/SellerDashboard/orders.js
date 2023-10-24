@@ -25,7 +25,7 @@ export default function Orders() {
   const apiGetSellerTransitions = async () => {
     try {
       const response = await fetch(
-        `https://office.webcodecare.com/api/sellers_details?seller_id=${user.id}`
+        `https://office.webcodecare.com/api/sellers_details?seller_id=${user.user_id_info}`
       );
       const jsondata = await response.json();
       //console.log(jsondata);
@@ -352,7 +352,7 @@ export default function Orders() {
                                 aria-expanded="true"
                                 aria-controls="m-profile-options"
                               >
-                                <span> Profile Options</span>
+                                <span> Selling Information Options</span>
                                 <span className="icon">
                                   <i className="fas fa-chevron-right"></i>
                                 </span>
@@ -377,7 +377,7 @@ export default function Orders() {
                                         {" "}
                                         <img src={ProfileImg} alt="" />{" "}
                                       </span>
-                                      <span className="text"> Profile</span>
+                                      <span className="text">Selling Information</span>
                                     </Link>
                                   </li>
                                   <li>
@@ -404,7 +404,7 @@ export default function Orders() {
                       <div className="seller-profile-content-area">
                         {/*---- Header element ---- */}
                         <div className="seller-profile-content-header">
-                          <h3>Seller Transitions</h3>
+                          <h3>Selling Transitions</h3>
                           <div className="seller-profile-content-breadcumb">
                             <ul>
                               <li>

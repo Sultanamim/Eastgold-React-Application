@@ -15,8 +15,30 @@ import Swal from "sweetalert2";
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user"));
 
 
+  const handleDeshBoard = () => {
+
+
+    if(user.account_mode === 'Seller'){
+      // history.push("/seller-dashboard")
+    
+      
+      
+      window.location.href = "/seller-profile";
+     } else if (user.account_mode === 'Buyer'){
+
+      window.location.href = "/buyer-transitions";
+      //  history.push("/buyer-transitions")
+     } else if (user.account_mode === 'Partner'){
+      //  history.push("/client-transitions")
+       window.location.href = "/client-transitions";
+     }
+  };
+  
+  
+  
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -183,6 +205,13 @@ export default function Navbar() {
               <div className="lang-icon">
                 <Translation>{(t) => <ChangeLang t={t} />}</Translation>
               </div>
+
+              {(() => {
+                      if (token)  {
+                     
+                        return <Link onClick={handleDeshBoard}>{t("Deshbord")}</Link>;
+                      }
+                    })()}
               <div className="nav-item info nav-push-item">
                     {(() => {
                       if (!token) {

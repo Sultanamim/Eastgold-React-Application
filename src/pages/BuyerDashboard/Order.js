@@ -7,12 +7,21 @@ import "../SellerDashboard/Seller.css";
 import Swal from "sweetalert2";
 import {useHistory,} from "react-router-dom";
 import DataTable from "react-data-table-component";
+import DataTableExtensions from "react-data-table-component-extensions";
+import "react-data-table-component-extensions/dist/index.css";
+import SortIcon from "@material-ui/icons/ArrowDownward";
+import "../styles.css";
+import GolgImg from "../../assets/gold.png";
 
 
 export default function Orders() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
+  const [Comission, setComission] = useState([]);
+  const [Count, setCount] = useState([]);
+
+
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -21,7 +30,7 @@ export default function Orders() {
     try {
     
       const response = await fetch(
-        `https://office.webcodecare.com/api/buyer_product_details?buyer_id=${user.id}`
+        `https://office.webcodecare.com/api/buyer_product_details?buyer_id=${user.user_id_info}`
       );
       const jsondata = await response.json();
       //console.log(jsondata.data);
@@ -29,6 +38,9 @@ export default function Orders() {
         console.log(items)
       });
       setData(jsondata.data);
+      setComission(jsondata.comission);
+      setCount(jsondata.count);
+
     } catch (error) {
       console.error("API request error:", error);
     }
@@ -37,9 +49,9 @@ export default function Orders() {
   useEffect(() => {
     apiGetSellerTransitions();
     const token = localStorage.getItem('token');
-    // if(!token) {
-    //   history.push('/login');
-    // }
+    if(!token) {
+      history.push('/login');
+    }
   }, []);
 
   //console.log(data);
@@ -103,6 +115,12 @@ export default function Orders() {
     },
   ];
 
+
+  const tableData = {
+    columns,
+    data
+  };
+
   const newData = data.length > 0
     ? data.map((items) => {
         const dataTable =
@@ -135,83 +153,87 @@ export default function Orders() {
                   <div className="info-box">
                     <h2>Wallet Details</h2>
                     <div className="row">
-                      <div className="col-lg-4 left-item text-align-left">
-                        <div className="align-items-flex-start">
-                          <p>Hi name</p>
-                          <p>You Have</p>
-                          <h3>3,0001,142</h3>
-                          <p>DEM COINS</p>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 right-item text-align-left">
-                        <div className="align-items-flex-start">
-                          <p>Purchased Coins</p>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "row",
-                              marginLeft: "15px",
-                            }}
-                          >
-                            <div
-                              style={{
-                                display: "inline-block",
-                                content: "",
-                                width: "70%",
-                                height: "2px",
-                                backgroundColor: "blue",
-                                alignSelf: "center",
-                              }}
-                            ></div>
-                            <p
-                              style={{
-                                float: "left",
-                                paddingLeft: "0",
-                                marginLeft: "5px",
-                                lineHeight: "20px",
-                                textAlign: "left",
-                              }}
-                            >
-                              70%
-                            </p>
-                          </div>
-
-                          <p>2,145,564</p>
-                          <p>Bonus Earnings</p>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "row",
-                              marginLeft: "15px",
-                            }}
-                          >
-                            <div
-                              style={{
-                                display: "inline-block",
-                                content: "",
-                                // width: `${items.seller_comission_form_cash}`,
-                                height: "2px",
-                                backgroundColor: "green",
-                                alignSelf: "center",
-                              }}
-                            ></div>
-                            <p
-                              style={{
-                                float: "left",
-                                paddingLeft: "0",
-                                marginLeft: "5px",
-                                lineHeight: "20px",
-                                textAlign: "left",
-                              }}
-                            >
-                              {/* {items.seller_comission_form_cash}% */}
-                            </p>
-                          </div>
-                          <p>2,145,564</p>
-                        </div>
+                    <div className="col-lg-4 col-4 left-item text-align-left">
+                      <div className="align-items-flex-start">
+                        <p>Hi {user.name}</p>
+                        <p>You Have</p>
+                        <h3>{ data.length}</h3>
+                        <p>Transaction </p>
                       </div>
                     </div>
+
+                    <div className="col-lg-5 col-5 right-item text-align-left">
+                      <div className="align-items-flex-start">
+                        <p>Purchased Coins</p>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            marginLeft: "15px",
+                          }}
+                        >
+                          <div
+                            style={{
+                              display: "inline-block",
+                              content: "",
+                              width:`${Comission}%`,
+                              height: "2px",
+                              backgroundColor: "blue",
+                              alignSelf: "center",
+                            }}
+                          ></div>
+                          <p
+                            style={{
+                              float: "left",
+                              paddingLeft: "0",
+                              marginLeft: "5px",
+                              lineHeight: "20px",
+                              textAlign: "left",
+                            }}
+                          >
+                             {Comission}%
+                        
+                          </p>
+                        </div>
+                        <p>Total Amount</p>
+                        <p>{Count}</p>
+                        <p>Bonus Earnings</p>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            marginLeft: "15px",
+                          }}
+                        >
+                          <div
+                            style={{
+                              display: "inline-block",
+                              content: "",
+                              width: `${Comission * Count / 100}%`,
+                              height: "2px",
+                              backgroundColor: "green",
+                              alignSelf: "center",
+                            }}
+                          ></div> 
+                           {/* <p
+                            style={{
+                              float: "left",
+                              paddingLeft: "0",
+                              marginLeft: "5px",
+                              lineHeight: "20px",
+                              textAlign: "left",
+                            }}
+                          >
+                            17%
+                          </p> */}
+                        </div>
+                         <p>  {Comission * Count / 100} </p>
+                      </div>
+                    </div>
+                    <div className="col-lg-3 col-3 left-item text-align-left">
+                    <img src={GolgImg} alt="logo" />
+                    </div>
+                  </div>
                   </div>
                 </div>
                 <div className="col-lg-6">
@@ -259,7 +281,7 @@ export default function Orders() {
                   </div>
                   <div className="seller-profile-panel-body">
                     <div className="table-responsive">
-                    <DataTable
+                    {/* <DataTable
                       columns={columns}
                       data={newData}
                       pagination
@@ -286,7 +308,21 @@ export default function Orders() {
                         </>)
                       }
                     
-                    />
+                    /> */}
+
+                        <DataTableExtensions {...tableData}>
+                          <DataTable
+                            columns={columns}
+                            data={newData}
+                            noHeader
+                            defaultSortField="id"
+                            sortIcon={<SortIcon />}
+                            defaultSortAsc={true}
+                            pagination
+                            highlightOnHover
+                            dense
+                          />
+                        </DataTableExtensions>
                     </div>
                   </div>
                 </div>
