@@ -10,6 +10,8 @@ import DataTable from "react-data-table-component";
 
 export default function Orders() {
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState([]);
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -21,6 +23,7 @@ export default function Orders() {
       const jsondata = await response.json();
       //console.log(jsondata);
       setData(jsondata.data);
+      setFilter(jsondata.data);
     } catch (error) {
       console.error("API request error:", error);
     }
@@ -33,6 +36,14 @@ export default function Orders() {
       history.push("/login");
     }
   }, []);
+
+    useEffect(() => {
+      const result = data.filter((item) => {
+        return item && item.product_name && item.product_name.toLowerCase().includes(search.toLowerCase());
+    })
+      setFilter(result);
+    }, [search]);
+
   //console.log(data.data);
 
   const handleWithdraw = async () => {
@@ -87,24 +98,28 @@ export default function Orders() {
     },
   ];
 
-  const newData = data.length > 0
-    ? data.map((items) => {
-        const dataTable =
-          {
-            buyer_id: items.buyer_id,
-            partner_id: items.partner_id,
-            seller_id: items.seller_id,
-            product_name: items.product_name,
-            product_price: items.product_price,
-            sales_mode: items.sales_mode,
-            sales_source: items.sales_source,
-            created_at: items.created_at,
-          }
-     
-        return dataTable;
-      })
-    : null;
-    console.log(newData);
+  const newData =
+  filter.length > 0
+    ? filter
+        .filter((item) => item && item.product_name)
+        .map((items) => {
+          console.log(items);
+          if(items){
+          return {
+            buyer_id: items.buyer_id || "",
+            partner_id: items.partner_id || "",
+            seller_id: items.seller_id || "",
+            product_name: items.product_name || "",
+            product_price: items.product_price || "",
+            sales_mode: items.sales_mode || "",
+            sales_source: items.sales_source || "",
+            created_at: items.created_at || "",
+          };
+        }
+        })
+    : <p>There are no infromation as you search</p>;
+
+//console.log(filter);
 
   const sellerData =
     data.length > 0 ? (
@@ -113,11 +128,11 @@ export default function Orders() {
           {/*-----     Summary Section ------ */}
           <div className="seller-transitions-summary-list">
             <div className="row">
-              <div className="col-lg-6">
+              <div className="col-xl-6 col-md-12">
                 <div className="info-box">
                   <h2>Wallet Details</h2>
                   <div className="row">
-                    <div className="col-lg-4 left-item text-align-left">
+                    <div className="col-lg-4 col-4 left-item text-align-left">
                       <div className="align-items-flex-start">
                         <p>Hi </p>
                         <p>You Have</p>
@@ -126,7 +141,7 @@ export default function Orders() {
                       </div>
                     </div>
 
-                    <div className="col-lg-6 right-item text-align-left">
+                    <div className="col-lg-6 col-6 right-item text-align-left">
                       <div className="align-items-flex-start">
                         <p>Purchased Coins</p>
                         <div
@@ -198,11 +213,11 @@ export default function Orders() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-6">
+              <div className="col-xl-6 col-md-12">
                 <div className="info-box" style={{ width: "380px" }}>
                   <h2>TOTAL AVAILABLE GOLD BARS</h2>
                   <div className="row">
-                    <div className="col-lg-4 left-item d-flex text-align-center justify-content-center">
+                    <div className="col-lg-4 col-4 left-item d-flex text-align-center justify-content-center">
                       <h1
                         style={{
                           fontSize: "120px",
@@ -215,7 +230,7 @@ export default function Orders() {
                       </h1>
                     </div>
 
-                    <div className="col-lg-6 right-item d-flex justify-content-center align-items-center">
+                    <div className="col-lg-6 col-6 right-item d-flex justify-content-center align-items-center">
                       <h2
                         style={{
                           backgroundColor: "#3a5af9",
@@ -244,71 +259,34 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
-                    <DataTable columns={columns} data={newData} />
-                    {/* <table className="table">
-                      <tbody className="transaction">
-                        <tr className="table-head">
-                          <td>
-                            <p>Buyer Id</p>
-                          </td>
-                          <td>
-                            <p>Partner Id</p>
-                          </td>
-                          <td>
-                            <p>Seller Id</p>
-                          </td>
-                          <td>
-                            <p>Product Name</p>
-                          </td>
-                          <td>
-                            <p>Product price</p>
-                          </td>
-                          <td>
-                            <p>Sales Mode</p>
-                          </td>
-                          <td>
-                            <p>Sales Source</p>
-                          </td>
-                          <td>
-                            <p>Created at</p>
-                          </td>
-                          {/* <td>
-                            <p>Updated at</p>
-                          </td> 
-                       {/* </tr>
-                        data.map((items) => (
-                          <tr>
-                            <td>
-                              <p>{items.buyer_id}</p>
-                            </td>
-                            <td>
-                              <p>{items.partner_id}</p>
-                            </td>
-                            <td>
-                              <p>{items.seller_id}</p>
-                            </td>
-                            <td>
-                              <p>{items.product_name}</p>
-                            </td>
-                            <td>
-                              <p>{items.product_price}</p>
-                            </td>
-                            <td>
-                              <p>{items.sales_mode}</p>
-                            </td>
-                            <td>
-                              <p>{items.sales_source}</p>
-                            </td>
-                            <td>
-                              <p>{items.created_at}</p>
-                            </td>
-                            {/* <td>
-                              <p>{items.updated_at}</p>
-                            </td> 
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table> */}
+                    <DataTable
+                      columns={columns}
+                      data={newData}
+                      pagination
+                      selectableRows
+                      fixedHeader
+                      selectableRowsHighlight
+                      highlightOnHover
+                      actions={
+                        (<>
+                          <input
+                          type="text"
+                          className="w-25 h-10 form-control"
+                          placeholder="Search.."
+                          value={search}
+                          onChange={(e) => setSearch(e.target.value)}
+                          style={{justifyContent: "flex-end"}}
+                        />
+                        <button
+                          className="btn btn-primary"
+                          style={{ marginTop: "-10px", padding: "10px 10px" }}
+                        >
+                          Export
+                        </button>
+                        </>)
+                      }
+                    
+                    />
                   </div>
                 </div>
               </div>
