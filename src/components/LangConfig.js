@@ -10,6 +10,7 @@ i18n.use(initReactI18next).init({
         "Quick Links": "Quick Links",
         "Corporate Law Firms": "Corporate Law Firms",
         "25 Years Of Experience In Law Solutiuons": "25 Years Of Experience In Law Solutiuons",
+        "Karabakh Street, 15 Khatai Ave, Baku": "Karabakh Street, 15 Khatai Ave, Baku",
         "Our Services": "Our Services",
         "Next": "Next",
         "Previous": "Previous",
@@ -34,6 +35,16 @@ i18n.use(initReactI18next).init({
 
     az: {
       translation: {
+
+        "Quick Links": "Quick Links",
+        "Corporate Law Firms": "Corporate Law Firms",
+        "25 Years Of Experience In Law Solutiuons": "25 Years Of Experience In Law Solutiuons",
+        "Karabakh Street, 15 Khatai Ave, Baku": "Xətai pr. 31, Bakı Şərq Bazarı Ticarət mərkəzi",
+        "Our Services": "Our Services",
+        "Next": "Next",
+        "Previous": "Previous",
+
+
         "Phone Number": "Phone Number",
         "Quick Links": "Quick Links",
         "heroTitle": "Corporate Law Firms",

@@ -2,6 +2,7 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Home from "../src/pages/Home/Home";
 import Products from "../src/pages/Products/Products";
+import About from "../src/pages/About/About";
 import Portfolios from "../src/pages/Portfolios/Portfolios";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -108,6 +109,9 @@ function App() {
         </Route>
         <Route exact path="/products">
           <Products />
+        </Route>
+        <Route exact path="/about">
+          <About />
         </Route>
         <Route exact path="/portfolios">
           <Portfolios />

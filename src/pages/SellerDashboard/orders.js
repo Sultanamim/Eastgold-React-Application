@@ -19,7 +19,6 @@ export default function Orders() {
   const [filter, setFilter] = useState([]);
   const [sellerComission, setSellerComission] = useState([]);
   const [sellerCount, setSellerCount] = useState([]);
-
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -34,7 +33,6 @@ export default function Orders() {
       setFilter(jsondata.data);
       setSellerComission(jsondata.comission);
       setSellerCount(jsondata.count);
-
     } catch (error) {
       console.error("API request error:", error);
     }
@@ -48,21 +46,12 @@ export default function Orders() {
     }
   }, []);
 
-
-    useEffect(() => {
-      const result = data.filter((item) => {
-        return item && item.product_name && item.product_name.toLowerCase().includes(search.toLowerCase());
-    })
-      setFilter(result);
-    }, [search]);
-
   //  useEffect(() => {
   //    const result = data.filter((item) => {
   //     return item.title.toLowerCase().match(search.toLowerCase());
   //    })
   //    //setFilter(result);
   //  }, [search]);
-
 
   //console.log(data.data);
 
@@ -111,34 +100,12 @@ export default function Orders() {
 
   ];
 
-  const newData =
-  filter.length > 0
-    ? filter
-        .filter((item) => item && item.product_name)
-        .map((items) => {
-          console.log(items);
-          if(items){
-          return {
-            buyer_id: items.buyer_id || "",
-            partner_id: items.partner_id || "",
-            seller_id: items.seller_id || "",
-            product_name: items.product_name || "",
-            product_price: items.product_price || "",
-            sales_mode: items.sales_mode || "",
-            sales_source: items.sales_source || "",
-            created_at: items.created_at || "",
-          };
-        }
-        })
-    : <p>There are no infromation as you search</p>;
-
-
   const tableData = {
     columns,
     data
   };
 
-  const newData1 =
+  const newData =
     data.length > 0
       ? data.map((items) => {
 
@@ -184,10 +151,7 @@ export default function Orders() {
                       </div>
                     </div>
 
-
-                    <div className="col-lg-6 col-6 right-item text-align-left">
                     <div className="col-lg-5 col-5 right-item text-align-left">
-
                       <div className="align-items-flex-start">
                         <p>Purchased Coins</p>
                         <div
@@ -307,13 +271,8 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
-
-                    <DataTable
-                      columns={columns}
-                      data={newData}
-                      />
                 
-                  <DataTableExtensions  {...tableData}>
+                  <DataTableExtensions {...tableData}>
                     <DataTable
                       columns={columns}
                       data={newData}
@@ -330,7 +289,6 @@ export default function Orders() {
                     {/* <DataTable
                       columns={columns}
                       data={newData}
->>>>>>> 6ef35a57b2f198c6b8d324f8c726adec21682f88
                       pagination
                       selectableRows
                       fixedHeader
@@ -355,11 +313,7 @@ export default function Orders() {
                         </>)
                       }
                     
-
-                    />
-=======
                     /> */}
-
                   </div>
                 </div>
               </div>
@@ -367,7 +321,6 @@ export default function Orders() {
           </div>
           {/*  -------------- */}
         </div>
-      </div>
       </div>
     ) : (
       // console.log(items);

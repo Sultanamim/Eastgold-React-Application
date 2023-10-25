@@ -27,7 +27,7 @@ export default function Footer() {
                   <div
                     className="widget about-widget mb-55 wow fadeInUp"
                     data-wow-delay=".2s"
-                    style={{ visibility: "visible", animationDelay: "0.2s" }}
+                    style={{ visibility: "visible", animationDelay: "0.2s", textAlign: "center" }}
                   >
                     <a className="footer-logo" href="#">
                     <img src={LogoImg} alt="logo" />
@@ -41,7 +41,7 @@ export default function Footer() {
                       <h4>Follow</h4>
                       <ul className="social-link">
                         <li>
-                          <a href="http://example.com/">
+                          <a href="#">
                             <i class="fab fa-facebook-f"></i>
                           </a>
                         </li>
@@ -79,7 +79,7 @@ export default function Footer() {
                     <h4 className="widget-title">{t('Quick Links')}</h4>
                     <ul className="widget-link">
                       <li>
-                        <a href="#">{t("About Us")}</a>
+                        <a href="#about">{t("About Us")}</a>
                       </li>
                       <li>
                         <a href="#">{t("Terms &amp; Conditions")}</a>
@@ -104,24 +104,19 @@ export default function Footer() {
                     <div className="info-widget-content mb-10">
                       <p>
                         <i className="fa-solid fa-phone"></i>
-                        <a href="tel: +012 (345) 6789">+012 (345) 6789</a>,
-                        <a href="tel: +82659211">+82659211</a>,
-                        <a href="tel: +97257102">+97257102</a>
+                        <a href="tel: +82659211">+ 077 712 10 90</a>
                       </p>
                       <p>
                         <i className="fa-regular fa-envelope"></i>
-                        <a href="mailto: support@gmail.com">
-                          support@gmail.com
+                        <a href="mailto: office@eastgold.az">
+                        office@eastgold.az
                         </a>
-                        ,
-                        <a href="mailto: contact@rangs.com">
-                          contact@rangs.com
-                        </a>
+                      
                       </p>
                       <p>
                         <i className="fa-solid fa-location-dot"></i>
-                        <span>Broklyn Street USA</span> |
-                        <span>Newyork, USA</span>
+                        <span> {t('Karabakh Street, 15 Khatai Ave, Baku')}</span> 
+                    
                       </p>
                     </div>
                   </div>

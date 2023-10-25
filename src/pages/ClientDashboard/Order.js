@@ -94,11 +94,7 @@ export default function Orders() {
     {
       name: "Sales Source",
       selector: (row) => row.sales_source,
-    },
-    {
-      name: "Created At",
-      selector: (row) => row.created_at,
-    },
+    }
   ];
 
   const newData = data.length > 0

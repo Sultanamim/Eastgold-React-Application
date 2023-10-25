@@ -60,8 +60,8 @@ export default function Navbar() {
         <div className="container">
           <div className="row d-flex flex-row">
             <div className="col-lg-4 col-md-3">
-              <div className="site-branding">
-                <a href="#" className="brand-logo">
+              <div className="site-branding" style={{justifyContent: "center"}}>
+                <a href="/" className="brand-logo">
                   <img src={LogoImg} alt="logo" />
                 </a>
               </div>
@@ -78,7 +78,7 @@ export default function Navbar() {
                     <div className="info">
                       <span className="title">{t('Phone Number')}</span>
                       <h5>
-                        <a href="#">{"+012 (345) 6789"}</a>
+                        <a href="#">{"+ 077 712 10 90"}</a>
                       </h5>
                     </div>
                   </li>
@@ -91,7 +91,7 @@ export default function Navbar() {
                     <div className="info">
                       <span className="title">{t('Email Address')}</span>
                       <h5>
-                        <a href="#">support@gmail.com</a>
+                        <a href="#">office@eastgold.az</a>
                       </h5>
                     </div>
                   </li>
@@ -168,8 +168,8 @@ export default function Navbar() {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link" to="/portfolios">
-                        {t("Portfolios")}
+                      <Link className="nav-link" to="/about">
+                        {t("About Us")}
                       </Link>
                     </li>
                   </ul>

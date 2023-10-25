@@ -1,5 +1,8 @@
 import React from "react";
 import "./Team.css";
+import Img3 from "../../../assets/3.jpeg";
+import Img4 from "../../../assets/4.jpeg";
+import Img5 from "../../../assets/5.jpeg";
 
 export default function TeamSection() {
   return (
@@ -19,7 +22,7 @@ export default function TeamSection() {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="col-lg-4 col-md-6 col-sm-12">
               <div
                 className="team-item team-item-one mb-40 wow fadeInUp"
                 data-wow-delay=".25s"
@@ -27,32 +30,32 @@ export default function TeamSection() {
               >
                 <div className="team-img">
                   <img
-                    data-src="https://businesso.xyz/assets/front/img/user/team/77fd8c98cbac033eb9208e5d41671290e9ae65e6.jpg"
+                    data-src={Img3}
                     className="lazy entered loaded"
                     alt="Team"
                     data-ll-status="loaded"
-                    src="https://businesso.xyz/assets/front/img/user/team/77fd8c98cbac033eb9208e5d41671290e9ae65e6.jpg"
+                    src={Img3}
                   />
                   <div className="team-overlay">
                     <div className="team-social">
                       <ul className="social-link">
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-facebook-f"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-twitter"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-instagram"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-linkedin"></i>
                           </a>
                         </li>
@@ -68,7 +71,7 @@ export default function TeamSection() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="col-lg-4 col-md-6 col-sm-12">
               <div
                 className="team-item team-item-one mb-40 wow fadeInUp"
                 data-wow-delay=".25s"
@@ -76,32 +79,32 @@ export default function TeamSection() {
               >
                 <div className="team-img">
                   <img
-                    data-src="https://businesso.xyz/assets/front/img/user/team/ce38744ba92b841ec371066096cfae32ac3fb433.jpg"
+                    data-src={Img4}
                     className="lazy entered loaded"
                     alt="Team"
                     data-ll-status="loaded"
-                    src="https://businesso.xyz/assets/front/img/user/team/ce38744ba92b841ec371066096cfae32ac3fb433.jpg"
+                    src={Img4}
                   />
                   <div className="team-overlay">
                     <div className="team-social">
                       <ul className="social-link">
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-facebook-f"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-twitter"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-instagram"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-linkedin"></i>
                           </a>
                         </li>
@@ -117,7 +120,7 @@ export default function TeamSection() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="col-lg-4 col-md-6 col-sm-12">
               <div
                 className="team-item team-item-one mb-40 wow fadeInUp"
                 data-wow-delay=".25s"
@@ -125,32 +128,32 @@ export default function TeamSection() {
               >
                 <div className="team-img">
                   <img
-                    data-src="https://businesso.xyz/assets/front/img/user/team/189ff0cdf780a59aa414f4c5422075b884a5f67b.jpg"
+                    data-src={Img5}
                     className="lazy entered loaded"
                     alt="Team"
                     data-ll-status="loaded"
-                    src="https://businesso.xyz/assets/front/img/user/team/189ff0cdf780a59aa414f4c5422075b884a5f67b.jpg"
+                    src={Img5}
                   />
                   <div className="team-overlay">
                     <div className="team-social">
                       <ul className="social-link">
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-facebook-f"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-twitter"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-instagram"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="http://example.com/" target="_blank">
+                          <a href="#" target="_blank">
                             <i className="fab fa-linkedin"></i>
                           </a>
                         </li>
@@ -166,55 +169,7 @@ export default function TeamSection() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
-              <div
-                className="team-item team-item-one mb-40 wow fadeInUp"
-                data-wow-delay=".25s"
-                style={{visibility: "visible", animationDelay: "0.25s", animationName: "fadeInUp",}}
-              >
-                <div className="team-img">
-                  <img
-                    data-src="https://businesso.xyz/assets/front/img/user/team/bd39661d73f980587b075d225a2ff5a3991c1964.jpg"
-                    className="lazy entered loaded"
-                    alt="Team"
-                    data-ll-status="loaded"
-                    src="https://businesso.xyz/assets/front/img/user/team/bd39661d73f980587b075d225a2ff5a3991c1964.jpg"
-                  />
-                  <div className="team-overlay">
-                    <div className="team-social">
-                      <ul className="social-link">
-                        <li>
-                          <a href="#" target="_blank">
-                            <i className="fab fa-facebook-f"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" target="_blank">
-                            <i className="fab fa-twitter"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" target="_blank">
-                            <i className="fab fa-instagram"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" target="_blank">
-                            <i className="fab fa-linkedin"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="team-content">
-                  <h3 className="title">
-                    <a href="#">Thiago Silva</a>
-                  </h3>
-                  <span className="position">Designer, Rolan</span>
-                </div>
-              </div>
-            </div>
+         
           </div>
         </div>
       </section>
