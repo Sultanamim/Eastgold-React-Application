@@ -7,6 +7,8 @@ i18n.use(initReactI18next).init({
     en: {
       translation: {
       
+        "Send Message": "Send Message",
+        "Buy now": "Buy now",
         "Quick Links": "Quick Links",
         "Corporate Law Firms": "Corporate Law Firms",
         "25 Years Of Experience In Law Solutiuons": "25 Years Of Experience In Law Solutiuons",
@@ -36,6 +38,8 @@ i18n.use(initReactI18next).init({
     az: {
       translation: {
 
+        "Send Message": "Send Message",
+        "Buy now": "Buy now",
         "Quick Links": "Quick Links",
         "Corporate Law Firms": "Corporate Law Firms",
         "25 Years Of Experience In Law Solutiuons": "25 Years Of Experience In Law Solutiuons",

@@ -2,9 +2,24 @@
     /* padding-top: 160px; */
     margin-bottom: 95px;
   }
-  @media(max-width: 767px){
+  /* @media(min-width: 567px){
     .project-section{
-        height: 400vh;
+        height: 270vh;
+    }
+  } */
+  @media screen and (min-width: 280px) and (max-width: 567px){
+    .project-section{
+        height: 843vh;
+    }
+  }
+  @media screen and (min-width: 567px) and (max-width: 768px){
+    .project-section{
+        height: 421vh;
+    }
+  }
+  @media screen and (min-width: 769px) and (max-width: 998px){
+    .project-section{
+        height: 487vh;
     }
   }
   .breadcrumb-section {
@@ -229,7 +244,7 @@
     left: 30px;
     right: 30px;
     bottom: -55px;
-    padding: 35px 15px 25px;
+    /* padding: 35px 15px 25px; */
     border-radius: 8px 8px 0 0;
     background-color: #fff;
     -webkit-box-shadow: 0px 10px 32px 0px rgba(197, 197, 197, 0.4);

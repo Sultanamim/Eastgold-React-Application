@@ -4,7 +4,7 @@ import { Translation } from "react-i18next";
 import { useTranslation } from "react-i18next";
 import ChangeLang from "../ChangeLang";
 import LogoImg from "../../assets/logo2.png";
-
+import { Link } from "react-router-dom";
 
 
 export default function Footer() {
@@ -88,8 +88,11 @@ export default function Footer() {
                         <a href="#">{t("Privacy Policy")}</a>
                       </li>
                       <li>
-                        <a href="#">{t("Contact Us")}</a>
+                        <a href="/contact">{t("Contact Us")}</a>
                       </li>
+                   
+                    
+                 
                     </ul>
                   </div>
                 </div>

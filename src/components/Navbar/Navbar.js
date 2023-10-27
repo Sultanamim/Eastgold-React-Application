@@ -172,6 +172,11 @@ export default function Navbar() {
                         {t("About Us")}
                       </Link>
                     </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/contact">
+                        {t("Contact Us")}
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -182,7 +187,8 @@ export default function Navbar() {
               {/*----- Header Right Nav ------ */}
               <ul className="d-flex align-items-center justify-content-end">
                 <li className="d-xl-block d-none nav-item mt-2">
-                  <a href="#" className="main-btn float-right m-0">
+                  <a href="tel:+0777121090" className="main-btn float-right m-0">
+                    
                     {t("Request A Quote")}
                   </a>
                   
