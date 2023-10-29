@@ -1,6 +1,6 @@
 .project-section {
     /* padding-top: 160px; */
-    margin-bottom: 95px;
+    /* margin-bottom: 95px; */
   }
   /* @media(min-width: 567px){
     .project-section{
@@ -9,17 +9,17 @@
   } */
   @media screen and (min-width: 280px) and (max-width: 567px){
     .project-section{
-        height: 843vh;
+        height: 360vh;
     }
   }
   @media screen and (min-width: 567px) and (max-width: 768px){
     .project-section{
-        height: 421vh;
+        height: 446vh;
     }
   }
   @media screen and (min-width: 769px) and (max-width: 998px){
     .project-section{
-        height: 487vh;
+        height: 550vh;
     }
   }
   .breadcrumb-section {

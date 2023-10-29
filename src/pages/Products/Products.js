@@ -192,7 +192,7 @@ export default function Portfolios() {
                   </div>
                   <div className="thumb bg-img-c lazy entered error" style={{textAlign: "center"}}>
                   <h4>{project.title}</h4>
-                  <p>500 AZN</p>
+                  <h4><b>500 AZN</b></h4>
                   </div>
                   
                 </div>
