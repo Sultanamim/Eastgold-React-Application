@@ -216,7 +216,7 @@ export default function Orders() {
                 </div>
               </div>
               <div className="col-lg-6">
-                <div className="info-box" style={{ width: "380px" }}>
+                <div className="info-box" >
                   <h2>TOTAL AVAILABLE GOLD BARS</h2>
                   <div className="row">
                     <div className="col-lg-4 left-item d-flex text-align-center justify-content-center">
@@ -286,7 +286,8 @@ export default function Orders() {
                 <div className="container">
                   <div className="row">
                     {/* ------  Sidebar ------- */}
-                    <div className="col-lg-3 seller-profile-sidebar-col d-none d-xl-block">
+                    {/* seller-profile-sidebar-col d-none d-xl-block */}
+                    <div className="col-lg-3">
                       <div className="bordered-shadow-box">
                         <div className="bordered-shadow-box-overflow-hidden">
                           <div className="seller-profile-sidebar">
@@ -340,7 +341,8 @@ export default function Orders() {
                     {/* ------------ */}
 
                     {/*---------  Main Contents ------- */}
-                    <div className="col-lg-9 seller-profile-content-col">
+                    {/* seller-profile-content-col */}
+                    <div className="col-lg-9">
                       <div className="seller-profile-content-area">
                         {/*---- Header element ---- */}
                         <div className="seller-profile-content-header">
