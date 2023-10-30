@@ -1,6 +1,10 @@
 /* ------------------------------  
       Hero section 
 ----------------------------------*/
+.hero-area {
+  z-index: 1;
+  position: relative;
+}
 .hero-wrapper-one .carousel-inner::after {
   position: absolute;
   top: 0;

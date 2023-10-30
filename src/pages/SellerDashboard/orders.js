@@ -129,7 +129,7 @@ export default function Orders() {
       <div>
         <div>
           {/*-----     Summary Section ------ */}
-          <div className="seller-transitions-summary-list">
+          {/* <div className="seller-transitions-summary-list">
             <div className="row">
               <div className="col-xl-6 col-md-12">
                 <div className="info-box">
@@ -198,17 +198,6 @@ export default function Orders() {
                               alignSelf: "center",
                             }}
                           ></div>
-                          {/* <p
-                            style={{
-                              float: "left",
-                              paddingLeft: "0",
-                              marginLeft: "5px",
-                              lineHeight: "20px",
-                              textAlign: "left",
-                            }}
-                          >
-                            17%
-                          </p> */}
                         </div>
                         <p> {(sellerComission * sellerCount) / 100} </p>
                       </div>
@@ -254,7 +243,7 @@ export default function Orders() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* ------- */}
           {/* -------  Transaction List ------ */}
           <div className="row seller-dashboard-col-equal">

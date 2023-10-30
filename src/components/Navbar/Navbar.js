@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import LogoImg from "../../assets/logo2.png";
+import LogoImg2 from "../../assets/logo.svg";
 import CrossImg from "../../assets/cross.png";
 import "../../assets/css/Blogs.css";
 import "../../assets/css/template.css";
@@ -11,47 +12,40 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 import Swal from "sweetalert2";
 
-
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
-
   const handleDeshBoard = () => {
-
-    if(user.account_mode === 'Seller'){
+    if (user.account_mode === "Seller") {
       // history.push("/seller-dashboard")
-  
-      window.location.href = "/seller-profile";
-     } else if (user.account_mode === 'Buyer'){
 
+      window.location.href = "/seller-profile";
+    } else if (user.account_mode === "Buyer") {
       window.location.href = "/buyer-transitions";
       //  history.push("/buyer-transitions")
-     } else if (user.account_mode === 'Partner'){
+    } else if (user.account_mode === "Partner") {
       //  history.push("/client-transitions")
-       window.location.href = "/client-transitions";
-     }
+      window.location.href = "/client-transitions";
+    }
 
-     alert('Are you sure?');
+    alert("Are you sure?");
   };
-  
-  
-  
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    Swal.fire("Successfully!",  "Logout Successfully", "success", {
+    Swal.fire("Successfully!", "Logout Successfully", "success", {
       buttons: false,
       timer: 2000,
     });
 
     window.location.href = "/home";
 
-    alert('Are you sure?');
+    alert("Are you sure?");
   };
-
 
   return (
     <header className="header-area-one">
@@ -60,9 +54,12 @@ export default function Navbar() {
         <div className="container">
           <div className="row d-flex flex-row">
             <div className="col-lg-4 col-md-3">
-              <div className="site-branding" style={{justifyContent: "center"}}>
+              <div
+                className="site-branding"
+                style={{ justifyContent: "center" }}
+              >
                 <a href="/" className="brand-logo">
-                  <img src={LogoImg} alt="logo" />
+                  <img src={LogoImg2} alt="logo" />
                 </a>
               </div>
             </div>
@@ -76,7 +73,7 @@ export default function Navbar() {
                       </a>
                     </div>
                     <div className="info">
-                      <span className="title">{t('Phone Number')}</span>
+                      <span className="title">{t("Phone Number")}</span>
                       <h5>
                         <a href="#">{"+ 077 712 10 90"}</a>
                       </h5>
@@ -89,7 +86,7 @@ export default function Navbar() {
                       </a>
                     </div>
                     <div className="info">
-                      <span className="title">{t('Email Address')}</span>
+                      <span className="title">{t("Email Address")}</span>
                       <h5>
                         <a href="#">office@eastgold.az</a>
                       </h5>
@@ -119,7 +116,7 @@ export default function Navbar() {
                 aria-label="Toggle navigation"
               >
                 <span className="navbar-toggler-icon">
-                <i className="fa-solid fa-bars"></i>
+                  <i className="fa-solid fa-bars"></i>
                 </span>
               </button>
 
@@ -155,10 +152,7 @@ export default function Navbar() {
                 <div className="offcanvas-body">
                   <ul className="navbar-nav justify-content-start">
                     <li className="nav-item">
-                      <Link
-                        className="nav-link active"
-                        to="/home"
-                      >
+                      <Link className="nav-link active" to="/home">
                         {t("Home")}
                       </Link>
                     </li>
@@ -187,11 +181,12 @@ export default function Navbar() {
               {/*----- Header Right Nav ------ */}
               <ul className="d-flex align-items-center justify-content-end">
                 <li className="d-xl-block d-none nav-item mt-2">
-                  <a href="tel:+0777121090" className="main-btn float-right m-0">
-                    
+                  <a
+                    href="tel:+0777121090"
+                    className="main-btn float-right m-0"
+                  >
                     {t("Request A Quote")}
                   </a>
-                  
                 </li>
                 {/* <li>
                   <form action="" id="userLangForms">
@@ -207,31 +202,27 @@ export default function Navbar() {
                     </select>
                   </form>
                 </li> */}
-
-           
               </ul>
               <div className="lang-icon">
                 <Translation>{(t) => <ChangeLang t={t} />}</Translation>
               </div>
 
               {(() => {
-                      if (token)  {
-                     
-                        return <Link onClick={handleDeshBoard}>{t("Deshbord")}</Link>;
-                      }
-                    })()}
+                if (token) {
+                  return <Link onClick={handleDeshBoard}>{t("Deshbord")}</Link>;
+                }
+              })()}
               <div className="nav-item info nav-push-item">
-                    {(() => {
-                      if (!token) {
-                        return <Link to="/login">{t("Login")}</Link>;
-                      } else {
-                     
-                        return <Link onClick={handleLogout}>{t("Logout")}</Link>;
-                      }
-                    })()}
+                {(() => {
+                  if (!token) {
+                    return <Link to="/login">{t("Login")}</Link>;
+                  } else {
+                    return <Link onClick={handleLogout}>{t("Logout")}</Link>;
+                  }
+                })()}
 
-                    {/* <Link to="/signup">Sign up</Link> */}
-                  </div>
+                {/* <Link to="/signup">Sign up</Link> */}
+              </div>
               {/*-------- */}
             </div>
           </div>

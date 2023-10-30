@@ -4,8 +4,8 @@ import { Translation } from "react-i18next";
 import { useTranslation } from "react-i18next";
 import ChangeLang from "../ChangeLang";
 import LogoImg from "../../assets/logo2.png";
+import FooterLogo from "../../assets/footer-logo.png";
 import { Link } from "react-router-dom";
-
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
@@ -27,10 +27,14 @@ export default function Footer() {
                   <div
                     className="widget about-widget mb-55 wow fadeInUp"
                     data-wow-delay=".2s"
-                    style={{ visibility: "visible", animationDelay: "0.2s", textAlign: "center" }}
+                    style={{
+                      visibility: "visible",
+                      animationDelay: "0.2s",
+                      textAlign: "center",
+                    }}
                   >
                     <a className="footer-logo" href="#">
-                    <img src={LogoImg} alt="logo" />
+                      <img src={LogoImg} alt="logo" />
                     </a>
                     <p>
                       Power of choice is untrammelled &amp; when nothing
@@ -76,7 +80,7 @@ export default function Footer() {
                     data-wow-delay=".3s"
                     style={{ visibility: "visible", animationDelay: "0.3s" }}
                   >
-                    <h4 className="widget-title">{t('Quick Links')}</h4>
+                    <h4 className="widget-title">{t("Quick Links")}</h4>
                     <ul className="widget-link">
                       <li>
                         <a href="#about">{t("About Us")}</a>
@@ -90,9 +94,6 @@ export default function Footer() {
                       <li>
                         <a href="/contact">{t("Contact Us")}</a>
                       </li>
-                   
-                    
-                 
                     </ul>
                   </div>
                 </div>
@@ -112,14 +113,15 @@ export default function Footer() {
                       <p>
                         <i className="fa-regular fa-envelope"></i>
                         <a href="mailto: office@eastgold.az">
-                        office@eastgold.az
+                          office@eastgold.az
                         </a>
-                      
                       </p>
                       <p>
                         <i className="fa-solid fa-location-dot"></i>
-                        <span> {t('Karabakh Street, 15 Khatai Ave, Baku')}</span> 
-                    
+                        <span>
+                          {" "}
+                          {t("Karabakh Street, 15 Khatai Ave, Baku")}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -132,7 +134,12 @@ export default function Footer() {
                 <div className="col-lg-12">
                   <div className="copyright-text text-center">
                     <p></p>
-                    <p>Copyright © 2023. All rights reserved by <a target="_blank" href="www.webcodecare.com">www.webcodecare.com</a></p>
+                    <p>
+                      Copyright © 2023. All rights reserved by{" "}
+                      <a target="_blank" href="www.webcodecare.com">
+                        www.webcodecare.com
+                      </a>
+                    </p>
                     <p></p>
                   </div>
                 </div>
