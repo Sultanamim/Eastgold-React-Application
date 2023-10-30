@@ -6,7 +6,7 @@ import "../../assets/css/Blogs.css";
 import "../../assets/css/template.css";
 import { Translation } from "react-i18next";
 import { useTranslation } from "react-i18next";
-import ChangeLang from "../ChangeLang.js";
+import ChangeLang from "../ChangeLang";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import Swal from "sweetalert2";
@@ -15,8 +15,29 @@ import Swal from "sweetalert2";
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user"));
 
 
+  const handleDeshBoard = () => {
+
+    if(user.account_mode === 'Seller'){
+      // history.push("/seller-dashboard")
+  
+      window.location.href = "/seller-profile";
+     } else if (user.account_mode === 'Buyer'){
+
+      window.location.href = "/buyer-transitions";
+      //  history.push("/buyer-transitions")
+     } else if (user.account_mode === 'Partner'){
+      //  history.push("/client-transitions")
+       window.location.href = "/client-transitions";
+     }
+
+     alert('Are you sure?');
+  };
+  
+  
+  
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -27,6 +48,8 @@ export default function Navbar() {
     });
 
     window.location.href = "/home";
+
+    alert('Are you sure?');
   };
 
 
@@ -37,8 +60,8 @@ export default function Navbar() {
         <div className="container">
           <div className="row d-flex flex-row">
             <div className="col-lg-4 col-md-3">
-              <div className="site-branding">
-                <a href="#" className="brand-logo">
+              <div className="site-branding" style={{justifyContent: "center"}}>
+                <a href="/" className="brand-logo">
                   <img src={LogoImg} alt="logo" />
                 </a>
               </div>
@@ -53,9 +76,9 @@ export default function Navbar() {
                       </a>
                     </div>
                     <div className="info">
-                      <span className="title">Phone Number</span>
+                      <span className="title">{t('Phone Number')}</span>
                       <h5>
-                        <a href="#">{"+012 (345) 6789"}</a>
+                        <a href="#">{"+ 077 712 10 90"}</a>
                       </h5>
                     </div>
                   </li>
@@ -66,9 +89,9 @@ export default function Navbar() {
                       </a>
                     </div>
                     <div className="info">
-                      <span className="title">Email Address</span>
+                      <span className="title">{t('Email Address')}</span>
                       <h5>
-                        <a href="#">support@gmail.com</a>
+                        <a href="#">office@eastgold.az</a>
                       </h5>
                     </div>
                   </li>
@@ -95,7 +118,9 @@ export default function Navbar() {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span className="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon">
+                <i className="fa-solid fa-bars"></i>
+                </span>
               </button>
 
               <div
@@ -132,8 +157,7 @@ export default function Navbar() {
                     <li className="nav-item">
                       <Link
                         className="nav-link active"
-                        aria-current="page"
-                        to="/"
+                        to="/home"
                       >
                         {t("Home")}
                       </Link>
@@ -144,8 +168,13 @@ export default function Navbar() {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link" to="/portfolios">
-                        {t("Portfolios")}
+                      <Link className="nav-link" to="/about">
+                        {t("About Us")}
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/contact">
+                        {t("Contact Us")}
                       </Link>
                     </li>
                   </ul>
@@ -158,7 +187,8 @@ export default function Navbar() {
               {/*----- Header Right Nav ------ */}
               <ul className="d-flex align-items-center justify-content-end">
                 <li className="d-xl-block d-none nav-item mt-2">
-                  <a href="#" className="main-btn float-right m-0">
+                  <a href="tel:+0777121090" className="main-btn float-right m-0">
+                    
                     {t("Request A Quote")}
                   </a>
                   
@@ -183,6 +213,13 @@ export default function Navbar() {
               <div className="lang-icon">
                 <Translation>{(t) => <ChangeLang t={t} />}</Translation>
               </div>
+
+              {(() => {
+                      if (token)  {
+                     
+                        return <Link onClick={handleDeshBoard}>{t("Deshbord")}</Link>;
+                      }
+                    })()}
               <div className="nav-item info nav-push-item">
                     {(() => {
                       if (!token) {

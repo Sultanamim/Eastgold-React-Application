@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "../Portfolios/Portfolio.css";
-import ProductImg1 from "../../assets/product-img-1.jpg";
-import ProductImg2 from "../../assets/product-img-2.jpg";
-import ProductImg3 from "../../assets/product-img-3.jpg";
-import ProductImg4 from "../../assets/product-img-4.jpg";
-import ProductImg5 from "../../assets/product-img-5.jpg";
-import BreadCrumbImg from "../../assets/breadcrumb.jpg";
+import ProductImg1 from "../../assets/gold.jpg";
+import ProductImg2 from "../../assets/gold2.jpg";
+import ProductImg3 from "../../assets/gold3.jpg";
+import ProductImg4 from "../../assets/gold.jpg";
+import ProductImg5 from "../../assets/gold3.jpg";
+import BreadCrumbImg from "../../assets/gold2.jpg";
+import Slider from 'react-animated-slider';
+import 'react-animated-slider/build/horizontal.css';
+import { Translation } from "react-i18next";
+import { useTranslation } from "react-i18next";
+
+
 
 export default function Portfolios() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [filteredProjects, setFilteredProjects] = useState([]);
-
+  const { t, i18n } = useTranslation();
   // Define the items that correspond to each filter
 
   const externalImg =
@@ -22,36 +28,48 @@ export default function Portfolios() {
       title: "Free Consulting",
       category: "Consulting",
       img: ProductImg5,
+      img1: ProductImg5,
+      img2: ProductImg5,
       itemClass: "item-87",
     },
     {
       title: "Investment Plan",
       category: "Consulting",
       img: ProductImg3,
+      img1: ProductImg3,
+      img2: ProductImg3,
       itemClass: "item-87",
     },
     {
       title: "Business Growth",
       category: "Web Development",
       img: ProductImg2,
+      img1: ProductImg2,
+      img2: ProductImg2,
       itemClass: "item-88",
     },
     {
       title: "Financial Planning",
       category: "Web Development",
       img: ProductImg2,
+      img1: ProductImg2,
+      img2: ProductImg2,
       itemClass: "item-88",
     },
     {
       title: "IT Consulting",
       category: "Graphic Design",
       img: ProductImg4,
+      img1: ProductImg4,
+      img2: ProductImg4,
       itemClass: "item-89",
     },
     {
       title: "Relationship",
       category: "Graphic Design",
       img: ProductImg1,
+      img1: ProductImg1,
+      img2: ProductImg1,
       itemClass: "item-89",
     },
     // Add more projects here
@@ -95,6 +113,8 @@ export default function Portfolios() {
         </div>
       </section>
 
+
+   
       {/* ----------  Project Section -------- */}
       <section className="project-section">
         <div className="container">
@@ -142,36 +162,51 @@ export default function Portfolios() {
                 <div
                   key={index}
                   className={`isotope-item col-lg-4 col-sm-6 ${project.itemClass}`}
-                  style={{
-                    position: "absolute",
-                    left: `${leftPosition}%`,
-                    top: `${topPosition}px`,
-                  }}
+                 
                 >
                   <div className="project-box hover-style">
-                    <a className="project-thumb" href="#">
-                      <div
-                        className="thumb bg-img-c lazy entered error"
-                        data-bg={project.img}
-                        data-ll-status="error"
-                        style={{ backgroundImage: `url(${project.img})` }}
-                      ></div>
-                    </a>
-                    <div className="project-desc text-center">
-                      <h4>
-                        <a href="#">{project.title}</a>
-                      </h4>
-                      <p>{project.category}</p>
-                      <a href="#" className="project-link">
-                        <i className="fas fa-arrow-right"></i>
+                
+
+                     <Slider autoplay={3000}>
+                      <img src={project.img} />
+                      <img src={project.img1} />
+                      <img src={project.img2} />
+                    </Slider>
+               
+      
+                  <div className="project-desc text-center">
+                    
+                      {/* <p>{project.category}</p> */}
+                      <p>Doloremque laudantium, totam raperiaeaque ipsa quae ab illo inventore veritatis et quasi</p>
+                    
+                      <a href="tel:+0777121090" className="main-btn float-center m-0">
+                    
+                        {t("Buy now")}
                       </a>
-                    </div>
+
+                      {/* <a href="#" className="project-link">
+                        <i className="fas fa-arrow-right"></i>
+                      </a> */}
+                    </div> 
+                    
                   </div>
+                  <div className="thumb bg-img-c lazy entered error" style={{textAlign: "center"}}>
+                  <h4>{project.title}</h4>
+                  <h4><b>500 AZN</b></h4>
+                  </div>
+                  
                 </div>
+
               );
             })}
           </div>
         </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </section>
     </>
   );

@@ -67,7 +67,7 @@ button:focus {
 }
 .header-logo-area .site-branding .brand-logo img {
   width: 160px;
-  height: 37.5px;
+  height: 108.5px;
 }
 .header-logo-area .site-info {
   float: right;
@@ -152,16 +152,19 @@ h5 {
   height: 81px;
   display: flex;
   align-items: center;
+
 }
-.navbar-toggler {
+
+.header-navigation .navbar-toggler {
   border: none;
   box-shadow: none;
   font-size: 1.5rem;
 }
-.navbar-toggler:focus {
+.header-navigation .navbar-toggler:focus {
   border: none;
   box-shadow: none;
 }
+
 .navbar .close-button p {
   color: "#fff";
   background-color: var(--main-color);
@@ -221,9 +224,9 @@ h5 {
   }
 }
 
-.header-navigation .offcanvas-body ul li:first-child > a {
+/* .header-navigation .offcanvas-body ul li:first-child > a {
   padding-left: 0px;
-}
+} */
 .header-navigation .offcanvas-body ul li > a:hover {
   color: var(--main-color);
 }
@@ -234,7 +237,7 @@ h5 {
   font-weight: 600;
   text-transform: capitalize;
   padding: 32px 15px;
-    padding-left: 15px;
+  padding-left: 15px;
   line-height: 1;
 }
 

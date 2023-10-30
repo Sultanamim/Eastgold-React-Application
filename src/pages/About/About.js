@@ -1,9 +1,47 @@
-import React from "react";
-import "./About.css";
+import React, { useEffect, useState } from "react";
 
-export default function AboutSection() {
+
+export default function Portfolios() {
+
+
+  // Define the items that correspond to each filter
+
+  const externalImg =
+    "https://businesso.xyz/assets/front/img/user/breadcrumb.jpg";
+
+  // Define your projects with corresponding filters
+ 
+
+  // Filter the projects based on the active filter
+
+
   return (
     <>
+      {/* ---------- Breadcrumb Section -------- */}
+      <section
+        className="breadcrumb-section bg-img-c lazy entered loaded"
+        data-bg={externalImg}
+        data-ll-status="loaded"
+        style={{ backgroundImage: `url(${externalImg})` }}
+      >
+        <div className="container">
+          <div className="breadcrumb-text">
+            <h1 className="page-title"> About Us</h1>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li> About Us</li>
+            </ul>
+          </div>
+        </div>
+        <div className="breadcrumb-shapes">
+          <div className="one"></div>
+          <div className="two"></div>
+        </div>
+      </section>
+
+      {/* ----------  Project Section -------- */}
       <section className="about-area pt-130 pb-70" id="about">
         <div className="container">
           <div className="row">

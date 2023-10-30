@@ -7,23 +7,38 @@ import "./Seller.css";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import DataTable from "react-data-table-component";
+import GolgImg from "../../assets/gold.png";
+import DataTableExtensions from "react-data-table-component-extensions";
+import "react-data-table-component-extensions/dist/index.css";
+import SortIcon from "@material-ui/icons/ArrowDownward";
+import "../styles.css";
 
 export default function Orders() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
+<<<<<<< HEAD
+=======
+  const [sellerComission, setSellerComission] = useState([]);
+  const [sellerCount, setSellerCount] = useState([]);
+>>>>>>> e38b671598c5d2447431d373ac620483b423d30b
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
   const apiGetSellerTransitions = async () => {
     try {
       const response = await fetch(
-        `https://office.webcodecare.com/api/sellers_details?seller_id=${user.id}`
+        `https://office.webcodecare.com/api/sellers_details?seller_id=${user.user_id_info}`
       );
       const jsondata = await response.json();
       //console.log(jsondata);
       setData(jsondata.data);
       setFilter(jsondata.data);
+<<<<<<< HEAD
+=======
+      setSellerComission(jsondata.comission);
+      setSellerCount(jsondata.count);
+>>>>>>> e38b671598c5d2447431d373ac620483b423d30b
     } catch (error) {
       console.error("API request error:", error);
     }
@@ -58,7 +73,6 @@ export default function Orders() {
       Swal.fire("Error!", `You have withdrawn ${error}`, "error");
     }
   };
-
   const columns = [
     {
       name: "Buyer Id",
@@ -68,10 +82,7 @@ export default function Orders() {
       name: "Partner Id",
       selector: (row) => row.partner_id,
     },
-    {
-      name: "Partner Id",
-      selector: (row) => row.partner_id,
-    },
+
     {
       name: "Seller Id",
       selector: (row) => row.seller_id,
@@ -91,16 +102,30 @@ export default function Orders() {
     {
       name: "Sales Source",
       selector: (row) => row.sales_source,
-    },
-    {
-      name: "Created At",
-      selector: (row) => row.created_at,
-    },
+    }
+
   ];
+
+<<<<<<< HEAD
+  const newData =
+    data.length > 0
+      ? data.map((items) => {
+=======
+  const tableData = {
+    columns,
+    data
+  };
 
   const newData =
     data.length > 0
       ? data.map((items) => {
+
+       
+
+          
+    
+
+>>>>>>> e38b671598c5d2447431d373ac620483b423d30b
         //console.log(items);
           const dataTable = {
             buyer_id: items.buyer_id,
@@ -131,14 +156,18 @@ export default function Orders() {
                   <div className="row">
                     <div className="col-lg-4 col-4 left-item text-align-left">
                       <div className="align-items-flex-start">
-                        <p>Hi </p>
+                        <p>Hi {user.name}</p>
                         <p>You Have</p>
-                        <h3>3,0001,142</h3>
-                        <p>DEM COINS</p>
+                        <h3>{ data.length}</h3>
+                        <p>Transaction </p>
                       </div>
                     </div>
 
+<<<<<<< HEAD
                     <div className="col-lg-6 col-6 right-item text-align-left">
+=======
+                    <div className="col-lg-5 col-5 right-item text-align-left">
+>>>>>>> e38b671598c5d2447431d373ac620483b423d30b
                       <div className="align-items-flex-start">
                         <p>Purchased Coins</p>
                         <div
@@ -152,7 +181,7 @@ export default function Orders() {
                             style={{
                               display: "inline-block",
                               content: "",
-                              width: "70%",
+                              width:`${sellerComission}%`,
                               height: "2px",
                               backgroundColor: "blue",
                               alignSelf: "center",
@@ -167,11 +196,12 @@ export default function Orders() {
                               textAlign: "left",
                             }}
                           >
-                            70%
+                             {sellerComission}%
+                        
                           </p>
                         </div>
-
-                        <p>2,145,564</p>
+                        <p>Total Amount</p>
+                        <p>{sellerCount}</p>
                         <p>Bonus Earnings</p>
                         <div
                           style={{
@@ -184,14 +214,13 @@ export default function Orders() {
                             style={{
                               display: "inline-block",
                               content: "",
-                              width: "17%",
-                              // width: `${items.seller_comission_form_cash}`,
+                              width: `${sellerComission * sellerCount / 100}%`,
                               height: "2px",
                               backgroundColor: "green",
                               alignSelf: "center",
                             }}
-                          ></div>
-                          <p
+                          ></div> 
+                           {/* <p
                             style={{
                               float: "left",
                               paddingLeft: "0",
@@ -201,17 +230,23 @@ export default function Orders() {
                             }}
                           >
                             17%
-                            {/* {items.seller_comission_form_cash}% */}
-                          </p>
+                          </p> */}
                         </div>
-                        <p>2,145,564</p>
+                         <p>  {sellerComission * sellerCount / 100} </p>
                       </div>
+                    </div>
+                    <div className="col-lg-3 col-3 left-item text-align-left">
+                    <img src={GolgImg} alt="logo" />
                     </div>
                   </div>
                 </div>
               </div>
               <div className="col-xl-6 col-md-12">
+<<<<<<< HEAD
                 <div className="info-box" style={{ width: "380px" }}>
+=======
+                <div className="info-box">
+>>>>>>> e38b671598c5d2447431d373ac620483b423d30b
                   <h2>TOTAL AVAILABLE GOLD BARS</h2>
                   <div className="row">
                     <div className="col-lg-4 col-4 left-item d-flex text-align-center justify-content-center">
@@ -256,9 +291,30 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
+<<<<<<< HEAD
                     <DataTable
                       columns={columns}
                       data={newData}
+=======
+                
+                  <DataTableExtensions {...tableData}>
+                    <DataTable
+                      columns={columns}
+                      data={newData}
+                      noHeader
+                      defaultSortField="id"
+                      sortIcon={<SortIcon />}
+                      defaultSortAsc={true}
+                      pagination
+                      highlightOnHover
+                      dense
+                    />
+                  </DataTableExtensions>
+
+                    {/* <DataTable
+                      columns={columns}
+                      data={newData}
+>>>>>>> e38b671598c5d2447431d373ac620483b423d30b
                       pagination
                       selectableRows
                       fixedHeader
@@ -283,7 +339,11 @@ export default function Orders() {
                         </>)
                       }
                     
+<<<<<<< HEAD
                     />
+=======
+                    /> */}
+>>>>>>> e38b671598c5d2447431d373ac620483b423d30b
                   </div>
                 </div>
               </div>
@@ -308,7 +368,8 @@ export default function Orders() {
                 <div className="container">
                   <div className="row">
                     {/* ------  Sidebar ------- */}
-                    <div className="col-lg-3 seller-profile-sidebar-col d-none d-xl-block">
+                    {/* seller-profile-sidebar-col d-none d-xl-block */}
+                    <div className="col-lg-3">
                       <div className="bordered-shadow-box">
                         <div className="bordered-shadow-box-overflow-hidden">
                           <div className="seller-profile-sidebar">
@@ -322,7 +383,7 @@ export default function Orders() {
                                 aria-expanded="true"
                                 aria-controls="m-profile-options"
                               >
-                                <span> Profile Options</span>
+                                <span> Selling Information Options</span>
                                 <span className="icon">
                                   <i className="fas fa-chevron-right"></i>
                                 </span>
@@ -347,7 +408,7 @@ export default function Orders() {
                                         {" "}
                                         <img src={ProfileImg} alt="" />{" "}
                                       </span>
-                                      <span className="text"> Profile</span>
+                                      <span className="text">Selling Information</span>
                                     </Link>
                                   </li>
                                   <li>
@@ -370,11 +431,12 @@ export default function Orders() {
                     {/* ------------ */}
 
                     {/*---------  Main Contents ------- */}
-                    <div className="col-lg-9 seller-profile-content-col">
+                    {/* seller-profile-content-col */}
+                    <div className="col-lg-9 ">
                       <div className="seller-profile-content-area">
                         {/*---- Header element ---- */}
                         <div className="seller-profile-content-header">
-                          <h3>Seller Transitions</h3>
+                          <h3>Selling Transitions</h3>
                           <div className="seller-profile-content-breadcumb">
                             <ul>
                               <li>

@@ -1210,8 +1210,13 @@ text-align: center;
   border: none;
 }
 #layout .seller-transitions-summary-list .info-box{
+<<<<<<< HEAD
   width: 400px;
   height: 240px;
+=======
+  /* width: 400px; */
+  /* height: 240px; */
+>>>>>>> e38b671598c5d2447431d373ac620483b423d30b
   background-color: #fff;
   margin-bottom: 2rem;
   margin-left: 1rem;
@@ -1228,9 +1233,18 @@ text-align: center;
   color: #5f5e5e;
   margin-bottom: 1rem;
 }
+<<<<<<< HEAD
 #layout .seller-transitions-summary-list .info-box .row{
   margin: 0;
   height: 190px;
+=======
+
+
+
+#layout .seller-transitions-summary-list .info-box .row{
+  margin: 0;
+  /* height: 190px; */
+>>>>>>> e38b671598c5d2447431d373ac620483b423d30b
 }
 #layout .seller-transitions-summary-list .info-box .left-item p{
   font-size: 14px;

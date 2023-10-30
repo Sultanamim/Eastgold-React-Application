@@ -132,7 +132,7 @@ export default function Portfolios() {
 
           {/* <!-- Project Boxes --> */}
           <div
-            className="row project-boxes project-isotope mt-60 justify-content-center"
+            className="row d-flex flex-row project-boxes project-isotope mt-60 justify-content-center"
             style={{ position: "relative", height: "800px", marginTop: "3rem" }}
           >
             {filteredProjects.map((project, index) => {
@@ -141,12 +141,8 @@ export default function Portfolios() {
               return (
                 <div
                   key={index}
-                  className={`isotope-item col-lg-4 col-sm-6 ${project.itemClass}`}
-                  style={{
-                    position: "absolute",
-                    left: `${leftPosition}%`,
-                    top: `${topPosition}px`,
-                  }}
+                  className={`isotope-item col-12 col-md-6 col-lg-4  ${project.itemClass}`}
+                 
                 >
                   <div className="project-box hover-style">
                     <a className="project-thumb" href="#">

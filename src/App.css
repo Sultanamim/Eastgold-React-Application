@@ -346,10 +346,11 @@ button {
 .main-btn {
   position: relative;
   z-index: 1;
-  background-color: var(--main-color);
-  padding: 13px 45px;
+  background-color: #051430;
+  padding: 8px 10px;
   color: #fff;
   font-size: 15px;
+  border-radius: 7px;
   font-weight: 700;
   line-height: 29px;
   text-transform: uppercase;
