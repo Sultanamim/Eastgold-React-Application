@@ -17,11 +17,8 @@ export default function Orders() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
-<<<<<<< HEAD
-=======
   const [sellerComission, setSellerComission] = useState([]);
   const [sellerCount, setSellerCount] = useState([]);
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
   let history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -34,11 +31,8 @@ export default function Orders() {
       //console.log(jsondata);
       setData(jsondata.data);
       setFilter(jsondata.data);
-<<<<<<< HEAD
-=======
       setSellerComission(jsondata.comission);
       setSellerCount(jsondata.count);
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
     } catch (error) {
       console.error("API request error:", error);
     }
@@ -102,31 +96,18 @@ export default function Orders() {
     {
       name: "Sales Source",
       selector: (row) => row.sales_source,
-    }
-
+    },
   ];
 
-<<<<<<< HEAD
-  const newData =
-    data.length > 0
-      ? data.map((items) => {
-=======
   const tableData = {
     columns,
-    data
+    data,
   };
 
   const newData =
     data.length > 0
       ? data.map((items) => {
-
-       
-
-          
-    
-
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
-        //console.log(items);
+          //console.log(items);
           const dataTable = {
             buyer_id: items.buyer_id,
             partner_id: items.partner_id,
@@ -141,7 +122,7 @@ export default function Orders() {
           return dataTable;
         })
       : null;
-//console.log(filter);
+  //console.log(filter);
 
   const sellerData =
     data.length > 0 ? (
@@ -158,16 +139,12 @@ export default function Orders() {
                       <div className="align-items-flex-start">
                         <p>Hi {user.name}</p>
                         <p>You Have</p>
-                        <h3>{ data.length}</h3>
+                        <h3>{data.length}</h3>
                         <p>Transaction </p>
                       </div>
                     </div>
 
-<<<<<<< HEAD
-                    <div className="col-lg-6 col-6 right-item text-align-left">
-=======
                     <div className="col-lg-5 col-5 right-item text-align-left">
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
                       <div className="align-items-flex-start">
                         <p>Purchased Coins</p>
                         <div
@@ -181,7 +158,7 @@ export default function Orders() {
                             style={{
                               display: "inline-block",
                               content: "",
-                              width:`${sellerComission}%`,
+                              width: `${sellerComission}%`,
                               height: "2px",
                               backgroundColor: "blue",
                               alignSelf: "center",
@@ -196,8 +173,7 @@ export default function Orders() {
                               textAlign: "left",
                             }}
                           >
-                             {sellerComission}%
-                        
+                            {sellerComission}%
                           </p>
                         </div>
                         <p>Total Amount</p>
@@ -214,13 +190,15 @@ export default function Orders() {
                             style={{
                               display: "inline-block",
                               content: "",
-                              width: `${sellerComission * sellerCount / 100}%`,
+                              width: `${
+                                (sellerComission * sellerCount) / 100
+                              }%`,
                               height: "2px",
                               backgroundColor: "green",
                               alignSelf: "center",
                             }}
-                          ></div> 
-                           {/* <p
+                          ></div>
+                          {/* <p
                             style={{
                               float: "left",
                               paddingLeft: "0",
@@ -232,21 +210,17 @@ export default function Orders() {
                             17%
                           </p> */}
                         </div>
-                         <p>  {sellerComission * sellerCount / 100} </p>
+                        <p> {(sellerComission * sellerCount) / 100} </p>
                       </div>
                     </div>
                     <div className="col-lg-3 col-3 left-item text-align-left">
-                    <img src={GolgImg} alt="logo" />
+                      <img src={GolgImg} alt="logo" />
                     </div>
                   </div>
                 </div>
               </div>
               <div className="col-xl-6 col-md-12">
-<<<<<<< HEAD
-                <div className="info-box" style={{ width: "380px" }}>
-=======
                 <div className="info-box">
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
                   <h2>TOTAL AVAILABLE GOLD BARS</h2>
                   <div className="row">
                     <div className="col-lg-4 col-4 left-item d-flex text-align-center justify-content-center">
@@ -291,30 +265,23 @@ export default function Orders() {
                 </div>
                 <div className="seller-profile-panel-body">
                   <div className="table-responsive">
-<<<<<<< HEAD
-                    <DataTable
-                      columns={columns}
-                      data={newData}
-=======
-                
-                  <DataTableExtensions {...tableData}>
-                    <DataTable
-                      columns={columns}
-                      data={newData}
-                      noHeader
-                      defaultSortField="id"
-                      sortIcon={<SortIcon />}
-                      defaultSortAsc={true}
-                      pagination
-                      highlightOnHover
-                      dense
-                    />
-                  </DataTableExtensions>
+                    <DataTableExtensions {...tableData}>
+                      <DataTable
+                        columns={columns}
+                        data={newData}
+                        noHeader
+                        defaultSortField="id"
+                        sortIcon={<SortIcon />}
+                        defaultSortAsc={true}
+                        pagination
+                        highlightOnHover
+                        dense
+                      />
+                    </DataTableExtensions>
 
                     {/* <DataTable
                       columns={columns}
                       data={newData}
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
                       pagination
                       selectableRows
                       fixedHeader
@@ -339,11 +306,7 @@ export default function Orders() {
                         </>)
                       }
                     
-<<<<<<< HEAD
-                    />
-=======
                     /> */}
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
                   </div>
                 </div>
               </div>
@@ -408,7 +371,9 @@ export default function Orders() {
                                         {" "}
                                         <img src={ProfileImg} alt="" />{" "}
                                       </span>
-                                      <span className="text">Selling Information</span>
+                                      <span className="text">
+                                        Selling Information
+                                      </span>
                                     </Link>
                                   </li>
                                   <li>

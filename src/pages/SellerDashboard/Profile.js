@@ -6,42 +6,34 @@ import OrdersImg from "../../assets/my-orders.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2";
-<<<<<<< HEAD
-=======
-import {useHistory,} from "react-router-dom";
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
-
+import { useHistory } from "react-router-dom";
 
 async function formData(credentials) {
   const csrfToken = document.head
     .querySelector('meta[name="csrf-token"]')
     ?.getAttribute("content");
 
-
-
   const response = await fetch(
     "https://office.webcodecare.com/api/seller_product",
     {
       method: "POST",
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-     },
+        "Content-type": "application/json; charset=UTF-8",
+      },
       body: JSON.stringify(credentials),
     }
-  ).then(data => data.json());
+  ).then((data) => data.json());
 
   if (response) {
-    Swal.fire("Successfully!",  response.message, "success", {
+    Swal.fire("Successfully!", response.message, "success", {
       buttons: false,
       timer: 2000,
     });
 
     window.location.reload();
-
   } else {
     Swal.fire("Error", response.message, "error");
   }
-
 }
 
 export default function Profile(props) {
@@ -64,12 +56,8 @@ export default function Profile(props) {
   let seller_id = elements.seller_id;
   let sales_mode = elements.sales_mode;
   let sales_source = elements.sales_source;
-<<<<<<< HEAD
-
-=======
   let history = useHistory();
-  
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
+
   const buyerData = buyer.map((items) => {
     return items;
   });
@@ -79,15 +67,10 @@ export default function Profile(props) {
   });
   //console.log(partnerData);
   useEffect(() => {
-<<<<<<< HEAD
-=======
-
-
     const token = localStorage.getItem("token");
     if (!token) {
       history.push("/login");
     }
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
     setElements({ ...elements, buyer_id: buyer.user });
 
     setElements({ ...elements, partner_id: partnerData.user });
@@ -148,11 +131,7 @@ export default function Profile(props) {
                                 aria-expanded="true"
                                 aria-controls="m-profile-options"
                               >
-<<<<<<< HEAD
-                                <span> Profile Options</span>
-=======
                                 <span> Selling Information Options</span>
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
                                 <span className="icon">
                                   <i className="fas fa-chevron-right"></i>
                                 </span>
@@ -177,11 +156,9 @@ export default function Profile(props) {
                                         {" "}
                                         <img src={ProfileImg} alt="" />{" "}
                                       </span>
-<<<<<<< HEAD
-                                      <span className="text"> Profile</span>
-=======
-                                      <span className="text">Selling Information</span>
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
+                                      <span className="text">
+                                        Selling Information
+                                      </span>
                                     </Link>
                                   </li>
                                   <li>
@@ -208,22 +185,16 @@ export default function Profile(props) {
                       <div className="seller-profile-content-area">
                         {/*---- Header element ---- */}
                         <div className="seller-profile-content-header">
-<<<<<<< HEAD
-                          <h3>Seller Profile</h3>
-=======
                           <h3>Selling Information</h3>
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
                           <div className="seller-profile-content-breadcumb">
                             <ul>
                               <li>
                                 <a to="/">Home</a>
                               </li>
                               <li>
-<<<<<<< HEAD
-                                <a to="/customer/dashboard">Profile</a>
-=======
-                                <a to="/customer/dashboard">Selling Information</a>
->>>>>>> e38b671598c5d2447431d373ac620483b423d30b
+                                <a to="/customer/dashboard">
+                                  Selling Information
+                                </a>
                               </li>
                             </ul>
                           </div>
@@ -327,7 +298,6 @@ export default function Profile(props) {
                                                     onChange={(e) =>
                                                       handleChange(e)
                                                     }
-                                                
                                                   />
                                                 </div>
                                               </div>

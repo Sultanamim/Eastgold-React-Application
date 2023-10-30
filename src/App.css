@@ -1,9 +1,9 @@
-.App{
-    width: "100%";
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    box-sizing: border-box;
+.App {
+  width: "100%";
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 /*=========================
     1. Start COMMON css
@@ -64,7 +64,7 @@ html {
 .light-bg {
   background-color: rgba(22, 37, 66, 0.05);
 }
-.pt-100{
+.pt-100 {
   padding-top: 100px;
 }
 .pb-70 {
@@ -79,7 +79,8 @@ a {
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
 }
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: inherit;
   text-decoration: none;
 }
@@ -147,7 +148,8 @@ h6 {
   font-size: 16px;
 }
 
-ul, ol {
+ul,
+ol {
   margin: 0px;
   padding: 0px;
   list-style-type: none;
@@ -158,7 +160,8 @@ header p {
   margin: 0px;
 }
 
-input, textarea {
+input,
+textarea {
   display: inherit;
 }
 
@@ -181,7 +184,8 @@ body {
     max-width: 1200px;
   }
 }
-.section-title-white span.span, .section-title-white h2 {
+.section-title-white span.span,
+.section-title-white h2 {
   color: #fff;
 }
 
@@ -272,7 +276,8 @@ span.sub-title {
     font-size: 15px;
   }
 }
-span.sub-title:after, span.sub-title:before {
+span.sub-title:after,
+span.sub-title:before {
   display: inline-block;
   content: "";
   width: 50px;
@@ -326,15 +331,78 @@ span.sub-title:after {
 }
 
 /*===== Extend Css =====*/
-.features-item-one .icon i, .service-item-two .icon i {
+.features-item-one .icon i,
+.service-item-two .icon i {
   color: var(--main-color);
 }
 
-.footer-wrapper-one .footer-widget .widget.footer-nav-widget ul.widget-link li a:hover, .blog-details-container .post-nav-area .post-nav .content h6:hover, .blog-details-container .post-author-box .author-content ul.social-link li:hover, .blog-details-container .blog-post-item .post-share-tag .social-share ul.social-link li a:hover, .blog-post-item-six.blog-post-bg .entry-content .post-meta ul li span:hover, .blog-post-item-six.blog-post-bg .entry-content .post-admin span:hover, .blog-post-item-six.blog-post-bg .entry-content h3.title:hover, .blog-post-item-six .entry-content .post-admin span a:hover, .blog-post-item-six .entry-content h3.title:hover, .blog-post-item-five .entry-content .post-admin span a:hover, .blog-post-item-five .entry-content h3.title:hover, .blog-post-item-three .entry-content h3.title:hover, .blog-post-item-two .entry-content .btn-link:hover, .blog-post-item-two .entry-content h3.title:hover, .blog-post-item-one .entry-content h3.title:hover, .arrow-btn:hover, .post-meta ul li span:hover, .team-item-one .team-content h3.title:hover, .case-item-three .case-content h3.title:hover, .case-item-two .case-img .case-overlay .case-content h3.title:hover, .case-item-one .case-content h3.title:hover, .service-item-four .content h3.title:hover, .service-item-three .content h3.title:hover, .service-item-one .content h3.title:hover, .header-logo-area .site-info .info-list li .info h5:hover {
+.footer-wrapper-one
+  .footer-widget
+  .widget.footer-nav-widget
+  ul.widget-link
+  li
+  a:hover,
+.blog-details-container .post-nav-area .post-nav .content h6:hover,
+.blog-details-container
+  .post-author-box
+  .author-content
+  ul.social-link
+  li:hover,
+.blog-details-container
+  .blog-post-item
+  .post-share-tag
+  .social-share
+  ul.social-link
+  li
+  a:hover,
+.blog-post-item-six.blog-post-bg .entry-content .post-meta ul li span:hover,
+.blog-post-item-six.blog-post-bg .entry-content .post-admin span:hover,
+.blog-post-item-six.blog-post-bg .entry-content h3.title:hover,
+.blog-post-item-six .entry-content .post-admin span a:hover,
+.blog-post-item-six .entry-content h3.title:hover,
+.blog-post-item-five .entry-content .post-admin span a:hover,
+.blog-post-item-five .entry-content h3.title:hover,
+.blog-post-item-three .entry-content h3.title:hover,
+.blog-post-item-two .entry-content .btn-link:hover,
+.blog-post-item-two .entry-content h3.title:hover,
+.blog-post-item-one .entry-content h3.title:hover,
+.arrow-btn:hover,
+.post-meta ul li span:hover,
+.team-item-one .team-content h3.title:hover,
+.case-item-three .case-content h3.title:hover,
+.case-item-two .case-img .case-overlay .case-content h3.title:hover,
+.case-item-one .case-content h3.title:hover,
+.service-item-four .content h3.title:hover,
+.service-item-three .content h3.title:hover,
+.service-item-one .content h3.title:hover,
+.header-logo-area .site-info .info-list li .info h5:hover {
   color: var(--main-color);
 }
 
-.footer-wrapper-one .footer-widget .widget.footer-nav-widget ul.widget-link li a:hover:before, .footer-wrapper-one .footer-widget .widget.about-widget .share ul.social-link li a:hover, .sidebar-widget-area .widget.tag-cloud-widget a:hover, .blog-details-container .blog-post-item .post-share-tag .post-tag-cloud ul li a:hover, .team-details-section .team-content .social-link li a:hover, .team-item-one .team-img .team-overlay .team-social ul.social-link li a:hover, .lawgne-pagination ul li a:hover {
+.footer-wrapper-one
+  .footer-widget
+  .widget.footer-nav-widget
+  ul.widget-link
+  li
+  a:hover:before,
+.footer-wrapper-one
+  .footer-widget
+  .widget.about-widget
+  .share
+  ul.social-link
+  li
+  a:hover,
+.sidebar-widget-area .widget.tag-cloud-widget a:hover,
+.blog-details-container
+  .blog-post-item
+  .post-share-tag
+  .post-tag-cloud
+  ul
+  li
+  a:hover,
+.team-details-section .team-content .social-link li a:hover,
+.team-item-one .team-img .team-overlay .team-social ul.social-link li a:hover,
+.lawgne-pagination ul li a:hover {
   background-color: var(--main-color);
 }
 
@@ -387,24 +455,24 @@ button {
 .nice-select {
   outline: none;
 }
-.nice-select.open:after :not(.course-select){
+.nice-select.open:after :not(.course-select) {
   -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
-.nice-select:after :not(.course-select){
+.nice-select:after :not(.course-select) {
   content: "ï„‡";
   font-family: "Font Awesome 5 Pro";
   right: 20px;
   font-size: 12px;
   font-weight: 400;
   -webkit-transform: none;
-          transform: none;
+  transform: none;
   border: none;
   top: 0;
   margin-top: 0;
-  color: #2E2E2E;
+  color: #2e2e2e;
 }
-.nice-select .list :not(.course-select){
+.nice-select .list :not(.course-select) {
   width: 100%;
 }
 
@@ -417,12 +485,12 @@ button {
 #search-modal .modal-content {
   background: 0 0;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: none;
 }
 #search-modal .modal-content:focus {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 #search-modal .form_control {
   padding-left: 0;
@@ -478,40 +546,40 @@ button {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   text-align: center;
   z-index: 9999;
   -webkit-animation: loadershake infinite 1s linear;
-          animation: loadershake infinite 1s linear;
+  animation: loadershake infinite 1s linear;
 }
 
 @-webkit-keyframes loadershake {
   0% {
     -webkit-transform: rotateY(5deg);
-            transform: rotateY(5deg);
+    transform: rotateY(5deg);
   }
   50% {
     -webkit-transform: rotateY(45deg);
-            transform: rotateY(45deg);
+    transform: rotateY(45deg);
   }
   100% {
     -webkit-transform: rotateY(5deg);
-            transform: rotateY(5deg);
+    transform: rotateY(5deg);
   }
 }
 
 @keyframes loadershake {
   0% {
     -webkit-transform: rotateY(5deg);
-            transform: rotateY(5deg);
+    transform: rotateY(5deg);
   }
   50% {
     -webkit-transform: rotateY(45deg);
-            transform: rotateY(45deg);
+    transform: rotateY(45deg);
   }
   100% {
     -webkit-transform: rotateY(5deg);
-            transform: rotateY(5deg);
+    transform: rotateY(5deg);
   }
 }
 /*
@@ -539,7 +607,8 @@ button {
   transition: 0.3s;
   z-index: 337;
 }
-.back-to-top:hover, .back-to-top:focus {
+.back-to-top:hover,
+.back-to-top:focus {
   background: #0c1b36;
   color: #fff;
 }
@@ -549,34 +618,40 @@ button {
 */
 @-webkit-keyframes play {
   0% {
-    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(0.5);
+    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0)
+      scale(0.5);
     transform: translateX(-50%) translateY(-50%) translateZ(0) scale(0.5);
     opacity: 0;
   }
   0% {
-    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(0.5);
+    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0)
+      scale(0.5);
     transform: translateX(-50%) translateY(-50%) translateZ(0) scale(0.5);
     opacity: 1;
   }
   100% {
-    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.3);
+    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0)
+      scale(1.3);
     transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.3);
     opacity: 0;
   }
 }
 @keyframes play {
   0% {
-    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(0.5);
+    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0)
+      scale(0.5);
     transform: translateX(-50%) translateY(-50%) translateZ(0) scale(0.5);
     opacity: 0;
   }
   0% {
-    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(0.5);
+    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0)
+      scale(0.5);
     transform: translateX(-50%) translateY(-50%) translateZ(0) scale(0.5);
     opacity: 1;
   }
   100% {
-    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.3);
+    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0)
+      scale(1.3);
     transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.3);
     opacity: 0;
   }
